@@ -1,0 +1,27 @@
+# planning notes (pre-kickoff, not part of the submission)
+/Pheromone Build Plan for Graph Hacks.md
+/IMPLEMENTATION_PLAN.md
+/PLAN_FIXES.md
+/NOTES.md
+
+# target repos, their venvs and agent worktrees
+/targets/
+/worktrees/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# node
+node_modules/
+.next/
+
+# env
+.env
+.env.*
+!.env.example
+
+.DS_Store
