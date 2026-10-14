@@ -1,0 +1,11 @@
+[project]
+name = "pydantic-migration-gym"
+version = "0.1.0"
+description = "Small Pydantic v1 codebase with independent modules, used as a migration target for Pheromone"
+requires-python = ">=3.10"
+dependencies = ["pydantic>=1.10,<2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# A finished v2 migration leaves no deprecated v1 API behind, so deprecations are failures.
+filterwarnings = ["error::DeprecationWarning"]
