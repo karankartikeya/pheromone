@@ -1,0 +1,163 @@
+"""Every Cypher query Pheromone runs. The README's query section is generated from this file.
+
+Two FalkorDB facts shape these:
+- Each query is atomic and writes to one graph are serialized, but there are no
+  multi-query transactions. Coordination steps are therefore single queries
+  (compare-and-set), never read-then-write from Python.
+- SET/CREATE run on every matched row even if a LIMIT comes later, so no write
+  query relies on LIMIT.
+"""
+
+# 0. Indexes, run once per graph.
+INDEXES = [
+    "CREATE INDEX FOR (h:Hypothesis) ON (h.id)",
+    "CREATE INDEX FOR (h:Hypothesis) ON (h.status)",
+    "CREATE INDEX FOR (h:Hypothesis) ON (h.signature)",
+    "CREATE INDEX FOR (f:Failure) ON (f.signature)",
+    "CREATE INDEX FOR (f:Failure) ON (f.id)",
+    "CREATE INDEX FOR (t:Test) ON (t.nodeid)",
+    "CREATE INDEX FOR (f:File) ON (f.path)",
+    "CREATE INDEX FOR (a:Agent) ON (a.id)",
+    "CREATE INDEX FOR (a:Attempt) ON (a.diff_hash)",
+]
+
+RECIPE_INDEXES = [
+    "CREATE INDEX FOR (r:Recipe) ON (r.signature)",
+    "CREATE INDEX FOR (c:Contribution) ON (c.run)",
+]
+
+# 1. Frontier (read-only, every loop). Top 12 by pheromone; the worker scores
+#    and picks by roulette in Python. 12, not 5: at start every edge is tau0,
+#    and a short list would hand all agents the same candidates.
+FRONTIER = """
+MATCH (f:Failure {status:'open'})-[s:SUSPECTS]->(h:Hypothesis {status:'open'})
+OPTIONAL MATCH (h)<-[:TESTED]-(a:Attempt)
+OPTIONAL MATCH (h)-[:SAME_SIGNATURE]-(o:Hypothesis {status:'claimed'})
+WITH h, max(s.pheromone) AS tau, count(DISTINCT a) AS tries, count(DISTINCT o) AS crowd
+RETURN h.id AS id, h.text AS text, h.kind AS kind, h.signature AS signature,
+       h.file AS file, h.eta AS eta, h.cluster AS cluster, tau, tries, crowd
+ORDER BY tau DESC
+LIMIT $limit
+"""
+
+# 2. Claim (compare-and-set). Empty result means another agent won.
+#    An expired lease counts as open: that is the handoff.
+CLAIM = """
+MATCH (h:Hypothesis {id:$hid}), (ag:Agent {id:$agent})
+WHERE h.status = 'open' OR (h.status = 'claimed' AND h.lease_until < $now)
+SET h.status = 'claimed', h.claimed_by = $agent, h.lease_until = $now + $lease_ms
+CREATE (ag)-[:CLAIMED {at:$now}]->(h)
+RETURN h.id AS id
+"""
+
+# 3. Report an attempt and deposit pheromone. Only the deterministic reporter
+#    runs this. Guarded so a worker that lost its lease cannot overwrite the new
+#    owner. One deposit formula for both outcomes, clamped at tau_min:
+#    pass: mult=1, add=+1*fixed -0.5*broken; fail: mult=0.7, add=0.
+REPORT = """
+MATCH (h:Hypothesis {id:$hid}), (ag:Agent {id:$agent})
+WHERE h.status = 'claimed' AND h.claimed_by = $agent
+CREATE (ag)-[:MADE]->(a:Attempt {id:$aid, outcome:$outcome, diff_hash:$dh, diff:$diff,
+        fixed:$fixed, broken:$broken, ms:$ms, tokens:$tok, at:$now, mode:$mode})-[:TESTED]->(h)
+SET h.status = CASE WHEN $outcome = 'pass' THEN 'fixed' ELSE 'open' END,
+    h.claimed_by = null
+WITH h, a
+MATCH (h)<-[s:SUSPECTS]-(:Failure)
+SET s.pheromone = CASE WHEN s.pheromone * $mult + $add < $tmin THEN $tmin
+                       ELSE s.pheromone * $mult + $add END
+RETURN a.id AS id, count(s) AS edges
+"""
+
+# 3b. Stale report (lease lost): record the Attempt so metrics count it,
+#     touch neither status nor pheromone.
+REPORT_STALE = """
+MATCH (h:Hypothesis {id:$hid}), (ag:Agent {id:$agent})
+CREATE (ag)-[:MADE]->(a:Attempt {id:$aid, outcome:'stale', diff_hash:$dh,
+        ms:$ms, tokens:$tok, at:$now, mode:$mode})-[:TESTED]->(h)
+RETURN a.id AS id
+"""
+
+# 3c. Reporter follow-ups: which tests an attempt fixed or broke.
+LINK_FIXED = """
+MATCH (a:Attempt {id:$aid}), (t:Test) WHERE t.nodeid IN $nodeids
+CREATE (a)-[:FIXED]->(t)
+"""
+LINK_BROKE = """
+MATCH (a:Attempt {id:$aid}), (t:Test) WHERE t.nodeid IN $nodeids
+CREATE (a)-[:BROKE]->(t)
+"""
+LINK_FOLLOWED = """
+MATCH (p:Attempt {id:$prev}), (n:Attempt {id:$next})
+CREATE (p)-[:FOLLOWED]->(n)
+"""
+
+# 4. Evaporation (every 10 s). MAX-MIN floor keeps every trail explorable.
+EVAPORATE = """
+MATCH (:Failure)-[s:SUSPECTS]->(:Hypothesis)
+SET s.pheromone = CASE WHEN s.pheromone * $keep < $tmin THEN $tmin ELSE s.pheromone * $keep END
+RETURN count(s) AS edges
+"""
+
+# 4b. Lease release (with evaporation).
+RELEASE_LEASES = """
+MATCH (h:Hypothesis {status:'claimed'})
+WHERE h.lease_until < $now
+SET h.status = 'open', h.claimed_by = null
+RETURN collect(h.id) AS released
+"""
+
+# 5. Blast radius before merge (multi-hop). Tests that must pass before a patch
+#    to this file merges. *0.. includes tests defined in the file itself.
+BLAST_RADIUS = """
+MATCH (f:File {path:$path})<-[:IMPORTS*0..3]-(dep:File)<-[:DEFINED_IN]-(t:Test)
+RETURN DISTINCT t.nodeid AS nodeid
+"""
+
+# 6. Crystallize (run graph, every 60 s). A (signature, kind) that won in 2+
+#    places becomes a Recipe candidate.
+CRYSTALLIZE_CANDIDATES = """
+MATCH (a:Attempt {outcome:'pass'})-[:TESTED]->(h:Hypothesis)<-[:SUSPECTS]-(f:Failure)
+WITH f.signature AS sig, h.kind AS kind, h.text AS text,
+     count(DISTINCT h) AS wins, collect(a.diff) AS diffs
+WHERE wins >= 2
+RETURN sig, kind, text, wins, diffs
+"""
+
+# 6b. Upsert into the shared recipes graph. Idempotent: rerunning with the
+#     same values changes nothing.
+UPSERT_RECIPE = """
+MERGE (r:Recipe {signature:$sig, kind:$kind})
+ON CREATE SET r.transform = $transform, r.example = $example
+MERGE (c:Contribution {run:$run, signature:$sig, kind:$kind})
+SET c.wins = $wins
+MERGE (c)-[:FOR]->(r)
+WITH r
+MATCH (r)<-[:FOR]-(c2:Contribution)
+WITH r, sum(c2.wins) AS total
+SET r.support = total
+RETURN r.signature AS signature, r.kind AS kind, r.support AS support
+"""
+
+RECIPES_FOR = """
+MATCH (r:Recipe) WHERE r.signature IN $sigs
+RETURN r.signature AS signature, r.kind AS kind, r.transform AS transform,
+       r.example AS example, r.support AS support
+"""
+
+# 7. Explain a fix: the trail behind an answer.
+TRAIL = """
+MATCH p = (t:Test {nodeid:$tid})-[:FAILS_WITH]->(:Failure)-[:SUSPECTS]->(h:Hypothesis)<-[:TESTED]-(a:Attempt)<-[:MADE]-(:Agent)
+RETURN p ORDER BY a.at
+"""
+
+# 8. Graph algorithms as agent tools.
+PAGERANK = """
+CALL algo.pageRank('File', 'IMPORTS') YIELD node, score
+SET node.pagerank = score
+RETURN node.path AS path, score ORDER BY score DESC
+"""
+
+WCC = """
+CALL algo.WCC({nodeLabels:['Failure','File'], relationshipTypes:['IN']}) YIELD node, componentId
+RETURN componentId, collect(node) AS members
+"""
