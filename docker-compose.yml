@@ -1,6 +1,7 @@
 services:
   falkordb:
     image: falkordb/falkordb:latest
+    restart: unless-stopped
     ports:
       - "6380:6379"   # redis protocol (graph queries); 6380 on the host to avoid a local Redis
       - "3000:3000"   # FalkorDB Browser
