@@ -122,10 +122,10 @@ Measured with [`bench/protocol.sh`](bench/protocol.sh): same repo, commit, model
 | gym (37 red tests) | Baseline, no graph | 176k (123k–192k) | 191 s (133–210) | 131 (98–159) | 71 (54–71) |
 | gym | **Swarm** | **50k** (46k–51k) | **61 s** (61–64) | **9** (6–11) | **11** (6–12) |
 | krr (suite blocked at import) | Baseline, no graph | 231k (173k–290k) | 245 s (222–267) | 92 (86–97) | 36 (33–39) |
-| krr | **Swarm** | **94k** (67k–120k) | 231 s (199–264) | **8** (5–11) | **5** (3–7) |
-| krr | Swarm + Recipes | 91k (62k–119k) | 217 s (190–244) | 9 (5–12) | 6 (3–8) |
+| krr | **Swarm** | **94k** (67k–120k) | 231 s (199–264) | **8** (5–11) | **5.5** (3–8) |
+| krr | Swarm + Recipes | 91k (62k–119k) | 217 s (190–244) | 9 (5–12) | 6.5 (3–10) |
 
-_Collisions: two agents patching the same file at overlapping times. Wasted attempts: passing patches for a failure another agent had already fixed._
+_Collisions: two agents patching the same file at overlapping times. Wasted attempts: passes on a failure another agent had already fixed, plus repeats of a diff or hypothesis that had already failed. All runs ended 60/60 green on the gym and 55/55 on krr._
 
 What this shows, and what it doesn't:
 
