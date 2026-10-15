@@ -34,7 +34,8 @@ type Agg = { runs: Metrics[]; med: Record<string, number | null>; rng: Record<st
 function aggregate(runs: Metrics[]): Agg {
   const pick = (f: (m: Metrics) => number | null) => runs.map(f).filter((x): x is number => x !== null);
   const fields: Record<string, (m: Metrics) => number | null> = {
-    green: (m) => m.red_at_start - (m.red_at_end ?? m.red_at_start),
+    green: (m) => m.green_at_end,
+    total: (m) => (m.green_at_end ?? 0) + (m.red_at_end ?? 0),
     red_end: (m) => m.red_at_end,
     wasted: (m) => m.superseded + m.repeated_diffs + m.repeated_dead_ends,
     tokens: (m) => m.tokens,
@@ -148,7 +149,7 @@ export default function Scoreboard() {
               </div>
               {g ? (
                 <div className="grid grid-cols-2 gap-y-5">
-                  <Cell label="Tests fixed" value={fmt(g.med.green)} sub={g.rng.green} />
+                  <Cell label="Tests green" value={`${fmt(g.med.green)}/${fmt(g.med.total)}`} sub={g.rng.green} />
                   <Cell label="Wasted attempts" value={fmt(g.med.wasted)} sub={g.rng.wasted} />
                   <Cell label="Tokens" value={fmt(g.med.tokens)} sub={g.rng.tokens} />
                   <Cell label={g.runs.every((r) => r.red_at_end === 0) ? "Minutes to green" : "Minutes"} value={fmt(g.med.minutes, 1)} sub={g.rng.minutes} />

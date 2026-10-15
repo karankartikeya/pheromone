@@ -50,6 +50,7 @@ export type Metrics = {
   workers: number;
   red_at_start: number;
   red_at_end: number;
+  green_at_end: number | null;
   seconds_to_green: number | null;
   seconds: number;
   tokens: number;

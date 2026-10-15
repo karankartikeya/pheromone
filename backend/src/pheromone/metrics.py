@@ -62,6 +62,7 @@ def compute(d: dict) -> dict:
         "run": d["run"].get("id"), "mode": d["run"].get("mode"), "model": d["run"].get("model"),
         "workers": seeded.get("workers"),
         "red_at_start": seeded["red_tests"], "red_at_end": stopped.get("red"),
+        "green_at_end": stopped.get("green"),
         "seconds_to_green": green_at, "seconds": stopped.get("seconds"),
         "tokens": stopped.get("tokens"), "attempts": len(attempts),
         "merged": len(merged), "superseded": outcomes["superseded"],
