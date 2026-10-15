@@ -150,10 +150,10 @@ export default function Scoreboard() {
               {g ? (
                 <div className="grid grid-cols-2 gap-y-5">
                   <Cell label="Tests green" value={`${fmt(g.med.green)}/${fmt(g.med.total)}`} sub={g.rng.green} />
-                  <Cell label="Wasted attempts" value={fmt(g.med.wasted)} sub={g.rng.wasted} />
+                  <Cell label="Wasted attempts" value={fmt(g.med.wasted, 1)} sub={g.rng.wasted} />
                   <Cell label="Tokens" value={fmt(g.med.tokens)} sub={g.rng.tokens} />
                   <Cell label={g.runs.every((r) => r.red_at_end === 0) ? "Minutes to green" : "Minutes"} value={fmt(g.med.minutes, 1)} sub={g.rng.minutes} />
-                  <Cell label="Collisions" value={fmt(g.med.collisions)} sub={g.rng.collisions} />
+                  <Cell label="Collisions" value={fmt(g.med.collisions, 1)} sub={g.rng.collisions} />
                   {m.key === "swarm+recipes" ? (
                     <Cell label="Recipe hits" value={`${fmt(g.med.recipe)}%`} sub={g.rng.recipe} />
                   ) : (
