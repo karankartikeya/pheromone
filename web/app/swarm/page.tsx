@@ -5,11 +5,32 @@ import { useSearchParams } from "next/navigation";
 import Feed from "@/components/Feed";
 import Stat from "@/components/Stat";
 import SwarmGraph from "@/components/SwarmGraph";
-import { apiAlive, fetchIndex, fetchRun, fmt, killAgent, subscribe } from "@/lib/data";
+import { apiAlive, fetchIndex, fetchRun, fmt, killAgent, snapshotEdges, subscribe } from "@/lib/data";
 import { apply, initial, stateAt, type State } from "@/lib/reduce";
-import type { RunEvent, RunExport } from "@/lib/types";
+import type { Edge, RunEvent, RunExport } from "@/lib/types";
 
 const SPEEDS = [1, 2, 5, 10];
+
+type SnapEdge = Edge & { holder?: string | null };
+
+/** Live view: graph columns come from the FalkorDB snapshot, everything else from the event stream. */
+function withSnapshot(s: State, edges: Edge[] | null): State {
+  if (!edges) return s;
+  const failures: State["failures"] = {};
+  const hyps: State["hyps"] = {};
+  for (const e of edges as SnapEdge[]) {
+    if (e.origin === "baseline" && s.mode !== "baseline") continue;
+    failures[e.failure] ??= {
+      id: e.failure, signature: e.signature, visible: true, status: e.failure_status === "open" ? "open" : "fixed",
+    };
+    const status = (["open", "claimed", "fixed", "dead"].includes(e.status) ? e.status : "open") as State["hyps"][string]["status"];
+    hyps[e.hypothesis] = {
+      id: e.hypothesis, failure: e.failure, kind: e.kind, origin: e.origin, status,
+      holder: e.holder ?? undefined, tau: Number(e.tau), fails: 0, visible: true,
+    };
+  }
+  return { ...s, failures, hyps };
+}
 
 function SwarmView() {
   const params = useSearchParams();
@@ -62,6 +83,25 @@ function SwarmView() {
     return stop;
   }, [live, runId, params]);
 
+  // Live graph: read straight from FalkorDB via the snapshot endpoint (real pheromone, holders, status).
+  const [snap, setSnap] = useState<Edge[] | null>(null);
+  useEffect(() => {
+    if (!live || !runId) return;
+    let alive = true;
+    const poll = async () => {
+      try {
+        const d = await snapshotEdges(runId);
+        if (alive) setSnap(d.edges);
+      } catch {}
+    };
+    poll();
+    const id = setInterval(poll, 1500);
+    return () => {
+      alive = false;
+      clearInterval(id);
+    };
+  }, [live, runId]);
+
   const duration = useMemo(() => (data ? Math.max(0, ...data.events.map((e) => e.t)) : 0), [data]);
   const mode = String(data?.run.mode ?? "swarm");
   const replayState = useMemo(
@@ -94,7 +134,7 @@ function SwarmView() {
     if (playhead >= duration && duration > 0) setPlaying(false);
   }, [playhead, duration]);
 
-  const s = live ? liveState : replayState;
+  const s = live && liveState ? withSnapshot(liveState, snap) : replayState;
   if (error) return <p className="mt-10 text-muted">{error}</p>;
   if (!s) return <p className="mt-10 font-mono text-muted">loading run…</p>;
 
@@ -112,7 +152,7 @@ function SwarmView() {
             <span className="text-amber">━ pheromone (width)</span>
             <span>┄ evaporated / dead</span>
             <label className="flex cursor-pointer items-center gap-1.5">
-              <input type="checkbox" checked={hideFixed} onChange={(e) => setHideFixed(e.target.checked)} className="accent-[var(--amber)]" />
+              <input type="checkbox" checked={hideFixed} onChange={(e) => setHideFixed(e.target.checked)} className="accent-amber" />
               hide fixed
             </label>
           </div>
@@ -140,7 +180,7 @@ function SwarmView() {
             <input
               type="range" min={0} max={duration} step={0.1} value={playhead}
               onChange={(e) => setPlayhead(Number(e.target.value))}
-              className="min-w-40 flex-1 accent-[var(--amber)]" aria-label="Replay position"
+              className="min-w-40 flex-1 accent-amber" aria-label="Replay position"
             />
             <span className="font-mono text-xs text-muted">{fmt(playhead, 0)}s / {fmt(duration, 0)}s</span>
             <div className="flex gap-1">
