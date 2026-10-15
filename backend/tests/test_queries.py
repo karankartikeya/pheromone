@@ -120,3 +120,12 @@ async def test_pagerank_and_wcc_run(g):
     assert pr[0]["path"] == "b"
     comps = await g.q(Q.WCC)
     assert len(comps) >= 2
+
+
+async def test_evaporator_tick_releases_expired_leases(g):
+    from pheromone.swarm.evaporator import tick
+
+    await seed_one(g, 1)
+    assert await claim(g, "A0", 1_000)  # lease long expired by wall-clock time
+    assert await tick(g) == ["h1"]
+    assert await tau(g) == pytest.approx(PARAMS.tau0 * PARAMS.keep)
