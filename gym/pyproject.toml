@@ -8,4 +8,4 @@ dependencies = ["pydantic>=1.10,<2"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 # A finished v2 migration leaves no deprecated v1 API behind, so deprecations are failures.
-filterwarnings = ["error::DeprecationWarning"]
+filterwarnings = ["error::DeprecationWarning", "error::UserWarning"]
