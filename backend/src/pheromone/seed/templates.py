@@ -7,8 +7,8 @@ LLM proposer. Baseline gets the same table.
 
 TEMPLATES: dict[str, list[tuple[str, str]]] = {
     "base-settings": [
-        ("settings-import", "Import BaseSettings from pydantic_settings instead of pydantic; move class Config to model_config = SettingsConfigDict(...)."),
-        ("settings-compat", "Import BaseSettings from pydantic.v1 to keep the v1 behaviour for settings only."),
+        ("settings-import", "Import BaseSettings from pydantic_settings instead of pydantic and keep the class otherwise unchanged."),
+        ("settings-config-dict", "Import BaseSettings from pydantic_settings and replace the inner class Config with model_config = SettingsConfigDict(...), keeping env_prefix and other settings."),
     ],
     "validator-values": [
         ("field-validator-info", "Replace @validator with @field_validator plus @classmethod, take info: ValidationInfo and read earlier fields from info.data instead of values."),
