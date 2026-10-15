@@ -135,6 +135,45 @@ WHERE h.status IN ['open', 'claimed']
 RETURN count(DISTINCT f) AS failures, count(DISTINCT h) AS hypotheses
 """
 
+# Proposer: open failures with nothing left to try (no template, or every
+# hypothesis already failed 3+ times), capped at $max proposals per failure.
+PROPOSAL_NEEDED = """
+MATCH (f:Failure {status:'open'})
+WHERE coalesce(f.proposals, 0) < $max AND coalesce(f.proposal_lease, 0) < $now
+OPTIONAL MATCH (f)-[:SUSPECTS]->(h:Hypothesis)
+OPTIONAL MATCH (h)<-[:TESTED]-(a:Attempt)
+WITH f, h, count(a) AS tries
+WITH f, sum(CASE WHEN h IS NOT NULL AND tries < 3 THEN 1 ELSE 0 END) AS alive
+WHERE alive = 0
+RETURN f.id AS id
+"""
+
+# Compare-and-set on the Failure: one worker proposes for it at a time.
+CLAIM_PROPOSAL = """
+MATCH (f:Failure {id:$fid})
+WHERE coalesce(f.proposal_lease, 0) < $now AND coalesce(f.proposals, 0) < $max
+SET f.proposal_lease = $now + $lease_ms, f.proposals = coalesce(f.proposals, 0) + 1
+RETURN f.id AS id
+"""
+
+# Files a failure could be fixed in: where it surfaced, plus what its test files import.
+CANDIDATE_FILES = """
+MATCH (f:Failure {id:$fid})-[:IN]->(src:File)
+OPTIONAL MATCH (f)<-[:FAILS_WITH]-(:Test)-[:DEFINED_IN]->(:File)-[:IMPORTS]->(dep:File)
+RETURN src.path AS src, collect(DISTINCT dep.path) AS deps
+"""
+
+ADD_PROPOSED = """
+MATCH (f:Failure {id:$fid}), (file:File {path:$file})
+MERGE (h:Hypothesis {id:$hid})
+ON CREATE SET h.text = $text, h.kind = $kind, h.signature = f.signature, h.file = $file,
+              h.status = 'open', h.lease_until = 0, h.eta = 1.0 + coalesce(file.pagerank, 0.0),
+              h.origin = 'llm', h.depth = 0, h.proposed_by = $agent
+MERGE (f)-[s:SUSPECTS]->(h) ON CREATE SET s.pheromone = $tau0
+MERGE (h)-[:TOUCHES]->(file)
+RETURN h.id AS id
+"""
+
 # Merger: a passing patch that fails the merge gate counts as a failed attempt.
 MERGE_REJECTED = """
 MATCH (a:Attempt {id:$aid})-[:TESTED]->(h:Hypothesis)<-[s:SUSPECTS]-(:Failure)

@@ -98,6 +98,14 @@ class OpenAIProvider:
         )
 
 
+    async def complete(self, instructions: str, text: str) -> tuple[str, int]:
+        resp = await self.client.responses.create(
+            model=self.model, instructions=instructions, input=text, max_output_tokens=4000,
+        )
+        u = resp.usage
+        return resp.output_text or "", (u.input_tokens + u.output_tokens) if u else 0
+
+
 def provider():
     if config.LLM_PROVIDER == "openai":
         return OpenAIProvider(config.LLM_MODEL)
