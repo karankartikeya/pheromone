@@ -34,6 +34,8 @@ class Red:
 
 @dataclass
 class TestRun:
+    __test__ = False  # not a pytest test class
+
     passed: set[str] = field(default_factory=set)
     red: list[Red] = field(default_factory=list)
     ms: int = 0
