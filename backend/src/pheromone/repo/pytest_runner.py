@@ -65,7 +65,7 @@ async def run_pytest(
     args = [
         str(python), "-m", "pytest", "-q", "-p", "no:cacheprovider",
         "--continue-on-collection-errors", "--tb=short",
-        "--json-report", f"--json-report-file={report_path}", "--json-report-omit=log",
+        "--json-report", f"--json-report-file={report_path}",
         *(nodeids or []),
     ]
     t0 = time.monotonic()
@@ -111,12 +111,42 @@ def parse_report(report: dict, worktree: Path) -> TestRun:
         stage = next((t[s] for s in ("call", "setup", "teardown") if t.get(s, {}).get("outcome") == "failed"), {})
         crash = stage.get("crash", {})
         exc_type, msg = _split_exc(crash.get("message", ""))
-        frames = [(_rel(e["path"], worktree), e["lineno"]) for e in stage.get("traceback", [])]
-        run.red.append(Red(
-            nodeid=t["nodeid"], kind="test", exc_type=exc_type, message=msg,
-            frames=[f for f in frames if f[0]], longrepr=stage.get("longrepr", ""),
-        ))
+        frames = [f for f in ((_rel(e["path"], worktree), e["lineno"]) for e in stage.get("traceback", [])) if f[0]]
+        longrepr = stage.get("longrepr", "")
+        logged = _logged_error(stage.get("log") or [], worktree)
+        if logged and _uninformative(exc_type, frames):
+            # The code under test caught the real exception and only logged it (e.g. a CLI
+            # that exits 1): use the logged traceback as the cause.
+            exc_type, msg, frames, text = logged
+            longrepr = f"{longrepr}\n\n--- logged error (the actual cause) ---\n{text}"
+        run.red.append(Red(nodeid=t["nodeid"], kind="test", exc_type=exc_type, message=msg,
+                           frames=frames, longrepr=longrepr))
     return run
+
+
+_GENERIC = {"AssertionError", "Exit", "SystemExit", "Failed", "Error"}
+
+
+def _uninformative(exc_type: str, frames: list[tuple[str, int]]) -> bool:
+    from pheromone.seed.seeder import is_test_file  # local import: seeder imports this module
+
+    return exc_type in _GENERIC or all(is_test_file(p) for p, _ in frames)
+
+
+def _logged_error(records: list[dict], worktree: Path) -> tuple[str, str, list[tuple[str, int]], str] | None:
+    """Last ERROR log record with a traceback, preferring Pydantic errors."""
+    errs = [r for r in records if r.get("levelname") in ("ERROR", "CRITICAL") and r.get("exc_text")]
+    if not errs:
+        return None
+    rec = next((r for r in reversed(errs) if "pydantic" in r["exc_text"].lower()), errs[-1])
+    text = rec["exc_text"]
+    frames = [(_rel(m.group(1), worktree), int(m.group(2))) for m in _FILE_LINE.finditer(text)]
+    last = next((l.strip() for l in reversed(text.splitlines()) if l.strip()), "")
+    exc_type, msg = _split_exc(last)
+    return exc_type, msg, [f for f in frames if f[0]], text[-3000:]
+
+
+_FILE_LINE = re.compile(r'File "([^"]+)", line (\d+)')
 
 
 def _session_abort(text: str, worktree: Path) -> Red:
