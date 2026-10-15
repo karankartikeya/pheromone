@@ -221,6 +221,14 @@ SET f.status = 'fixed', f.fixed_at = $now
 RETURN collect(f.id) AS closed
 """
 
+# A fixed failure is red again after a later merge: reopen its fixed hypotheses.
+REOPEN_REGRESSED = """
+MATCH (f:Failure {status:'fixed'})-[:SUSPECTS]->(h:Hypothesis {status:'fixed'})
+WHERE f.id IN $ids
+SET h.status = 'open', h.claimed_by = null
+RETURN collect(h.id) AS reopened
+"""
+
 SUITE_STATUS = """
 MATCH (t:Test) WITH t, t.nodeid ENDS WITH '::__collect__' AS pseudo
 WHERE NOT pseudo OR t.status = 'red'

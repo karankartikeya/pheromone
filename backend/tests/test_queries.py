@@ -138,3 +138,16 @@ async def test_hypothesis_retired_after_max_fails(g):
         rows = await report(g, "A0", "fail", PARAMS.fail_mult, 0.0, aid=f"a{i}")
     assert rows[0]["status"] == "dead"
     assert not await claim(g, "A0", 5_000)
+
+
+async def test_regressed_failure_reopens_its_fixed_hypotheses(g):
+    await g.q(
+        """
+        CREATE (:Failure {id:'f1', status:'fixed'})-[:SUSPECTS {pheromone:1.0}]->
+               (:Hypothesis {id:'h1', status:'fixed'})
+        """
+    )
+    rows = await g.q(Q.REOPEN_REGRESSED, ids=["f1"])
+    assert rows[0]["reopened"] == ["h1"]
+    rows = await g.q(Q.REOPEN_REGRESSED, ids=["other"])
+    assert rows[0]["reopened"] == []

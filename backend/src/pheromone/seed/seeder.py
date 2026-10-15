@@ -99,6 +99,10 @@ async def add_failures(g: Graph, failures: list[FailureSeed], mode: str) -> tupl
     """
     known = {r["id"] for r in await g.q(
         "MATCH (f:Failure) WHERE f.id IN $ids RETURN f.id AS id", ids=[f.id for f in failures])}
+    # A failure that was fixed and came back (a later merge regressed it): its old
+    # winning hypotheses must become selectable again, or the frontier, which skips
+    # failures with a 'fixed' hypothesis awaiting merge, would never revisit it.
+    await g.q(Q.REOPEN_REGRESSED, ids=[f.id for f in failures])
     await g.q(
         """
         UNWIND $fs AS f

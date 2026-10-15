@@ -280,6 +280,17 @@ SET f.status = 'fixed', f.fixed_at = $now
 RETURN collect(f.id) AS closed
 ```
 
+## `REOPEN_REGRESSED`
+
+A fixed failure is red again after a later merge: reopen its fixed hypotheses.
+
+```cypher
+MATCH (f:Failure {status:'fixed'})-[:SUSPECTS]->(h:Hypothesis {status:'fixed'})
+WHERE f.id IN $ids
+SET h.status = 'open', h.claimed_by = null
+RETURN collect(h.id) AS reopened
+```
+
 ## `SUITE_STATUS`
 
 ```cypher
