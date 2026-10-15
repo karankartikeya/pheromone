@@ -58,12 +58,17 @@ def source_around(root: Path, path: str, line: int, before: int = 3, after: int 
     return "\n".join(lines[lo:hi])
 
 
+def failure_key(root: Path, red: Red) -> tuple[str, str, str, int]:
+    """(failure id, signature, root file, line) for one red test."""
+    path, line = root_frame(red)
+    sig = signature(red.exc_type, red.message, source_around(root, path, line))
+    return f"{sig}@{path}", sig, path, line
+
+
 def group_failures(root: Path, run: TestRun) -> list[FailureSeed]:
     groups: dict[str, FailureSeed] = {}
     for red in run.red:
-        path, line = root_frame(red)
-        sig = signature(red.exc_type, red.message, source_around(root, path, line))
-        fid = f"{sig}@{path}"
+        fid, sig, path, line = failure_key(root, red)
         if fid not in groups:
             groups[fid] = FailureSeed(fid, sig, path, line, red.kind, f"{red.exc_type}: {red.message}"[:400], [])
         groups[fid].tests.append(red.nodeid)
