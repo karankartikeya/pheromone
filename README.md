@@ -115,7 +115,25 @@ Model: one model for every agent in every mode (`LLM_MODEL`, default `gpt-6-luna
 
 ## Results
 
-_Filled in from recorded runs only. Each mode is run 3 times on the same repo, commit, model, worker count and budget; the dashboard shows medians and ranges, and every number links back to a `run:<id>` graph._
+Measured with [`bench/protocol.sh`](bench/protocol.sh): same repo, commit, model (`gpt-6-luna`), 6 workers and 2M-token budget for every run. The gym was run 3 times per mode, krr twice. Swarm runs on the gym wrote the Recipes; every krr run used `--no-learn` so it could not feed the Recipes it was tested with. Numbers are medians with the min–max range; the dashboard's scoreboard shows the same data, and each run's graph is kept as `run:<id>`. Every one of the 12 runs ended fully green.
+
+| Target | Mode | Tokens | Time to green | Collisions | Wasted attempts |
+| --- | --- | --- | --- | --- | --- |
+| gym (37 red tests) | Baseline, no graph | 176k (123k–192k) | 191 s (133–210) | 131 (98–159) | 71 (54–71) |
+| gym | **Swarm** | **50k** (46k–51k) | **61 s** (61–64) | **9** (6–11) | **11** (6–12) |
+| krr (suite blocked at import) | Baseline, no graph | 231k (173k–290k) | 245 s (222–267) | 92 (86–97) | 36 (33–39) |
+| krr | **Swarm** | **94k** (67k–120k) | 231 s (199–264) | **8** (5–11) | **5** (3–7) |
+| krr | Swarm + Recipes | 91k (62k–119k) | 217 s (190–244) | 9 (5–12) | 6 (3–8) |
+
+_Collisions: two agents patching the same file at overlapping times. Wasted attempts: passing patches for a failure another agent had already fixed._
+
+What this shows, and what it doesn't:
+
+- **The graph is load-bearing.** Take it away and the same agents spend 2.5–3.6× the tokens and collide 11–15× more often, because they keep picking the same failures and redoing each other's fixes.
+- **On the gym it is also 3× faster.** Its failures are independent, so coordination turns directly into parallelism.
+- **On krr it saves cost, not time.** krr's failures form a chain (each fix reveals the next layer), so every layer waits for a merge and a full test run whichever mode runs it.
+- **Recipes did not measurably help yet.** Recipe-seeded hypotheses produced 67–70% of the merged krr fixes, but tokens and time stayed within the swarm's own range over two runs. The hand-written templates already cover the signatures krr needs; Recipes should matter more on repos whose failures the templates don't cover. We report this as measured.
+- **krr vs the human migration.** In all four measured swarm runs the final diff touches 7 files (+26, −17 to −19); human PR #512 touches 8 (+33/−21). Every one of those runs also replaced a deprecated `result.json(indent=2)` in `formatters/json.py` that the PR left in place. The PR additionally changed a mutable default and an `__init__` override that no test exercises; the swarm left those alone.
 
 ## Honest notes
 
