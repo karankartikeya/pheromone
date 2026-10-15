@@ -73,6 +73,21 @@ SET s.pheromone = CASE WHEN s.pheromone * $mult + $add < $tmin THEN $tmin
 RETURN a.id AS id, count(s) AS edges
 """
 
+# 3a. Baseline record (write-only). Baseline agents never read the graph; this
+#     keeps their attempts visible to metrics, replay and the merger. No pheromone.
+RECORD_BASELINE_ATTEMPT = """
+MERGE (ag:Agent {id:$agent})
+MERGE (h:Hypothesis {id:$hid})
+ON CREATE SET h.kind = $kind, h.text = $text, h.file = $file, h.signature = $sig,
+              h.status = 'baseline', h.origin = 'baseline'
+WITH ag, h
+OPTIONAL MATCH (f:Failure {id:$fid})
+FOREACH (_ IN CASE WHEN f IS NULL THEN [] ELSE [1] END | MERGE (f)-[:SUSPECTS]->(h))
+CREATE (ag)-[:MADE]->(a:Attempt {id:$aid, outcome:$outcome, diff_hash:$dh, diff:$diff,
+        fixed:$fixed, broken:$broken, ms:$ms, tokens:$tok, at:$now, mode:'baseline'})-[:TESTED]->(h)
+RETURN a.id AS id
+"""
+
 # 3b. Stale report (lease lost): record the Attempt so metrics count it,
 #     touch neither status nor pheromone.
 REPORT_STALE = """
