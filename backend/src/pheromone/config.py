@@ -11,6 +11,23 @@ TARGETS_DIR = ROOT / "targets"
 WORKTREES_DIR = ROOT / "worktrees"
 RUNS_DIR = ROOT / "runs"
 
+
+def _load_env(path: Path) -> None:
+    """Minimal .env loader; real environment variables win."""
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        key, sep, value = line.strip().partition("=")
+        if sep and key and not key.startswith("#"):
+            os.environ.setdefault(key.removeprefix("export ").strip(), value.strip().strip("\"'"))
+
+
+_load_env(ROOT / "backend" / ".env")
+
+# One model for every agent in every mode, or the A/B comparison means nothing.
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "openai")
+LLM_MODEL = os.environ.get("LLM_MODEL", "gpt-6-luna")
+
 FALKORDB_HOST = os.environ.get("FALKORDB_HOST", "localhost")
 FALKORDB_PORT = int(os.environ.get("FALKORDB_PORT", "6380"))
 FALKORDB_PASSWORD = os.environ.get("FALKORDB_PASSWORD") or None
