@@ -17,11 +17,12 @@ from pheromone.graph.client import Graph
 from pheromone.repo import worktrees as wt
 from pheromone.seed.seeder import seed
 from pheromone.swarm import evaporator
+from pheromone.swarm.baseline import BaselineWorker
 from pheromone.swarm.llm import provider
 from pheromone.swarm.merger import Merger
 from pheromone.swarm.worker import Budget, RunCtx, Worker
 
-MODES = ("swarm", "swarm+recipes")  # baseline lands with baseline.py
+MODES = ("baseline", "swarm", "swarm+recipes")
 
 
 @dataclass
@@ -53,7 +54,8 @@ async def launch(target: str, mode: str, workers: int, budget: int, minutes: flo
     ctx = RunCtx(graph=g, run_id=run_id, mode=mode, repo=repo, python=python, run_ref=merger.branch,
                  llm=llm, budget=Budget(budget), emit=rec.emit, merger=merger)
     trees = [await wt.create(repo, WORKTREES_DIR / run_id / f"A{i}", f"A{i}", base) for i in range(workers)]
-    pool = [Worker(f"A{i}", ctx, trees[i], seed=seed_value + i) for i in range(workers)]
+    cls = BaselineWorker if mode == "baseline" else Worker
+    pool = [cls(f"A{i}", ctx, trees[i], seed=seed_value + i) for i in range(workers)]
 
     async def body() -> None:
         jobs = [asyncio.create_task(evaporator.run(g, ctx.stop, rec.emit))]
