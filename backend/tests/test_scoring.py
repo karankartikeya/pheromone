@@ -42,3 +42,9 @@ def test_equal_scores_spread_agents():
     rng = random.Random(3)
     firsts = Counter(roulette_order(rows, rng)[0]["id"] for _ in range(6))
     assert len(firsts) >= 4  # six agents at t=0 mostly pick different candidates
+
+
+def test_claimed_sibling_weighs_more_than_crowd():
+    with_sibling = {**row("a"), "siblings": 1}
+    with_crowd = row("a", crowd=1)
+    assert score(with_sibling) < score(with_crowd) < score(row("a"))

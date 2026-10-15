@@ -53,6 +53,7 @@ class Params:
     crystallize_every_s: float = 60.0
     lease_ms: int = 120_000
     frontier_limit: int = 12
+    sibling_weight: float = 10.0
     pass_per_fixed: float = 1.0
     pass_per_broken: float = -0.5
     fail_mult: float = 0.7
