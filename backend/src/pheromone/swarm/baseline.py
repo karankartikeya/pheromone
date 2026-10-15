@@ -40,6 +40,7 @@ class LocalHyp:
     file: str
     tau: float = PARAMS.tau0
     tries: int = 0
+    fails: int = 0
     done: bool = False
 
 
@@ -99,7 +100,7 @@ class BaselineWorker:
             if rows:
                 await self.attempt(self.hyps[roulette_order(rows, self.rng)[0]["id"]])
             elif not await self.propose():
-                await asyncio.sleep(1 + self.rng.random())
+                break  # everything this agent knows is retired and its proposals are used up
         await self.beat("killed" if self.id in self.ctx.killed else "done")
 
     async def propose(self) -> bool:
@@ -167,6 +168,9 @@ class BaselineWorker:
         h.tau = max(PARAMS.tau_min, h.tau * mult + add)
         if verdict.outcome == "pass":
             h.done = True
+        else:
+            h.fails += 1
+            h.done = h.fails >= PARAMS.max_fails  # same retirement rule as the swarm
         aid = f"{self.id}-{uuid.uuid4().hex[:8]}"
         self.history.append({"id": aid, "agent": self.id, "hypothesis": h.id, "outcome": verdict.outcome,
                              "diff": diff, "diff_hash": dh})

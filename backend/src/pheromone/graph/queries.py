@@ -64,13 +64,16 @@ MATCH (h:Hypothesis {id:$hid}), (ag:Agent {id:$agent})
 WHERE h.status = 'claimed' AND h.claimed_by = $agent
 CREATE (ag)-[:MADE]->(a:Attempt {id:$aid, outcome:$outcome, diff_hash:$dh, diff:$diff,
         fixed:$fixed, broken:$broken, ms:$ms, tokens:$tok, at:$now, mode:$mode})-[:TESTED]->(h)
-SET h.status = CASE WHEN $outcome = 'pass' THEN 'fixed' ELSE 'open' END,
+SET h.fails = coalesce(h.fails, 0) + CASE WHEN $outcome = 'pass' THEN 0 ELSE 1 END,
     h.claimed_by = null
+SET h.status = CASE WHEN $outcome = 'pass' THEN 'fixed'
+                    WHEN h.fails >= $max_fails THEN 'dead'
+                    ELSE 'open' END
 WITH h, a
 MATCH (h)<-[s:SUSPECTS]-(:Failure)
 SET s.pheromone = CASE WHEN s.pheromone * $mult + $add < $tmin THEN $tmin
                        ELSE s.pheromone * $mult + $add END
-RETURN a.id AS id, count(s) AS edges
+RETURN a.id AS id, count(s) AS edges, h.status AS status
 """
 
 # 3a. Baseline record (write-only). Baseline agents never read the graph; this
@@ -156,14 +159,12 @@ RETURN count(DISTINCT f) AS failures, count(DISTINCT h) AS hypotheses
 """
 
 # Proposer: open failures with nothing left to try (no template, or every
-# hypothesis already failed 3+ times), capped at $max proposals per failure.
+# hypothesis retired as dead), capped at $max proposals per failure.
 PROPOSAL_NEEDED = """
 MATCH (f:Failure {status:'open'})
 WHERE coalesce(f.proposals, 0) < $max AND coalesce(f.proposal_lease, 0) < $now
 OPTIONAL MATCH (f)-[:SUSPECTS]->(h:Hypothesis)
-OPTIONAL MATCH (h)<-[:TESTED]-(a:Attempt)
-WITH f, h, count(a) AS tries
-WITH f, sum(CASE WHEN h IS NOT NULL AND tries < 3 THEN 1 ELSE 0 END) AS alive
+WITH f, sum(CASE WHEN h.status IN ['open', 'claimed', 'fixed'] THEN 1 ELSE 0 END) AS alive
 WHERE alive = 0
 RETURN f.id AS id
 """

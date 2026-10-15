@@ -62,6 +62,7 @@ class Params:
     pass_per_broken: float = -0.5
     fail_mult: float = 0.7
     max_children: int = 2
+    max_fails: int = 3  # failed/duplicate attempts before a hypothesis is retired as dead
     max_depth: int = 2
     test_timeout_s: int = 120
 

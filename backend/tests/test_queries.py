@@ -59,7 +59,7 @@ async def report(g, agent, outcome, mult, add, aid="a1"):
     return await g.q(
         Q.REPORT, hid="h1", agent=agent, aid=aid, outcome=outcome, dh="x", diff="",
         fixed=0, broken=0, ms=1, tok=1, now=5, mode="swarm",
-        mult=mult, add=add, tmin=PARAMS.tau_min,
+        mult=mult, add=add, tmin=PARAMS.tau_min, max_fails=PARAMS.max_fails,
     )
 
 
@@ -129,3 +129,12 @@ async def test_evaporator_tick_releases_expired_leases(g):
     assert await claim(g, "A0", 1_000)  # lease long expired by wall-clock time
     assert await tick(g) == ["h1"]
     assert await tau(g) == pytest.approx(PARAMS.tau0 * PARAMS.keep)
+
+
+async def test_hypothesis_retired_after_max_fails(g):
+    await seed_one(g, 1)
+    for i in range(PARAMS.max_fails):
+        assert await claim(g, "A0", 1_000 + i)
+        rows = await report(g, "A0", "fail", PARAMS.fail_mult, 0.0, aid=f"a{i}")
+    assert rows[0]["status"] == "dead"
+    assert not await claim(g, "A0", 5_000)

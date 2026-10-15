@@ -60,7 +60,7 @@ async def report(g: Graph, *, hid: str, agent: str, aid: str, verdict: Verdict, 
     rows = await g.q(
         Q.REPORT, hid=hid, agent=agent, aid=aid, outcome=verdict.outcome, dh=diff_hash, diff=diff,
         fixed=len(verdict.resolved), broken=len(verdict.broken), ms=ms, tok=tokens, now=now, mode=mode,
-        mult=mult, add=add, tmin=PARAMS.tau_min,
+        mult=mult, add=add, tmin=PARAMS.tau_min, max_fails=PARAMS.max_fails,
     )
     if not rows:
         await g.q(Q.REPORT_STALE, hid=hid, agent=agent, aid=aid, dh=diff_hash, ms=ms, tok=tokens, now=now, mode=mode)
