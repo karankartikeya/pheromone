@@ -2,7 +2,6 @@
 name = "pheromone"
 version = "0.1.0"
 description = "Add your description here"
-readme = "README.md"
 authors = [
     { name = "karan kartikeya", email = "karankartikey72@gmail.com" }
 ]
@@ -11,6 +10,7 @@ dependencies = [
     "anthropic>=1.14.0",
     "falkordb>=1.8.0",
     "fastapi>=0.143.1",
+    "openai>=3.31.0",
     "sse-starlette>=3.5.0",
     "uvicorn[standard]>=0.54.0",
 ]
