@@ -32,6 +32,7 @@ class FailureSeed:
     phase: str
     message: str
     tests: list[str]
+    trace: str = ""
 
 
 def is_test_file(path: str) -> bool:
@@ -70,7 +71,8 @@ def group_failures(root: Path, run: TestRun) -> list[FailureSeed]:
     for red in run.red:
         fid, sig, path, line = failure_key(root, red)
         if fid not in groups:
-            groups[fid] = FailureSeed(fid, sig, path, line, red.kind, f"{red.exc_type}: {red.message}"[:400], [])
+            groups[fid] = FailureSeed(fid, sig, path, line, red.kind, f"{red.exc_type}: {red.message}"[:400], [],
+                                      red.longrepr[-3000:])
         groups[fid].tests.append(red.nodeid)
     return list(groups.values())
 
@@ -103,7 +105,7 @@ async def add_failures(g: Graph, failures: list[FailureSeed], mode: str) -> tupl
         MERGE (x:Failure {id:f.id})
         ON CREATE SET x.signature = f.signature, x.file = f.file, x.line = f.line,
                       x.phase = f.phase, x.message_head = f.message
-        SET x.status = 'open'
+        SET x.status = 'open', x.trace = f.trace
         MERGE (file:File {path:f.file}) ON CREATE SET file.pagerank = 0.0
         MERGE (x)-[:IN]->(file)
         WITH x, f

@@ -128,7 +128,7 @@ class Worker:
         req = PatchRequest(
             hypothesis=h["text"], signature=h["signature"], failure=h["message"] or "",
             tests=targets, files=read_files(self.tree, [h["file"]]),
-            prior_attempts=attempts, recipe_example=h["example"],
+            prior_attempts=attempts, recipe_example=h["example"], trace=h["trace"] or "",
         )
         res = await self.ctx.llm.patch(req)
         self.ctx.budget.used += res.tokens

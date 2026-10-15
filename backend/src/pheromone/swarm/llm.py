@@ -44,6 +44,7 @@ class PatchRequest:
     files: dict[str, str]  # path -> current content
     prior_attempts: list[dict] = field(default_factory=list)  # {agent, outcome, diff}
     recipe_example: str | None = None
+    trace: str = ""  # pytest traceback excerpt for the failure
 
 
 @dataclass
@@ -65,6 +66,8 @@ def render_input(req: PatchRequest) -> str:
         f"## Hypothesis to implement\n{req.hypothesis}",
         f"## Failure\nsignature: {req.signature}\n{req.failure}\nfailing tests: {', '.join(req.tests[:8])}",
     ]
+    if req.trace:
+        parts.append(f"## Traceback (excerpt)\n```\n{req.trace}\n```")
     for path, text in req.files.items():
         numbered = text if len(text) < 40_000 else text[:40_000] + "\n# ... truncated"
         parts.append(f"## {path}\n```python\n{numbered}\n```")

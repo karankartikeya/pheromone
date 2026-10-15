@@ -126,7 +126,7 @@ SET a.status = $status, a.doing = $doing, a.last_seen = $now
 HYPOTHESIS_CONTEXT = """
 MATCH (f:Failure)-[:SUSPECTS]->(h:Hypothesis {id:$hid})
 RETURN f.id AS failure_id, f.signature AS signature, f.message_head AS message,
-       h.file AS file, h.text AS text, h.example AS example, h.kind AS kind
+       f.trace AS trace, h.file AS file, h.text AS text, h.example AS example, h.kind AS kind
 """
 
 FAILURE_TESTS = """

@@ -140,7 +140,8 @@ class BaselineWorker:
         t0 = time.monotonic()
         prior = [a for a in self.history if a["hypothesis"] == h.id]
         req = PatchRequest(hypothesis=h.text, signature=h.failure.signature, failure=h.failure.message,
-                           tests=h.failure.tests, files=read_files(self.tree, [h.file]), prior_attempts=prior)
+                           tests=h.failure.tests, files=read_files(self.tree, [h.file]), prior_attempts=prior,
+                           trace=h.failure.trace)
         res = await self.ctx.llm.patch(req)
         self.ctx.budget.used += res.tokens
         if not self.alive:
