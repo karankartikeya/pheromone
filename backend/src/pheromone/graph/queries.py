@@ -28,16 +28,19 @@ RECIPE_INDEXES = [
 
 # 1. Frontier (read-only, every loop). Top 12 by pheromone; the worker scores
 #    and picks by roulette in Python. 12, not 5: at start every edge is tau0,
-#    and a short list would hand all agents the same candidates.
+#    and a short list would hand all agents the same candidates. Failures with
+#    a passing hypothesis waiting in the merge queue are skipped (if the merge
+#    is rejected, the hypothesis reopens and the failure comes back).
 FRONTIER = """
 MATCH (f:Failure {status:'open'})-[s:SUSPECTS]->(h:Hypothesis {status:'open'})
+WHERE NOT (f)-[:SUSPECTS]->(:Hypothesis {status:'fixed'})
 OPTIONAL MATCH (h)<-[:TESTED]-(a:Attempt)
 OPTIONAL MATCH (h)-[:SAME_SIGNATURE]-(o:Hypothesis {status:'claimed'})
 OPTIONAL MATCH (f)-[:SUSPECTS]->(sib:Hypothesis {status:'claimed'})
 WITH h, max(s.pheromone) AS tau, count(DISTINCT a) AS tries,
-     count(DISTINCT o) + count(DISTINCT sib) AS crowd
+     count(DISTINCT o) AS crowd, count(DISTINCT sib) AS siblings
 RETURN h.id AS id, h.text AS text, h.kind AS kind, h.signature AS signature,
-       h.file AS file, h.eta AS eta, h.cluster AS cluster, tau, tries, crowd
+       h.file AS file, h.eta AS eta, h.cluster AS cluster, tau, tries, crowd, siblings
 ORDER BY tau DESC
 LIMIT $limit
 """
