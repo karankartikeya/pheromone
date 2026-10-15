@@ -255,13 +255,13 @@ MATCH (f:File {path:$path})<-[:IMPORTS*0..3]-(dep:File)<-[:DEFINED_IN]-(t:Test)
 RETURN DISTINCT t.nodeid AS nodeid
 """
 
-# 6. Crystallize (run graph, every 60 s). A (signature, kind) that won in 2+
-#    places becomes a Recipe candidate.
+# 6. Crystallize (run graph, every 60 s). Every (signature, kind) that won
+#    contributes; a Recipe is only used for seeding once its total support,
+#    summed over all runs, reaches 2 places (see RECIPES_FOR).
 CRYSTALLIZE_CANDIDATES = """
 MATCH (a:Attempt {outcome:'pass'})-[:TESTED]->(h:Hypothesis)<-[:SUSPECTS]-(f:Failure)
-WITH f.signature AS sig, h.kind AS kind, h.text AS text,
+WITH f.signature AS sig, h.kind AS kind, min(h.text) AS text,
      count(DISTINCT h) AS wins, collect(a.diff) AS diffs
-WHERE wins >= 2
 RETURN sig, kind, text, wins, diffs
 """
 
@@ -281,7 +281,7 @@ RETURN r.signature AS signature, r.kind AS kind, r.support AS support
 """
 
 RECIPES_FOR = """
-MATCH (r:Recipe) WHERE r.signature IN $sigs
+MATCH (r:Recipe) WHERE r.signature IN $sigs AND r.support >= 2
 RETURN r.signature AS signature, r.kind AS kind, r.transform AS transform,
        r.example AS example, r.support AS support
 """
