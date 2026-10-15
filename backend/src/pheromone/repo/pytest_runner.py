@@ -127,9 +127,12 @@ def _session_abort(text: str, worktree: Path) -> Red:
 
 def _split_exc(message: str) -> tuple[str, str]:
     head = message.strip().splitlines()[0] if message.strip() else ""
+    if head.startswith("assert "):  # bare assert: pytest shows the expression, not the type
+        return "AssertionError", head
     if ": " in head:
         exc, rest = head.split(": ", 1)
-        return exc.rsplit(".", 1)[-1].strip(), rest.strip()
+        if " " not in exc.strip():
+            return exc.rsplit(".", 1)[-1].strip(), rest.strip()
     return head.rsplit(".", 1)[-1].strip() or "Error", ""
 
 
