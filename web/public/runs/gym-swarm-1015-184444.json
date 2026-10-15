@@ -4459,130 +4459,14 @@
  ],
  "tests": [
   {
-   "nodeid": "tests/test_m16_staff.py::test_alias",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m08_webhook.py::test_parse_body",
+   "nodeid": "tests/test_m30_sku_label.py::test_numeric_sku_is_text",
    "status": "green",
    "failures": [
-    "parse-raw@pmg/m08_webhook.py"
+    "other:ValidationError@pmg/m30_sku_label.py"
    ]
   },
   {
-   "nodeid": "tests/test_m32_postcode.py::test_rejects",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m22_fast_load.py::test_no_validation",
-   "status": "green",
-   "failures": [
-    "construct-call@pmg/m22_fast_load.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m25_immutable.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "config-key-removed@pmg/m25_immutable.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m33_bulk_users.py::test_bulk",
-   "status": "green",
-   "failures": [
-    "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m27_report.py::test_summary",
-   "status": "green",
-   "failures": [
-    "dict-call@pmg/m27_report.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m11_invoice.py::test_total_ignores_input",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m29_lookup_key.py::test_words_stay_strings",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m12_tree.py::test_nested",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m26_ticket.py::test_escalated",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m21_cart.py::test_ok",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m01_signup.py::test_matching_passwords",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m10_api_response.py::test_cursor_default",
-   "status": "green",
-   "failures": [
-    "parse-obj@pmg/m10_api_response.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m23_pricing.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "validate-arguments@pmg/m23_pricing.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m28_feature_flags.py::test_extra_flags_kept",
-   "status": "green",
-   "failures": [
-    "dict-call@pmg/m28_feature_flags.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m34_price_feed.py::test_price_is_a_json_number",
-   "status": "green",
-   "failures": [
-    "json-call@pmg/m34_price_feed.py",
-    "other:AssertionError@tests/test_m34_price_feed.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m15_form_fields.py::test_required",
-   "status": "green",
-   "failures": [
-    "fields-attr@pmg/m15_form_fields.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m38_patch_request.py::test_only_sent_fields",
-   "status": "green",
-   "failures": [
-    "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m02_order_line.py::test_total_overrides_input",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m31_stock_level.py::test_whole_reading",
+   "nodeid": "tests/test_m11_invoice.py::test_total",
    "status": "green",
    "failures": []
   },
@@ -4594,46 +4478,9 @@
    ]
   },
   {
-   "nodeid": "tests/test_m05_customer_export.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "json-encoders@pmg/common.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m17_orm_rows.py::test_from_rows",
+   "nodeid": "tests/test_m31_stock_level.py::test_whole_reading",
    "status": "green",
-   "failures": [
-    "from-orm@pmg/m17_orm_rows.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m19_tags_each.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "validator@pmg/m19_tags_each.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m01_signup.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "validator-values@pmg/m01_signup.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m26_ticket.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "validator-values@pmg/m26_ticket.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m06_event_payload.py::test_custom_date_encoder",
-   "status": "green",
-   "failures": [
-    "json-call@pmg/m06_event_payload.py"
-   ]
+   "failures": []
   },
   {
    "nodeid": "tests/test_m03_date_range.py::test_days",
@@ -4641,79 +4488,16 @@
    "failures": []
   },
   {
-   "nodeid": "tests/test_m14_draft_copy.py::test_original_untouched",
+   "nodeid": "tests/test_m38_patch_request.py::test_only_sent_fields",
    "status": "green",
    "failures": [
-    "copy-call@pmg/m14_draft_copy.py"
+    "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py"
    ]
   },
   {
-   "nodeid": "tests/test_m06_event_payload.py::test_alias_on_wire",
-   "status": "green",
-   "failures": [
-    "json-call@pmg/m06_event_payload.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m18_product_code.py::test_valid",
+   "nodeid": "tests/test_m18_product_code.py::test_invalid",
    "status": "green",
    "failures": []
-  },
-  {
-   "nodeid": "tests/test_m11_invoice.py::test_total",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m05_customer_export.py::test_export_drops_none",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m23_pricing.py::test_coerces",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m04_app_settings.py::test_env_prefix",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m16_staff.py::test_field_name_allowed",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m26_ticket.py::test_strip_and_enum_value",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m04_app_settings.py::test_defaults",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m09_tag_list.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "custom-root@pmg/m09_tag_list.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m29_lookup_key.py::test_numeric_strings_become_ints",
-   "status": "green",
-   "failures": [
-    "other:AssertionError@tests/test_m29_lookup_key.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m30_sku_label.py::test_numeric_sku_is_text",
-   "status": "green",
-   "failures": [
-    "other:ValidationError@pmg/m30_sku_label.py"
-   ]
   },
   {
    "nodeid": "tests/test_m07_import_rows.py::test_import",
@@ -4730,25 +4514,77 @@
    ]
   },
   {
-   "nodeid": "tests/test_m35_shift_log.py::test_utc_offset_format",
-   "status": "green",
+   "nodeid": "tests/test_m20_audit_log.py::__collect__",
+   "status": "resolved",
    "failures": [
-    "json-call@pmg/m35_shift_log.py",
-    "other:AssertionError@tests/test_m35_shift_log.py"
+    "json-encoders@pmg/common.py"
    ]
   },
   {
-   "nodeid": "tests/test_m03_date_range.py::test_reversed_rejected",
+   "nodeid": "tests/test_m01_signup.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator-values@pmg/m01_signup.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m28_feature_flags.py::test_extra_flags_kept",
+   "status": "green",
+   "failures": [
+    "dict-call@pmg/m28_feature_flags.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m23_pricing.py::test_coerces",
    "status": "green",
    "failures": []
   },
   {
-   "nodeid": "tests/test_m18_product_code.py::test_invalid",
+   "nodeid": "tests/test_m04_app_settings.py::test_defaults",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m05_customer_export.py::test_export_drops_none",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m25_immutable.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "config-key-removed@pmg/m25_immutable.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m11_invoice.py::test_total_ignores_input",
    "status": "green",
    "failures": []
   },
   {
    "nodeid": "tests/test_m36_session_cache.py::test_sessions_do_not_share_cache",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m09_tag_list.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "custom-root@pmg/m09_tag_list.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m25_immutable.py::test_frozen",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m32_postcode.py::test_rejects",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m36_session_cache.py::test_private_cache",
    "status": "green",
    "failures": []
   },
@@ -4760,18 +4596,6 @@
    ]
   },
   {
-   "nodeid": "tests/test_m24_shipping.py::test_fee_default",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m02_order_line.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "validator-values@pmg/m02_order_line.py"
-   ]
-  },
-  {
    "nodeid": "tests/test_m12_tree.py::__collect__",
    "status": "resolved",
    "failures": [
@@ -4779,109 +4603,27 @@
    ]
   },
   {
-   "nodeid": "tests/test_m19_tags_each.py::test_each_item",
+   "nodeid": "tests/test_m16_staff.py::test_field_name_allowed",
    "status": "green",
    "failures": []
   },
   {
-   "nodeid": "tests/test_m25_immutable.py::test_equal_by_value",
+   "nodeid": "tests/test_m29_lookup_key.py::test_numeric_strings_become_ints",
    "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m32_postcode.py::__collect__",
-   "status": "resolved",
    "failures": [
-    "other:PydanticDeprecatedSince20@pmg/m32_postcode.py"
+    "other:AssertionError@tests/test_m29_lookup_key.py"
    ]
   },
   {
-   "nodeid": "tests/test_m21_cart.py::test_empty_rejected",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m32_postcode.py::test_normalizes",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m20_audit_log.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "json-encoders@pmg/common.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m10_api_response.py::test_coerces_items",
+   "nodeid": "tests/test_m35_shift_log.py::test_utc_offset_format",
    "status": "green",
    "failures": [
-    "parse-obj@pmg/m10_api_response.py"
+    "json-call@pmg/m35_shift_log.py",
+    "other:AssertionError@tests/test_m35_shift_log.py"
    ]
-  },
-  {
-   "nodeid": "tests/test_m09_tag_list.py::test_normalized",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m36_session_cache.py::test_private_cache",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m09_tag_list.py::test_single",
-   "status": "green",
-   "failures": []
   },
   {
    "nodeid": "tests/test_m05_customer_export.py::test_export_keeps_values",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m01_signup.py::test_mismatch_rejected",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_m37_api_docs.py::test_example_in_schema",
-   "status": "green",
-   "failures": [
-    "schema-call@pmg/m37_api_docs.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m16_staff.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "json-encoders@pmg/common.py",
-    "config-key-removed@pmg/m16_staff.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m14_draft_copy.py::test_bump",
-   "status": "green",
-   "failures": [
-    "copy-call@pmg/m14_draft_copy.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m13_schema_docs.py::test_descriptions",
-   "status": "green",
-   "failures": [
-    "schema-call@pmg/m13_schema_docs.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m06_event_payload.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "json-encoders@pmg/common.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_m24_shipping.py::test_express",
    "status": "green",
    "failures": []
   },
@@ -4893,17 +4635,40 @@
    ]
   },
   {
-   "nodeid": "tests/test_m07_import_rows.py::test_import_many",
-   "status": "green",
+   "nodeid": "tests/test_m23_pricing.py::__collect__",
+   "status": "resolved",
    "failures": [
-    "parse-obj@pmg/m07_import_rows.py"
+    "validate-arguments@pmg/m23_pricing.py"
    ]
   },
   {
-   "nodeid": "tests/test_m31_stock_level.py::test_fractional_reading_truncates",
+   "nodeid": "tests/test_m18_product_code.py::test_valid",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m02_order_line.py::test_total_overrides_input",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m34_price_feed.py::test_price_is_a_json_number",
    "status": "green",
    "failures": [
-    "other:ValidationError@pmg/m31_stock_level.py"
+    "json-call@pmg/m34_price_feed.py",
+    "other:AssertionError@tests/test_m34_price_feed.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m09_tag_list.py::test_normalized",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m37_api_docs.py::test_example_in_schema",
+   "status": "green",
+   "failures": [
+    "schema-call@pmg/m37_api_docs.py"
    ]
   },
   {
@@ -4915,14 +4680,249 @@
    ]
   },
   {
+   "nodeid": "tests/test_m06_event_payload.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m27_report.py::test_summary",
+   "status": "green",
+   "failures": [
+    "dict-call@pmg/m27_report.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m09_tag_list.py::test_single",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m07_import_rows.py::test_import_many",
+   "status": "green",
+   "failures": [
+    "parse-obj@pmg/m07_import_rows.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m29_lookup_key.py::test_words_stay_strings",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m19_tags_each.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator@pmg/m19_tags_each.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m08_webhook.py::test_parse_body",
+   "status": "green",
+   "failures": [
+    "parse-raw@pmg/m08_webhook.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m10_api_response.py::test_cursor_default",
+   "status": "green",
+   "failures": [
+    "parse-obj@pmg/m10_api_response.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m14_draft_copy.py::test_original_untouched",
+   "status": "green",
+   "failures": [
+    "copy-call@pmg/m14_draft_copy.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m16_staff.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py",
+    "config-key-removed@pmg/m16_staff.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m22_fast_load.py::test_no_validation",
+   "status": "green",
+   "failures": [
+    "construct-call@pmg/m22_fast_load.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m01_signup.py::test_mismatch_rejected",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m19_tags_each.py::test_each_item",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m26_ticket.py::test_strip_and_enum_value",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m32_postcode.py::test_normalizes",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m15_form_fields.py::test_required",
+   "status": "green",
+   "failures": [
+    "fields-attr@pmg/m15_form_fields.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m16_staff.py::test_alias",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m31_stock_level.py::test_fractional_reading_truncates",
+   "status": "green",
+   "failures": [
+    "other:ValidationError@pmg/m31_stock_level.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m21_cart.py::test_empty_rejected",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m06_event_payload.py::test_custom_date_encoder",
+   "status": "green",
+   "failures": [
+    "json-call@pmg/m06_event_payload.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m14_draft_copy.py::test_bump",
+   "status": "green",
+   "failures": [
+    "copy-call@pmg/m14_draft_copy.py"
+   ]
+  },
+  {
    "nodeid": "tests/test_m02_order_line.py::test_total_computed",
    "status": "green",
    "failures": []
   },
   {
-   "nodeid": "tests/test_m25_immutable.py::test_frozen",
+   "nodeid": "tests/test_m26_ticket.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator-values@pmg/m26_ticket.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m13_schema_docs.py::test_descriptions",
+   "status": "green",
+   "failures": [
+    "schema-call@pmg/m13_schema_docs.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m04_app_settings.py::test_env_prefix",
    "status": "green",
    "failures": []
+  },
+  {
+   "nodeid": "tests/test_m32_postcode.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "other:PydanticDeprecatedSince20@pmg/m32_postcode.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m25_immutable.py::test_equal_by_value",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m24_shipping.py::test_fee_default",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m21_cart.py::test_ok",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m12_tree.py::test_nested",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m06_event_payload.py::test_alias_on_wire",
+   "status": "green",
+   "failures": [
+    "json-call@pmg/m06_event_payload.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m24_shipping.py::test_express",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m10_api_response.py::test_coerces_items",
+   "status": "green",
+   "failures": [
+    "parse-obj@pmg/m10_api_response.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m17_orm_rows.py::test_from_rows",
+   "status": "green",
+   "failures": [
+    "from-orm@pmg/m17_orm_rows.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m03_date_range.py::test_reversed_rejected",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m02_order_line.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator-values@pmg/m02_order_line.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m33_bulk_users.py::test_bulk",
+   "status": "green",
+   "failures": [
+    "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m01_signup.py::test_matching_passwords",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m26_ticket.py::test_escalated",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m05_customer_export.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py"
+   ]
   }
  ]
 }

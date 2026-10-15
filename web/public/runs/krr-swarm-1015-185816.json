@@ -2106,12 +2106,54 @@
  ],
  "tests": [
   {
-   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_multiple_labels",
+   "nodeid": "tests/test_runner.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "fields-attr@robusta_krr/main.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-csv]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_different_namespaces",
    "status": "green",
    "failures": []
   },
   {
-   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces3-cluster_all_ns3-expected3]",
+   "nodeid": "tests/test_krr.py::test_run[-q]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_app_imports.py::test_app_files_have_correct_initial_lines[krr.py-krr.py-expected_lines0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config1-expected_first_row1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config0-expected_headers0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_app_imports.py::test_app_files_have_correct_initial_lines[enforcer/enforcer_main.py-enforcer_main.py-expected_lines1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_batched_queries",
    "status": "green",
    "failures": []
   },
@@ -2123,29 +2165,12 @@
    ]
   },
   {
-   "nodeid": "conftest.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "validator@robusta_krr/core/models/allocations.py",
-    "base-settings@robusta_krr/core/models/config.py",
-    "validator@robusta_krr/core/models/config.py"
-   ]
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory1-cpu1]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_app_imports.py::test_app_files_have_correct_initial_lines[enforcer/enforcer_main.py-enforcer_main.py-expected_lines1]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_output_formats[-q-csv]",
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-yaml]",
    "status": "green",
    "failures": [
-    "other:AssertionError@tests/test_krr.py"
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/formatters/yaml.py"
    ]
   },
   {
@@ -2154,76 +2179,7 @@
    "failures": []
   },
   {
-   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_different_namespaces",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_extracts_job_names",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_runner.py::test_exclude_severity_option[args2-2]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-json]",
-   "status": "green",
-   "failures": [
-    "dict-call@robusta_krr/core/runner.py",
-    "json-call@robusta_krr/core/runner.py",
-    "json-call@robusta_krr/formatters/json.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_grouped_jobs.py::test_groupedjobs_calls_each_explicit_namespace",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-csv]",
-   "status": "green",
-   "failures": [
-    "dict-call@robusta_krr/core/runner.py",
-    "json-call@robusta_krr/core/runner.py"
-   ]
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory3-cpu1]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory0-cpu1]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_batched_queries",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_output_formats[-q-yaml]",
-   "status": "green",
-   "failures": [
-    "other:AssertionError@tests/test_krr.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces2-cluster_all_ns2-expected2]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_app_imports.py::test_app_files_have_correct_initial_lines[krr.py-krr.py-expected_lines0]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[*-cluster_all_ns0-*]",
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config2-expected_headers2]",
    "status": "green",
    "failures": []
   },
@@ -2236,56 +2192,12 @@
    ]
   },
   {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory4-cpu0]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces1-cluster_all_ns1-expected1]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_lightweight_job_info_structure",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_multiple_groups_metrics_extraction",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_runner.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "fields-attr@robusta_krr/main.py"
-   ]
-  },
-  {
    "nodeid": "tests/test_grouped_jobs.py::test_groupedjobs_respects_global_batch_limit_across_namespaces",
    "status": "green",
    "failures": []
   },
   {
-   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_fallback_logic",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::__collect__",
-   "status": "resolved",
-   "failures": [
-    "fields-attr@robusta_krr/main.py"
-   ]
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory0-cpu0]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory5-cpu1]",
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory1-cpu0]",
    "status": "green",
    "failures": []
   },
@@ -2295,78 +2207,17 @@
    "failures": []
   },
   {
-   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_cronjob_owner_reference",
+   "nodeid": "tests/test_grouped_jobs.py::test_groupedjobs_calls_each_explicit_namespace",
    "status": "green",
    "failures": []
   },
   {
-   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config0-expected_headers0]",
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory0-cpu1]",
    "status": "green",
    "failures": []
   },
   {
-   "nodeid": "tests/test_krr.py::test_help",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_output_formats[-q-json]",
-   "status": "green",
-   "failures": [
-    "other:AssertionError@tests/test_krr.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_run[-q]",
-   "status": "green",
-   "failures": [
-    "other:AssertionError@tests/test_krr.py"
-   ]
-  },
-  {
-   "nodeid": "tests/test_runner.py::test_exclude_severity_option[args1-2]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-yaml]",
-   "status": "green",
-   "failures": [
-    "dict-call@robusta_krr/core/runner.py",
-    "json-call@robusta_krr/core/runner.py",
-    "json-call@robusta_krr/formatters/yaml.py"
-   ]
-  },
-  {
-   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config1-expected_headers1]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory4-cpu1]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-table]",
-   "status": "green",
-   "failures": [
-    "dict-call@robusta_krr/core/runner.py",
-    "json-call@robusta_krr/core/runner.py"
-   ]
-  },
-  {
-   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config2-expected_first_row2]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_job_in_multiple_groups",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_with_different_namespaces",
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_fallback_logic",
    "status": "green",
    "failures": []
   },
@@ -2376,15 +2227,7 @@
    "failures": []
   },
   {
-   "nodeid": "tests/test_krr.py::test_run[-v]",
-   "status": "green",
-   "failures": [
-    "dict-call@robusta_krr/core/runner.py",
-    "json-call@robusta_krr/core/runner.py"
-   ]
-  },
-  {
-   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config1-expected_first_row1]",
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory5-cpu0]",
    "status": "green",
    "failures": []
   },
@@ -2398,24 +2241,13 @@
    ]
   },
   {
-   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config0-expected_first_row0]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config2-expected_headers2]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory1-cpu0]",
-   "status": "green",
-   "failures": []
-  },
-  {
-   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory5-cpu0]",
-   "status": "green",
-   "failures": []
+   "nodeid": "conftest.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator@robusta_krr/core/models/allocations.py",
+    "base-settings@robusta_krr/core/models/config.py",
+    "validator@robusta_krr/core/models/config.py"
+   ]
   },
   {
    "nodeid": "tests/test_krr.py::test_output_formats[-q-pprint]",
@@ -2425,9 +2257,162 @@
    ]
   },
   {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_job_in_multiple_groups",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[*-cluster_all_ns0-*]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory3-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory5-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_help",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config1-expected_headers1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_runner.py::test_exclude_severity_option[args2-2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_run[-v]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory4-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-json]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory1-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "fields-attr@robusta_krr/main.py"
+   ]
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config2-expected_first_row2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-json]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/formatters/json.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory0-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_prometheus_query_construction",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_with_different_namespaces",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_lightweight_job_info_structure",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-csv]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_cronjob_owner_reference",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-table]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces2-cluster_all_ns2-expected2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_multiple_groups_metrics_extraction",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config0-expected_first_row0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory4-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces1-cluster_all_ns1-expected1]",
+   "status": "green",
+   "failures": []
+  },
+  {
    "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory2-cpu1]",
    "status": "green",
    "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-yaml]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
   },
   {
    "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_limit",
@@ -2435,7 +2420,22 @@
    "failures": []
   },
   {
-   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_prometheus_query_construction",
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces3-cluster_all_ns3-expected3]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_multiple_labels",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_extracts_job_names",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_runner.py::test_exclude_severity_option[args1-2]",
    "status": "green",
    "failures": []
   }
