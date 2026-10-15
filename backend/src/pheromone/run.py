@@ -88,7 +88,10 @@ def main() -> None:
     p.add_argument("--budget", type=int, default=2_000_000, help="token budget for the whole run")
     p.add_argument("--minutes", type=float, default=0, help="wall-clock cap (0 = none)")
     p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--lease-s", type=float, default=PARAMS.lease_ms / 1000,
+                   help="claim lease; short leases make the kill-agent handoff visible in demos")
     a = p.parse_args()
+    PARAMS.lease_ms = int(a.lease_s * 1000)
 
     async def go() -> str:
         h = await launch(a.target, a.mode, a.workers, a.budget, a.minutes, a.seed, echo=True)

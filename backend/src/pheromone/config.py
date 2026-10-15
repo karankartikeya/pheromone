@@ -39,9 +39,13 @@ def run_graph(run_id: str) -> str:
     return f"run:{run_id}"
 
 
-@dataclass(frozen=True)
+@dataclass
 class Params:
-    """Swarm constants. Starting points from the plan; tuned Thursday."""
+    """Swarm constants. Starting points from the plan; tuned Thursday.
+
+    One shared instance; a run may override fields before it starts (e.g. a
+    short lease for the handoff demo). Final values are logged on the Run node.
+    """
 
     workers: int = 6
     alpha: float = 1.0

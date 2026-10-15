@@ -30,12 +30,15 @@ class RunRequest(BaseModel):
     budget: int = 2_000_000
     minutes: float = 0
     seed: int = 0
+    lease_s: float | None = None
 
 
 @app.post("/runs")
 async def start_run(req: RunRequest) -> dict:
     if req.mode not in MODES:
         raise HTTPException(400, f"mode must be one of {MODES}")
+    if req.lease_s is not None:
+        config.PARAMS.lease_ms = int(req.lease_s * 1000)
     h = await launch(req.target, req.mode, req.workers, req.budget, req.minutes, req.seed)
     RUNS[h.run_id] = h
     return {"run_id": h.run_id}
