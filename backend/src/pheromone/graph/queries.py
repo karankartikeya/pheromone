@@ -91,6 +91,50 @@ MATCH (p:Attempt {id:$prev}), (n:Attempt {id:$next})
 CREATE (p)-[:FOLLOWED]->(n)
 """
 
+# Worker context reads (read-only).
+AGENT_HEARTBEAT = """
+MERGE (a:Agent {id:$id})
+SET a.status = $status, a.doing = $doing, a.last_seen = $now
+"""
+
+# Context reads are split into plain-row queries on purpose: one combined query
+# (properties + collect() of tests) on a just-claimed hypothesis crashed FalkorDB
+# with a panic in reply_compact during the first live run.
+HYPOTHESIS_CONTEXT = """
+MATCH (f:Failure)-[:SUSPECTS]->(h:Hypothesis {id:$hid})
+RETURN f.id AS failure_id, f.signature AS signature, f.message_head AS message,
+       h.file AS file, h.text AS text, h.example AS example, h.kind AS kind
+"""
+
+FAILURE_TESTS = """
+MATCH (t:Test)-[:FAILS_WITH]->(:Failure {id:$fid})
+RETURN t.nodeid AS nodeid
+"""
+
+# Prior attempts on a hypothesis: the handoff history a new owner inherits.
+ATTEMPTS_ON = """
+MATCH (ag:Agent)-[:MADE]->(a:Attempt)-[:TESTED]->(h:Hypothesis {id:$hid})
+RETURN a.id AS id, ag.id AS agent, a.outcome AS outcome, a.diff AS diff
+ORDER BY a.at
+"""
+
+GREEN_AMONG = """
+MATCH (t:Test) WHERE t.nodeid IN $ids AND t.status = 'green'
+RETURN collect(t.nodeid) AS green
+"""
+
+# A diff that already failed somewhere is a duplicate: the swarm already knows it is a dead end.
+FAILED_DIFF = """
+MATCH (a:Attempt {diff_hash:$dh}) WHERE a.outcome <> 'pass' AND a.outcome <> 'stale'
+RETURN count(a) AS n
+"""
+
+OPEN_WORK = """
+MATCH (f:Failure {status:'open'})-[:SUSPECTS]->(h:Hypothesis)
+WHERE h.status IN ['open', 'claimed']
+RETURN count(DISTINCT f) AS failures, count(DISTINCT h) AS hypotheses
+"""
+
 # 4. Evaporation (every 10 s). MAX-MIN floor keeps every trail explorable.
 EVAPORATE = """
 MATCH (:Failure)-[s:SUSPECTS]->(:Hypothesis)
