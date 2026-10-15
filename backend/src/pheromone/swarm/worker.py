@@ -119,11 +119,14 @@ class Worker:
         follows = attempts[-1]["id"] if attempts and attempts[-1]["agent"] != self.id else None
         targets = [r["nodeid"] for r in await self.g.q(Q.FAILURE_TESTS, fid=h["failure_id"])]
         blast = [r["nodeid"] for r in await self.g.q(Q.BLAST_RADIUS, path=h["file"])]
-        tests = sorted(set(targets) | set(blast))
-        green = set((await self.g.q(Q.GREEN_AMONG, ids=tests))[0]["green"])
+        selection = sorted({t.removesuffix("::__collect__") for t in set(targets) | set(blast)})
+
+        # Baseline for this exact selection on unpatched code: tests can depend on order and
+        # shared state, so "broken" is judged against the same run, not the full-suite status.
+        await wt.reset(self.tree, self.ctx.run_ref)
+        before = await run_pytest(self.tree, self.ctx.python, selection)
 
         await self.beat("patching", h["kind"])
-        await wt.reset(self.tree, self.ctx.run_ref)
         t0 = time.monotonic()
         req = PatchRequest(
             hypothesis=h["text"], signature=h["signature"], failure=h["message"] or "",
@@ -148,9 +151,8 @@ class Worker:
             verdict = reporter.Verdict("duplicate")
         if verdict is None:
             await self.beat("testing", h["kind"])
-            nodeids = sorted({t.removesuffix("::__collect__") for t in tests})
-            run = await run_pytest(self.tree, self.ctx.python, nodeids)
-            verdict = reporter.decide(self.tree, h["failure_id"], targets, green, run)
+            run = await run_pytest(self.tree, self.ctx.python, selection)
+            verdict = reporter.decide(self.tree, h["failure_id"], targets, before.passed, run)
         if not self.alive:
             return
 

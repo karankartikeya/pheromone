@@ -136,6 +136,8 @@ class BaselineWorker:
 
     async def attempt(self, h: LocalHyp) -> None:
         self.ctx.emit({"type": "claim", "agent": self.id, "hypothesis": h.id, "tau": h.tau})
+        test_files = sorted({t.removesuffix("::__collect__") for t in h.failure.tests})
+        before = await run_pytest(self.tree, self.ctx.python, test_files)  # same-selection baseline
         await self.beat("patching", h.kind)
         t0 = time.monotonic()
         prior = [a for a in self.history if a["hypothesis"] == h.id]
@@ -160,9 +162,8 @@ class BaselineWorker:
             verdict = reporter.Verdict("duplicate")
         if verdict is None:
             await self.beat("testing", h.kind)
-            test_files = sorted({t.removesuffix("::__collect__") for t in h.failure.tests})
             run = await run_pytest(self.tree, self.ctx.python, test_files)
-            verdict = reporter.decide(self.tree, h.failure.id, h.failure.tests, self.green, run)
+            verdict = reporter.decide(self.tree, h.failure.id, h.failure.tests, before.passed, run)
 
         mult, add = verdict.deposit()
         h.tries += 1

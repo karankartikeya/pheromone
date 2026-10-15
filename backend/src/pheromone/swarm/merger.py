@@ -56,7 +56,15 @@ class Merger:
             self.emit({"type": "superseded", "agent": agent, "hypothesis": hid})
             return False
 
-        # 1. apply on top of everything merged so far
+        # 1. the gate's test selection, run once on the current run branch as the baseline
+        #    (tests can depend on order and shared state, so compare like with like)
+        h = (await self.g.q(Q.HYPOTHESIS_CONTEXT, hid=hid))[0]
+        targets = [r["nodeid"] for r in await self.g.q(Q.FAILURE_TESTS, fid=h["failure_id"])]
+        blast = [r["nodeid"] for r in await self.g.q(Q.BLAST_RADIUS, path=h["file"])]
+        selection = sorted({t.removesuffix("::__collect__") for t in set(targets) | set(blast)})
+        before = await run_pytest(self.tree, self.python, selection)
+
+        # 2. apply on top of everything merged so far
         with tempfile.NamedTemporaryFile("w", suffix=".diff", delete=False) as f:
             f.write(diff)
         try:
@@ -66,25 +74,20 @@ class Merger:
         finally:
             Path(f.name).unlink(missing_ok=True)
 
-        # 2. blast-radius gate against the current run branch state
-        h = (await self.g.q(Q.HYPOTHESIS_CONTEXT, hid=hid))[0]
-        targets = [r["nodeid"] for r in await self.g.q(Q.FAILURE_TESTS, fid=h["failure_id"])]
-        blast = [r["nodeid"] for r in await self.g.q(Q.BLAST_RADIUS, path=h["file"])]
-        tests = sorted(set(targets) | set(blast))
-        green = set((await self.g.q(Q.GREEN_AMONG, ids=tests))[0]["green"])
-        gate = await run_pytest(self.tree, self.python, sorted({t.removesuffix("::__collect__") for t in tests}))
-        v = reporter.decide(self.tree, h["failure_id"], targets, green, gate)
+        # 3. blast-radius gate against the same selection
+        gate = await run_pytest(self.tree, self.python, selection)
+        v = reporter.decide(self.tree, h["failure_id"], targets, before.passed, gate)
         if v.outcome != "pass":
             return await self._reject(aid, hid, agent, f"gate: {v.outcome}, broken={v.broken[:3]}")
 
-        # 3. commit to the run branch (workers reset to it on their next attempt)
+        # 4. commit to the run branch (workers reset to it on their next attempt)
         await wt.git(self.tree, "add", "-A")
         await wt.git(self.tree, "commit", "-q", "-m", f"{agent}: {h['kind']} on {h['file']} ({h['signature']})")
         commit = (await wt.git(self.tree, "rev-parse", "HEAD")).strip()
         await self.g.q(Q.MARK_MERGED, aid=aid, commit=commit)
         self.merged += 1
 
-        # 4. full-suite rerun and graph sync
+        # 5. full-suite rerun and graph sync
         full = await run_pytest(self.tree, self.python)
         await sync_tests(self.g, full)
         await self.g.q(

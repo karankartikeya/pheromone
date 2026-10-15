@@ -141,11 +141,6 @@ RETURN a.id AS id, ag.id AS agent, a.outcome AS outcome, a.diff AS diff
 ORDER BY a.at
 """
 
-GREEN_AMONG = """
-MATCH (t:Test) WHERE t.nodeid IN $ids AND t.status = 'green'
-RETURN collect(t.nodeid) AS green
-"""
-
 # A diff that already failed somewhere is a duplicate: the swarm already knows it is a dead end.
 FAILED_DIFF = """
 MATCH (a:Attempt {diff_hash:$dh}) WHERE a.outcome <> 'pass' AND a.outcome <> 'stale'
