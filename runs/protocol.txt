@@ -1,0 +1,27 @@
+# protocol started 2026-10-15T16:05:22Z model=gpt-6-luna workers=6 budget=2000000
+gym-baseline-1015-180533
+gym-swarm-1015-180807
+gym-baseline-1015-180913
+gym-swarm-1015-181128
+gym-baseline-1015-181233
+gym-swarm-1015-181547
+krr-baseline-1015-181707
+krr-swarm-1015-182104
+krr-swarm-recipes-1015-182420
+krr-baseline-1015-182811
+krr-swarm-1015-183155
+krr-swarm-recipes-1015-183510
+# superseded by rerun after regressed-failure fix
+# protocol started 2026-10-15T16:41:20Z model=gpt-6-luna workers=6 budget=2000000
+gym-baseline-1015-184132
+gym-swarm-1015-184444
+gym-baseline-1015-184547
+gym-swarm-1015-184801
+gym-baseline-1015-184906
+gym-swarm-1015-185238
+krr-baseline-1015-185340
+krr-swarm-1015-185816
+krr-swarm-recipes-1015-190136
+krr-baseline-1015-190541
+krr-swarm-1015-190930
+krr-swarm-recipes-1015-191354

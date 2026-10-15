@@ -1,0 +1,4928 @@
+{
+ "run": {
+  "id": "gym-swarm-1015-184444",
+  "repo": "gym",
+  "commit": "f83897515afa9f1b3815a3a81e80ae6069e2880c",
+  "mode": "swarm",
+  "model": "gpt-6-luna",
+  "budget": 2000000,
+  "started_at": 1792082685014,
+  "workers": 6,
+  "alpha": 1.0,
+  "beta": 2.0,
+  "tau0": 0.5,
+  "tau_min": 0.05,
+  "keep": 0.95,
+  "evaporate_every_s": 10.0,
+  "crystallize_every_s": 60.0,
+  "lease_ms": 120000,
+  "frontier_limit": 12,
+  "sibling_weight": 10.0,
+  "pass_per_fixed": 1.0,
+  "pass_per_broken": -0.5,
+  "fail_mult": 0.7,
+  "max_children": 2,
+  "max_fails": 3,
+  "max_depth": 2,
+  "test_timeout_s": 120,
+  "tests": 49,
+  "red_tests": 37,
+  "failures": 29,
+  "hypotheses": 37,
+  "unseeded_failures": 6,
+  "files": 78,
+  "imports": 44,
+  "pytest_ms": 1076,
+  "tokens": 46292,
+  "merged": 36,
+  "stopped_at": 1792082747216
+ },
+ "events": [
+  {
+   "t": 1.392,
+   "type": "seeded",
+   "run": "gym-swarm-1015-184444",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "learn": true,
+   "tests": 49,
+   "red_tests": 37,
+   "failures": 29,
+   "hypotheses": 37,
+   "unseeded_failures": 6,
+   "files": 78,
+   "imports": 44,
+   "pytest_ms": 1076
+  },
+  {
+   "t": 1.573,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 1.573,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 1.574,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 1.575,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 1.576,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 1.578,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 1.579,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "config-key-removed@pmg/m36_session_cache.py#config-dict",
+   "tau": 0.5
+  },
+  {
+   "t": 1.58,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "from-orm@pmg/m17_orm_rows.py#from-attributes",
+   "tau": 0.5
+  },
+  {
+   "t": 1.58,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "construct-call@pmg/m22_fast_load.py#model-construct",
+   "tau": 0.5
+  },
+  {
+   "t": 1.58,
+   "type": "claim_lost",
+   "agent": "A3",
+   "hypothesis": "construct-call@pmg/m22_fast_load.py#model-construct"
+  },
+  {
+   "t": 1.58,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "dict-call@pmg/m28_feature_flags.py#dict-builtin",
+   "tau": 0.5
+  },
+  {
+   "t": 1.581,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "forward-refs@pmg/m12_tree.py#model-rebuild",
+   "tau": 0.5
+  },
+  {
+   "t": 1.581,
+   "type": "claim_lost",
+   "agent": "A3",
+   "hypothesis": "config-key-removed@pmg/m36_session_cache.py#config-dict"
+  },
+  {
+   "t": 1.582,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "custom-root@pmg/m09_tag_list.py#root-model",
+   "tau": 0.5
+  },
+  {
+   "t": 1.965,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "config-dict"
+  },
+  {
+   "t": 2.025,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "root-model"
+  },
+  {
+   "t": 2.028,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "from-attributes"
+  },
+  {
+   "t": 2.029,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "model-construct"
+  },
+  {
+   "t": 2.031,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 2.031,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "model-rebuild"
+  },
+  {
+   "t": 3.708,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "model-rebuild"
+  },
+  {
+   "t": 3.714,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "from-attributes"
+  },
+  {
+   "t": 3.763,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "model-construct"
+  },
+  {
+   "t": 4.059,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 4.063,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "forward-refs@pmg/m12_tree.py#model-rebuild",
+   "failure": "forward-refs@pmg/m12_tree.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 862
+  },
+  {
+   "t": 4.063,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 4.066,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "from-orm@pmg/m17_orm_rows.py#from-attributes",
+   "failure": "from-orm@pmg/m17_orm_rows.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 810
+  },
+  {
+   "t": 4.115,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 4.118,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "construct-call@pmg/m22_fast_load.py#model-construct",
+   "failure": "construct-call@pmg/m22_fast_load.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 693
+  },
+  {
+   "t": 4.824,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "root-model"
+  },
+  {
+   "t": 4.892,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 5.176,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 5.179,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "custom-root@pmg/m09_tag_list.py#root-model",
+   "failure": "custom-root@pmg/m09_tag_list.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1045
+  },
+  {
+   "t": 5.24,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 5.243,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "dict-call@pmg/m28_feature_flags.py#dict-builtin",
+   "failure": "dict-call@pmg/m28_feature_flags.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 858
+  },
+  {
+   "t": 5.289,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "config-dict"
+  },
+  {
+   "t": 5.628,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 5.631,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "config-key-removed@pmg/m36_session_cache.py#config-dict",
+   "failure": "config-key-removed@pmg/m36_session_cache.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1191
+  },
+  {
+   "t": 5.803,
+   "type": "merged",
+   "agent": "A5",
+   "hypothesis": "forward-refs@pmg/m12_tree.py#model-rebuild",
+   "commit": "49d93c17",
+   "closed": [
+    "forward-refs@pmg/m12_tree.py"
+   ],
+   "revealed": [],
+   "green": 13.0,
+   "red": 36.0
+  },
+  {
+   "t": 5.804,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 5.81,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "json-encoders@pmg/common.py#field-serializer",
+   "tau": 0.5
+  },
+  {
+   "t": 6.468,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "field-serializer"
+  },
+  {
+   "t": 7.475,
+   "type": "merged",
+   "agent": "A1",
+   "hypothesis": "from-orm@pmg/m17_orm_rows.py#from-attributes",
+   "commit": "34f846f1",
+   "closed": [
+    "from-orm@pmg/m17_orm_rows.py"
+   ],
+   "revealed": [],
+   "green": 14.0,
+   "red": 35.0
+  },
+  {
+   "t": 7.476,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 7.481,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "json-call@pmg/m34_price_feed.py#json-dumps",
+   "tau": 0.5
+  },
+  {
+   "t": 7.842,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "json-dumps"
+  },
+  {
+   "t": 9.119,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "construct-call@pmg/m22_fast_load.py#model-construct",
+   "commit": "7d40f158",
+   "closed": [
+    "construct-call@pmg/m22_fast_load.py"
+   ],
+   "revealed": [],
+   "green": 15.0,
+   "red": 34.0
+  },
+  {
+   "t": 9.121,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 9.127,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "parse-obj@pmg/m10_api_response.py#constructor",
+   "tau": 0.5
+  },
+  {
+   "t": 9.498,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "constructor"
+  },
+  {
+   "t": 10.734,
+   "type": "merged",
+   "agent": "A3",
+   "hypothesis": "custom-root@pmg/m09_tag_list.py#root-model",
+   "commit": "3d287901",
+   "closed": [
+    "custom-root@pmg/m09_tag_list.py"
+   ],
+   "revealed": [],
+   "green": 17.0,
+   "red": 33.0
+  },
+  {
+   "t": 10.736,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 10.738,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "copy-call@pmg/m14_draft_copy.py#model-copy",
+   "tau": 0.5
+  },
+  {
+   "t": 10.945,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "constructor"
+  },
+  {
+   "t": 11.051,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "json-dumps"
+  },
+  {
+   "t": 11.118,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "model-copy"
+  },
+  {
+   "t": 11.286,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 11.29,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "parse-obj@pmg/m10_api_response.py#constructor",
+   "failure": "parse-obj@pmg/m10_api_response.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 2.0,
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 742
+  },
+  {
+   "t": 11.397,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 11.399,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "json-call@pmg/m34_price_feed.py#json-dumps",
+   "failure": "json-call@pmg/m34_price_feed.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 879
+  },
+  {
+   "t": 11.571,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 12.362,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "dict-call@pmg/m28_feature_flags.py#dict-builtin",
+   "commit": "805d81b8",
+   "closed": [
+    "dict-call@pmg/m28_feature_flags.py"
+   ],
+   "revealed": [],
+   "green": 18.0,
+   "red": 32.0
+  },
+  {
+   "t": 12.363,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 12.367,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "parse-obj@pmg/m07_import_rows.py#constructor",
+   "tau": 0.475
+  },
+  {
+   "t": 12.586,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "model-copy"
+  },
+  {
+   "t": 12.741,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "constructor"
+  },
+  {
+   "t": 12.917,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 12.919,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "copy-call@pmg/m14_draft_copy.py#model-copy",
+   "failure": "copy-call@pmg/m14_draft_copy.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 2.0,
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 760
+  },
+  {
+   "t": 13.812,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "field-serializer"
+  },
+  {
+   "t": 13.96,
+   "type": "merged",
+   "agent": "A0",
+   "hypothesis": "config-key-removed@pmg/m36_session_cache.py#config-dict",
+   "commit": "117fd6d8",
+   "closed": [
+    "config-key-removed@pmg/m36_session_cache.py"
+   ],
+   "revealed": [],
+   "green": 20.0,
+   "red": 31.0
+  },
+  {
+   "t": 13.961,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 13.965,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "root-validator@pmg/m03_date_range.py#model-validator-before",
+   "tau": 0.475
+  },
+  {
+   "t": 14.208,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 14.211,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "json-encoders@pmg/common.py#field-serializer",
+   "failure": "json-encoders@pmg/common.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 5.0,
+   "resolved": 5,
+   "broken": 0,
+   "tokens": 1827
+  },
+  {
+   "t": 14.314,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "model-validator-before"
+  },
+  {
+   "t": 14.491,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "constructor"
+  },
+  {
+   "t": 14.817,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 14.821,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "parse-obj@pmg/m07_import_rows.py#constructor",
+   "failure": "parse-obj@pmg/m07_import_rows.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 2.0,
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 719
+  },
+  {
+   "t": 15.596,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "parse-obj@pmg/m10_api_response.py#constructor",
+   "commit": "b50a8016",
+   "closed": [
+    "parse-obj@pmg/m10_api_response.py"
+   ],
+   "revealed": [],
+   "green": 22.0,
+   "red": 29.0
+  },
+  {
+   "t": 15.597,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 15.602,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "json-call@pmg/m35_shift_log.py#model-dump-json",
+   "tau": 0.475
+  },
+  {
+   "t": 15.96,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 17.197,
+   "type": "merged",
+   "agent": "A1",
+   "hypothesis": "json-call@pmg/m34_price_feed.py#json-dumps",
+   "commit": "c8db54b3",
+   "closed": [
+    "json-call@pmg/m34_price_feed.py"
+   ],
+   "revealed": [
+    "other:AssertionError@tests/test_m34_price_feed.py"
+   ],
+   "green": 22.0,
+   "red": 29.0
+  },
+  {
+   "t": 17.198,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 17.202,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "parse-raw@pmg/m08_webhook.py#model-validate-json",
+   "tau": 0.475
+  },
+  {
+   "t": 17.552,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 17.56,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "model-validate-json"
+  },
+  {
+   "t": 17.885,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 17.887,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "json-call@pmg/m35_shift_log.py#model-dump-json",
+   "failure": "json-call@pmg/m35_shift_log.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 697
+  },
+  {
+   "t": 18.683,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "model-validate-json"
+  },
+  {
+   "t": 18.795,
+   "type": "merged",
+   "agent": "A3",
+   "hypothesis": "copy-call@pmg/m14_draft_copy.py#model-copy",
+   "commit": "f1a36c57",
+   "closed": [
+    "copy-call@pmg/m14_draft_copy.py"
+   ],
+   "revealed": [],
+   "green": 24.0,
+   "red": 27.0
+  },
+  {
+   "t": 18.796,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 18.799,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m02_order_line.py#model-validator-after",
+   "tau": 0.475
+  },
+  {
+   "t": 19.016,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 19.019,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "parse-raw@pmg/m08_webhook.py#model-validate-json",
+   "failure": "parse-raw@pmg/m08_webhook.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 716
+  },
+  {
+   "t": 19.143,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "model-validator-after"
+  },
+  {
+   "t": 19.152,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "model-validator-before"
+  },
+  {
+   "t": 19.475,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 19.478,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "root-validator@pmg/m03_date_range.py#model-validator-before",
+   "failure": "root-validator@pmg/m03_date_range.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1174
+  },
+  {
+   "t": 20.487,
+   "type": "merged",
+   "agent": "A5",
+   "hypothesis": "json-encoders@pmg/common.py#field-serializer",
+   "commit": "229d3816",
+   "closed": [
+    "json-encoders@pmg/common.py"
+   ],
+   "revealed": [
+    "config-key-removed@pmg/m16_staff.py",
+    "dict-call@pmg/m27_report.py",
+    "json-call@pmg/m06_event_payload.py",
+    "json-call@pmg/m20_audit_log.py"
+   ],
+   "green": 26.0,
+   "red": 27.0
+  },
+  {
+   "t": 20.488,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 20.493,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "dict-call@pmg/m27_report.py#dict-builtin",
+   "tau": 0.5
+  },
+  {
+   "t": 20.853,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 21.575,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 21.813,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "parse-obj@pmg/m07_import_rows.py#constructor",
+   "commit": "3e1d4237",
+   "closed": [
+    "parse-obj@pmg/m07_import_rows.py"
+   ],
+   "revealed": [],
+   "green": 28.0,
+   "red": 25.0
+  },
+  {
+   "t": 21.814,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 21.819,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "fields-attr@pmg/m15_form_fields.py#model-fields",
+   "tau": 0.45125
+  },
+  {
+   "t": 22.171,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "model-fields"
+  },
+  {
+   "t": 22.402,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "model-validator-after"
+  },
+  {
+   "t": 22.724,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 22.727,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m02_order_line.py#model-validator-after",
+   "failure": "validator-values@pmg/m02_order_line.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1047
+  },
+  {
+   "t": 23.151,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "json-call@pmg/m35_shift_log.py#model-dump-json",
+   "commit": "18c979e8",
+   "closed": [
+    "json-call@pmg/m35_shift_log.py"
+   ],
+   "revealed": [
+    "other:AssertionError@tests/test_m35_shift_log.py"
+   ],
+   "green": 28.0,
+   "red": 25.0
+  },
+  {
+   "t": 23.152,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 23.157,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m01_signup.py#field-validator-info",
+   "tau": 0.45125
+  },
+  {
+   "t": 23.491,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "field-validator-info"
+  },
+  {
+   "t": 23.581,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 23.743,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "model-fields"
+  },
+  {
+   "t": 23.911,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 23.915,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "dict-call@pmg/m27_report.py#dict-builtin",
+   "failure": "dict-call@pmg/m27_report.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 842
+  },
+  {
+   "t": 24.07,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 24.073,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "fields-attr@pmg/m15_form_fields.py#model-fields",
+   "failure": "fields-attr@pmg/m15_form_fields.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 772
+  },
+  {
+   "t": 24.474,
+   "type": "merged",
+   "agent": "A1",
+   "hypothesis": "parse-raw@pmg/m08_webhook.py#model-validate-json",
+   "commit": "fa87d663",
+   "closed": [
+    "parse-raw@pmg/m08_webhook.py"
+   ],
+   "revealed": [],
+   "green": 29.0,
+   "red": 24.0
+  },
+  {
+   "t": 24.475,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 24.48,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "validate-arguments@pmg/m23_pricing.py#validate-call",
+   "tau": 0.45125
+  },
+  {
+   "t": 24.813,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "validate-call"
+  },
+  {
+   "t": 25.747,
+   "type": "merged",
+   "agent": "A0",
+   "hypothesis": "root-validator@pmg/m03_date_range.py#model-validator-before",
+   "commit": "26b41c28",
+   "closed": [
+    "root-validator@pmg/m03_date_range.py"
+   ],
+   "revealed": [],
+   "green": 31.0,
+   "red": 23.0
+  },
+  {
+   "t": 25.748,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 25.75,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "json-call@pmg/m06_event_payload.py#model-dump-json",
+   "tau": 0.475
+  },
+  {
+   "t": 26.118,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 26.238,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "validate-call"
+  },
+  {
+   "t": 26.56,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "field-validator-info"
+  },
+  {
+   "t": 26.563,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 26.567,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "validate-arguments@pmg/m23_pricing.py#validate-call",
+   "failure": "validate-arguments@pmg/m23_pricing.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 673
+  },
+  {
+   "t": 26.893,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 26.897,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m01_signup.py#field-validator-info",
+   "failure": "validator-values@pmg/m01_signup.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1040
+  },
+  {
+   "t": 27.064,
+   "type": "merged",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m02_order_line.py#model-validator-after",
+   "commit": "12371797",
+   "closed": [
+    "validator-values@pmg/m02_order_line.py"
+   ],
+   "revealed": [],
+   "green": 33.0,
+   "red": 22.0
+  },
+  {
+   "t": 27.065,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 27.069,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "validator@pmg/m19_tags_each.py#field-validator",
+   "tau": 0.45125
+  },
+  {
+   "t": 27.406,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "field-validator"
+  },
+  {
+   "t": 27.973,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 28.295,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 28.297,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "json-call@pmg/m06_event_payload.py#model-dump-json",
+   "failure": "json-call@pmg/m06_event_payload.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 2.0,
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 711
+  },
+  {
+   "t": 28.371,
+   "type": "merged",
+   "agent": "A5",
+   "hypothesis": "dict-call@pmg/m27_report.py#dict-builtin",
+   "commit": "85f9dab9",
+   "closed": [
+    "dict-call@pmg/m27_report.py"
+   ],
+   "revealed": [],
+   "green": 34.0,
+   "red": 21.0
+  },
+  {
+   "t": 28.372,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 28.378,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "json-call@pmg/m20_audit_log.py#model-dump-json",
+   "tau": 0.475
+  },
+  {
+   "t": 28.736,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 29.667,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "fields-attr@pmg/m15_form_fields.py#model-fields",
+   "commit": "d1a62e74",
+   "closed": [
+    "fields-attr@pmg/m15_form_fields.py"
+   ],
+   "revealed": [],
+   "green": 35.0,
+   "red": 20.0
+  },
+  {
+   "t": 29.668,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 29.67,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "config-key-removed@pmg/m25_immutable.py#config-dict",
+   "tau": 0.45125
+  },
+  {
+   "t": 29.996,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 30.008,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "config-dict"
+  },
+  {
+   "t": 30.326,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 30.329,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "json-call@pmg/m20_audit_log.py#model-dump-json",
+   "failure": "json-call@pmg/m20_audit_log.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 718
+  },
+  {
+   "t": 30.945,
+   "type": "merged",
+   "agent": "A1",
+   "hypothesis": "validate-arguments@pmg/m23_pricing.py#validate-call",
+   "commit": "c5ee1af2",
+   "closed": [
+    "validate-arguments@pmg/m23_pricing.py"
+   ],
+   "revealed": [],
+   "green": 36.0,
+   "red": 19.0
+  },
+  {
+   "t": 30.946,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 30.951,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "schema-call@pmg/m37_api_docs.py#model-json-schema",
+   "tau": 0.45125
+  },
+  {
+   "t": 31.31,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "model-json-schema"
+  },
+  {
+   "t": 31.582,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 31.813,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "field-validator"
+  },
+  {
+   "t": 32.146,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 32.147,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "validator@pmg/m19_tags_each.py#field-validator",
+   "failure": "validator@pmg/m19_tags_each.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1102
+  },
+  {
+   "t": 32.229,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m01_signup.py#field-validator-info",
+   "commit": "6afd9f53",
+   "closed": [
+    "validator-values@pmg/m01_signup.py"
+   ],
+   "revealed": [],
+   "green": 38.0,
+   "red": 18.0
+  },
+  {
+   "t": 32.23,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 32.231,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#field-validator-info",
+   "tau": 0.4286875
+  },
+  {
+   "t": 32.401,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "config-dict"
+  },
+  {
+   "t": 32.575,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "field-validator-info"
+  },
+  {
+   "t": 32.723,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "model-json-schema"
+  },
+  {
+   "t": 32.733,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 32.737,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "config-key-removed@pmg/m25_immutable.py#config-dict",
+   "failure": "config-key-removed@pmg/m25_immutable.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 881
+  },
+  {
+   "t": 33.049,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 33.051,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "schema-call@pmg/m37_api_docs.py#model-json-schema",
+   "failure": "schema-call@pmg/m37_api_docs.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 704
+  },
+  {
+   "t": 33.541,
+   "type": "merged",
+   "agent": "A0",
+   "hypothesis": "json-call@pmg/m06_event_payload.py#model-dump-json",
+   "commit": "95163a0c",
+   "closed": [
+    "json-call@pmg/m06_event_payload.py"
+   ],
+   "revealed": [],
+   "green": 40.0,
+   "red": 16.0
+  },
+  {
+   "t": 33.542,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 33.547,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "schema-call@pmg/m13_schema_docs.py#model-json-schema",
+   "tau": 0.4286875
+  },
+  {
+   "t": 33.912,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "model-json-schema"
+  },
+  {
+   "t": 34.819,
+   "type": "merged",
+   "agent": "A5",
+   "hypothesis": "json-call@pmg/m20_audit_log.py#model-dump-json",
+   "commit": "fb26a7e9",
+   "closed": [
+    "json-call@pmg/m20_audit_log.py"
+   ],
+   "revealed": [
+    "other:AssertionError@tests/test_m20_audit_log.py"
+   ],
+   "green": 40.0,
+   "red": 16.0
+  },
+  {
+   "t": 34.819,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 34.821,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "config-key-removed@pmg/m16_staff.py#config-dict",
+   "tau": 0.45125
+  },
+  {
+   "t": 35.185,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "config-dict"
+  },
+  {
+   "t": 35.227,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "model-json-schema"
+  },
+  {
+   "t": 35.557,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 35.56,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "schema-call@pmg/m13_schema_docs.py#model-json-schema",
+   "failure": "schema-call@pmg/m13_schema_docs.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 2.0,
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 707
+  },
+  {
+   "t": 36.081,
+   "type": "merged",
+   "agent": "A3",
+   "hypothesis": "validator@pmg/m19_tags_each.py#field-validator",
+   "commit": "bc4c81a9",
+   "closed": [
+    "validator@pmg/m19_tags_each.py"
+   ],
+   "revealed": [],
+   "green": 41.0,
+   "red": 15.0
+  },
+  {
+   "t": 36.082,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 36.085,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#model-validator-after",
+   "tau": 0.4286875
+  },
+  {
+   "t": 36.42,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "model-validator-after"
+  },
+  {
+   "t": 37.338,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "config-key-removed@pmg/m25_immutable.py#config-dict",
+   "commit": "23f0c930",
+   "closed": [
+    "config-key-removed@pmg/m25_immutable.py"
+   ],
+   "revealed": [],
+   "green": 43.0,
+   "red": 14.0
+  },
+  {
+   "t": 37.339,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 37.344,
+   "type": "agent",
+   "agent": "A4",
+   "status": "proposing",
+   "doing": "other:ValidationError@pmg/m30_sku_label.py"
+  },
+  {
+   "t": 37.936,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "field-validator-info"
+  },
+  {
+   "t": 38.033,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "config-dict"
+  },
+  {
+   "t": 38.272,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 38.274,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#field-validator-info",
+   "failure": "validator-values@pmg/m26_ticket.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1376
+  },
+  {
+   "t": 38.37,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 38.373,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "config-key-removed@pmg/m16_staff.py#config-dict",
+   "failure": "config-key-removed@pmg/m16_staff.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1011
+  },
+  {
+   "t": 38.618,
+   "type": "merged",
+   "agent": "A1",
+   "hypothesis": "schema-call@pmg/m37_api_docs.py#model-json-schema",
+   "commit": "308bddb1",
+   "closed": [
+    "schema-call@pmg/m37_api_docs.py"
+   ],
+   "revealed": [],
+   "green": 44.0,
+   "red": 13.0
+  },
+  {
+   "t": 38.619,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 38.624,
+   "type": "agent",
+   "agent": "A1",
+   "status": "proposing",
+   "doing": "other:AssertionError@tests/test_m29_lookup_key.py"
+  },
+  {
+   "t": 39.77,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "model-validator-after"
+  },
+  {
+   "t": 39.874,
+   "type": "merged",
+   "agent": "A0",
+   "hypothesis": "schema-call@pmg/m13_schema_docs.py#model-json-schema",
+   "commit": "514eba8e",
+   "closed": [
+    "schema-call@pmg/m13_schema_docs.py"
+   ],
+   "revealed": [],
+   "green": 46.0,
+   "red": 11.0
+  },
+  {
+   "t": 39.875,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 39.881,
+   "type": "agent",
+   "agent": "A0",
+   "status": "proposing",
+   "doing": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py"
+  },
+  {
+   "t": 40.101,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 40.105,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#model-validator-after",
+   "failure": "validator-values@pmg/m26_ticket.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1132
+  },
+  {
+   "t": 41.094,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#field-validator-info",
+   "commit": "af8f7ab5",
+   "closed": [
+    "validator-values@pmg/m26_ticket.py"
+   ],
+   "revealed": [],
+   "green": 48.0,
+   "red": 10.0
+  },
+  {
+   "t": 41.094,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 41.099,
+   "type": "agent",
+   "agent": "A2",
+   "status": "proposing",
+   "doing": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py"
+  },
+  {
+   "t": 41.587,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 41.602,
+   "type": "proposed",
+   "agent": "A4",
+   "failure": "other:ValidationError@pmg/m30_sku_label.py",
+   "hypotheses": [
+    "other:ValidationError@pmg/m30_sku_label.py#llm-coerce-numeric-strings",
+    "other:ValidationError@pmg/m30_sku_label.py#llm-convert-sku-before-validation"
+   ],
+   "tokens": 731
+  },
+  {
+   "t": 41.604,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-coerce-numeric-strings",
+   "tau": 0.5
+  },
+  {
+   "t": 41.955,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "llm-coerce-numeric-strings"
+  },
+  {
+   "t": 42.294,
+   "type": "proposed",
+   "agent": "A1",
+   "failure": "other:AssertionError@tests/test_m29_lookup_key.py",
+   "hypotheses": [
+    "other:AssertionError@tests/test_m29_lookup_key.py#llm-left-to-right-union",
+    "other:AssertionError@tests/test_m29_lookup_key.py#llm-coerce-numeric-strings"
+   ],
+   "tokens": 632
+  },
+  {
+   "t": 42.296,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-coerce-numeric-strings",
+   "tau": 0.5
+  },
+  {
+   "t": 42.34,
+   "type": "merged",
+   "agent": "A5",
+   "hypothesis": "config-key-removed@pmg/m16_staff.py#config-dict",
+   "commit": "85f04953",
+   "closed": [
+    "config-key-removed@pmg/m16_staff.py"
+   ],
+   "revealed": [],
+   "green": 50.0,
+   "red": 9.0
+  },
+  {
+   "t": 42.341,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 42.342,
+   "type": "superseded",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#model-validator-after"
+  },
+  {
+   "t": 42.343,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 42.343,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-left-to-right-union",
+   "tau": 0.5
+  },
+  {
+   "t": 42.344,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-convert-sku-before-validation",
+   "tau": 0.5
+  },
+  {
+   "t": 42.669,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "llm-coerce-numeric-strings"
+  },
+  {
+   "t": 42.722,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "llm-left-to-right-union"
+  },
+  {
+   "t": 42.722,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "llm-convert-sku-before-validation"
+  },
+  {
+   "t": 43.709,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "llm-coerce-numeric-strings"
+  },
+  {
+   "t": 44.031,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 44.035,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-coerce-numeric-strings",
+   "failure": "other:ValidationError@pmg/m30_sku_label.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 679
+  },
+  {
+   "t": 44.14,
+   "type": "proposed",
+   "agent": "A2",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py",
+   "hypotheses": [
+    "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-model-fields-set",
+    "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-exclude-unset-dump"
+   ],
+   "tokens": 676
+  },
+  {
+   "t": 44.142,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-model-fields-set",
+   "tau": 0.5
+  },
+  {
+   "t": 44.501,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "llm-use-model-fields-set"
+  },
+  {
+   "t": 44.838,
+   "type": "proposed",
+   "agent": "A0",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py",
+   "hypotheses": [
+    "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-type-adapter",
+    "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-validate-each-user"
+   ],
+   "tokens": 818
+  },
+  {
+   "t": 44.84,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-type-adapter",
+   "tau": 0.5
+  },
+  {
+   "t": 44.874,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "llm-left-to-right-union"
+  },
+  {
+   "t": 45.208,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "llm-type-adapter"
+  },
+  {
+   "t": 45.212,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 45.216,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-left-to-right-union",
+   "failure": "other:AssertionError@tests/test_m29_lookup_key.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 656
+  },
+  {
+   "t": 45.288,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-coerce-numeric-strings",
+   "commit": "b7e5416f",
+   "closed": [
+    "other:ValidationError@pmg/m30_sku_label.py"
+   ],
+   "revealed": [],
+   "green": 51.0,
+   "red": 8.0
+  },
+  {
+   "t": 45.289,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 45.291,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-validate-each-user",
+   "tau": 0.5
+  },
+  {
+   "t": 45.647,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "llm-validate-each-user"
+  },
+  {
+   "t": 45.903,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "llm-coerce-numeric-strings"
+  },
+  {
+   "t": 45.934,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "llm-convert-sku-before-validation"
+  },
+  {
+   "t": 46.028,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "llm-use-model-fields-set"
+  },
+  {
+   "t": 46.245,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 46.248,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-coerce-numeric-strings",
+   "failure": "other:AssertionError@tests/test_m29_lookup_key.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 774
+  },
+  {
+   "t": 46.273,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 46.275,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-convert-sku-before-validation",
+   "failure": "other:ValidationError@pmg/m30_sku_label.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 818
+  },
+  {
+   "t": 46.363,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 46.366,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-model-fields-set",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 750
+  },
+  {
+   "t": 46.543,
+   "type": "merged",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-left-to-right-union",
+   "commit": "cf4eb35b",
+   "closed": [
+    "other:AssertionError@tests/test_m29_lookup_key.py"
+   ],
+   "revealed": [],
+   "green": 52.0,
+   "red": 7.0
+  },
+  {
+   "t": 46.544,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 46.545,
+   "type": "superseded",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-coerce-numeric-strings"
+  },
+  {
+   "t": 46.546,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 46.546,
+   "type": "superseded",
+   "agent": "A3",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-convert-sku-before-validation"
+  },
+  {
+   "t": 46.546,
+   "type": "agent",
+   "agent": "A5",
+   "status": "proposing",
+   "doing": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py"
+  },
+  {
+   "t": 46.549,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 46.55,
+   "type": "agent",
+   "agent": "A1",
+   "status": "proposing",
+   "doing": "other:AssertionError@tests/test_m34_price_feed.py"
+  },
+  {
+   "t": 46.557,
+   "type": "agent",
+   "agent": "A3",
+   "status": "proposing",
+   "doing": "other:AssertionError@tests/test_m20_audit_log.py"
+  },
+  {
+   "t": 46.842,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "llm-type-adapter"
+  },
+  {
+   "t": 47.184,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 47.188,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-type-adapter",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 803
+  },
+  {
+   "t": 47.816,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-model-fields-set",
+   "commit": "42fb3b7d",
+   "closed": [
+    "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py"
+   ],
+   "revealed": [],
+   "green": 53.0,
+   "red": 6.0
+  },
+  {
+   "t": 47.817,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 47.823,
+   "type": "agent",
+   "agent": "A2",
+   "status": "proposing",
+   "doing": "other:ValidationError@pmg/m31_stock_level.py"
+  },
+  {
+   "t": 48.241,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "llm-validate-each-user"
+  },
+  {
+   "t": 48.565,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 48.569,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-validate-each-user",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 850
+  },
+  {
+   "t": 49.042,
+   "type": "merged",
+   "agent": "A0",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-type-adapter",
+   "commit": "5559f93c",
+   "closed": [
+    "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py"
+   ],
+   "revealed": [],
+   "green": 54.0,
+   "red": 5.0
+  },
+  {
+   "t": 49.044,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 49.045,
+   "type": "superseded",
+   "agent": "A4",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-validate-each-user"
+  },
+  {
+   "t": 49.046,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 49.047,
+   "type": "agent",
+   "agent": "A0",
+   "status": "proposing",
+   "doing": "other:AssertionError@tests/test_m35_shift_log.py"
+  },
+  {
+   "t": 49.051,
+   "type": "agent",
+   "agent": "A4",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 51.004,
+   "type": "proposed",
+   "agent": "A2",
+   "failure": "other:ValidationError@pmg/m31_stock_level.py",
+   "hypotheses": [
+    "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-at-ingress",
+    "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-units-before-validation"
+   ],
+   "tokens": 640
+  },
+  {
+   "t": 51.008,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-units-before-validation",
+   "tau": 0.5
+  },
+  {
+   "t": 51.377,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "llm-truncate-units-before-validation"
+  },
+  {
+   "t": 51.593,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 51.646,
+   "type": "proposed",
+   "agent": "A1",
+   "failure": "other:AssertionError@tests/test_m34_price_feed.py",
+   "hypotheses": [
+    "other:AssertionError@tests/test_m34_price_feed.py#llm-serialize-price-as-float",
+    "other:AssertionError@tests/test_m34_price_feed.py#llm-use-float-price-field"
+   ],
+   "tokens": 768
+  },
+  {
+   "t": 51.648,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m34_price_feed.py#llm-serialize-price-as-float",
+   "tau": 0.5
+  },
+  {
+   "t": 51.99,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "llm-serialize-price-as-float"
+  },
+  {
+   "t": 53.534,
+   "type": "proposed",
+   "agent": "A3",
+   "failure": "other:AssertionError@tests/test_m20_audit_log.py",
+   "hypotheses": [
+    "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-field-serializer",
+    "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-model-serializer"
+   ],
+   "tokens": 1055
+  },
+  {
+   "t": 53.539,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-model-serializer",
+   "tau": 0.5
+  },
+  {
+   "t": 53.644,
+   "type": "proposed",
+   "agent": "A5",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py",
+   "hypotheses": [
+    "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-core-schema-hook",
+    "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-annotated-validator"
+   ],
+   "tokens": 1618
+  },
+  {
+   "t": 53.646,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-annotated-validator",
+   "tau": 0.5
+  },
+  {
+   "t": 53.917,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "llm-date-only-model-serializer"
+  },
+  {
+   "t": 54.089,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "llm-annotated-validator"
+  },
+  {
+   "t": 54.254,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "llm-truncate-units-before-validation"
+  },
+  {
+   "t": 54.574,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 54.578,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-units-before-validation",
+   "failure": "other:ValidationError@pmg/m31_stock_level.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 858
+  },
+  {
+   "t": 54.754,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "llm-serialize-price-as-float"
+  },
+  {
+   "t": 55.08,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 55.084,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m34_price_feed.py#llm-serialize-price-as-float",
+   "failure": "other:AssertionError@tests/test_m34_price_feed.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 671
+  },
+  {
+   "t": 55.786,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-units-before-validation",
+   "commit": "bc20f5b7",
+   "closed": [
+    "other:ValidationError@pmg/m31_stock_level.py"
+   ],
+   "revealed": [],
+   "green": 55.0,
+   "red": 4.0
+  },
+  {
+   "t": 55.787,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 55.792,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-core-schema-hook",
+   "tau": 0.5
+  },
+  {
+   "t": 56.237,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "llm-core-schema-hook"
+  },
+  {
+   "t": 56.833,
+   "type": "proposed",
+   "agent": "A0",
+   "failure": "other:AssertionError@tests/test_m35_shift_log.py",
+   "hypotheses": [
+    "other:AssertionError@tests/test_m35_shift_log.py#llm-field-serializer",
+    "other:AssertionError@tests/test_m35_shift_log.py#llm-model-serializer"
+   ],
+   "tokens": 1165
+  },
+  {
+   "t": 56.835,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-field-serializer",
+   "tau": 0.5
+  },
+  {
+   "t": 57.017,
+   "type": "merged",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m34_price_feed.py#llm-serialize-price-as-float",
+   "commit": "63f38b3d",
+   "closed": [
+    "other:AssertionError@tests/test_m34_price_feed.py"
+   ],
+   "revealed": [],
+   "green": 56.0,
+   "red": 3.0
+  },
+  {
+   "t": 57.018,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 57.02,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-model-serializer",
+   "tau": 0.5
+  },
+  {
+   "t": 57.19,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "llm-field-serializer"
+  },
+  {
+   "t": 57.369,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "llm-model-serializer"
+  },
+  {
+   "t": 57.378,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "llm-date-only-model-serializer"
+  },
+  {
+   "t": 57.692,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 57.695,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-model-serializer",
+   "failure": "other:AssertionError@tests/test_m20_audit_log.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 819
+  },
+  {
+   "t": 58.274,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "llm-annotated-validator"
+  },
+  {
+   "t": 58.596,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 58.601,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-annotated-validator",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1654
+  },
+  {
+   "t": 58.904,
+   "type": "merged",
+   "agent": "A3",
+   "hypothesis": "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-model-serializer",
+   "commit": "0797bb6d",
+   "closed": [
+    "other:AssertionError@tests/test_m20_audit_log.py"
+   ],
+   "revealed": [],
+   "green": 57.0,
+   "red": 2.0
+  },
+  {
+   "t": 58.905,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 59.474,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "llm-core-schema-hook"
+  },
+  {
+   "t": 59.8,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 59.803,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-core-schema-hook",
+   "failure": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1572
+  },
+  {
+   "t": 59.842,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "llm-field-serializer"
+  },
+  {
+   "t": 60.147,
+   "type": "merged",
+   "agent": "A5",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-annotated-validator",
+   "commit": "c757be74",
+   "closed": [
+    "other:PydanticDeprecatedSince20@pmg/m32_postcode.py"
+   ],
+   "revealed": [],
+   "green": 59.0,
+   "red": 1.0
+  },
+  {
+   "t": 60.148,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 60.149,
+   "type": "superseded",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-core-schema-hook"
+  },
+  {
+   "t": 60.149,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 60.165,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 60.167,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-field-serializer",
+   "failure": "other:AssertionError@tests/test_m35_shift_log.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 765
+  },
+  {
+   "t": 60.456,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "llm-model-serializer"
+  },
+  {
+   "t": 60.787,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 60.789,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-model-serializer",
+   "failure": "other:AssertionError@tests/test_m35_shift_log.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 831
+  },
+  {
+   "t": 61.267,
+   "type": "merged",
+   "agent": "A0",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-field-serializer",
+   "commit": "801599c4",
+   "closed": [
+    "other:AssertionError@tests/test_m35_shift_log.py"
+   ],
+   "revealed": [],
+   "green": 60.0,
+   "red": 0.0
+  },
+  {
+   "t": 61.268,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 61.269,
+   "type": "superseded",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-model-serializer"
+  },
+  {
+   "t": 61.27,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 61.271,
+   "type": "agent",
+   "agent": "A0",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 61.273,
+   "type": "agent",
+   "agent": "A1",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 61.469,
+   "type": "agent",
+   "agent": "A5",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 61.596,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "construct-call",
+   "kind": "model-construct",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "validator-values",
+   "kind": "model-validator-after",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "validate-arguments",
+   "kind": "validate-call",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "parse-raw",
+   "kind": "model-validate-json",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "fields-attr",
+   "kind": "model-fields",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "from-orm",
+   "kind": "from-attributes",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "root-validator",
+   "kind": "model-validator-before",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "config-key-removed",
+   "kind": "config-dict",
+   "support": 3.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "copy-call",
+   "kind": "model-copy",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "validator",
+   "kind": "field-validator",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "validator-values",
+   "kind": "field-validator-info",
+   "support": 2.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "json-encoders",
+   "kind": "field-serializer",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "parse-obj",
+   "kind": "constructor",
+   "support": 2.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "forward-refs",
+   "kind": "model-rebuild",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "custom-root",
+   "kind": "root-model",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "json-call",
+   "kind": "json-dumps",
+   "support": 1.0
+  },
+  {
+   "t": 61.612,
+   "type": "recipe",
+   "signature": "json-call",
+   "kind": "model-dump-json",
+   "support": 3.0
+  },
+  {
+   "t": 61.613,
+   "type": "recipe",
+   "signature": "dict-call",
+   "kind": "dict-builtin",
+   "support": 2.0
+  },
+  {
+   "t": 61.613,
+   "type": "recipe",
+   "signature": "schema-call",
+   "kind": "model-json-schema",
+   "support": 2.0
+  },
+  {
+   "t": 62.065,
+   "type": "agent",
+   "agent": "A2",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 62.266,
+   "type": "agent",
+   "agent": "A3",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 62.414,
+   "type": "stopped",
+   "tokens": 46292,
+   "seconds": 60.8,
+   "merged": 36,
+   "branch": "run/gym-swarm-1015-184444",
+   "green": 60,
+   "red": 0
+  }
+ ],
+ "edges": [
+  {
+   "failure": "validator-values@pmg/m01_signup.py",
+   "signature": "validator-values",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m01_signup.py",
+   "hypothesis": "validator-values@pmg/m01_signup.py#field-validator-info",
+   "kind": "field-validator-info",
+   "text": "Replace @validator with @field_validator plus @classmethod, take info: ValidationInfo and read earlier fields from info.data instead of values.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m01_signup.py",
+   "tau": 1.1820521953125
+  },
+  {
+   "failure": "validator-values@pmg/m01_signup.py",
+   "signature": "validator-values",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m01_signup.py",
+   "hypothesis": "validator-values@pmg/m01_signup.py#model-validator-after",
+   "kind": "model-validator-after",
+   "text": "Replace the field validator with @model_validator(mode='after') that reads and sets fields on self.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m01_signup.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "validator-values@pmg/m02_order_line.py",
+   "signature": "validator-values",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m02_order_line.py",
+   "hypothesis": "validator-values@pmg/m02_order_line.py#field-validator-info",
+   "kind": "field-validator-info",
+   "text": "Replace @validator with @field_validator plus @classmethod, take info: ValidationInfo and read earlier fields from info.data instead of values.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m02_order_line.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "validator-values@pmg/m02_order_line.py",
+   "signature": "validator-values",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m02_order_line.py",
+   "hypothesis": "validator-values@pmg/m02_order_line.py#model-validator-after",
+   "kind": "model-validator-after",
+   "text": "Replace the field validator with @model_validator(mode='after') that reads and sets fields on self.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m02_order_line.py",
+   "tau": 1.1820521953125
+  },
+  {
+   "failure": "root-validator@pmg/m03_date_range.py",
+   "signature": "root-validator",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m03_date_range.py",
+   "hypothesis": "root-validator@pmg/m03_date_range.py#model-validator",
+   "kind": "model-validator",
+   "text": "Replace @root_validator with @model_validator; pre=True becomes mode='before' on a classmethod taking the raw dict, otherwise mode='after' on an instance method returning self.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m03_date_range.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "root-validator@pmg/m03_date_range.py",
+   "signature": "root-validator",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m03_date_range.py",
+   "hypothesis": "root-validator@pmg/m03_date_range.py#model-validator-before",
+   "kind": "model-validator-before",
+   "text": "Replace @root_validator with @model_validator(mode='before') on a classmethod that works on the input dict.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m03_date_range.py",
+   "tau": 1.1413268828125
+  },
+  {
+   "failure": "json-encoders@pmg/common.py",
+   "signature": "json-encoders",
+   "failure_status": "fixed",
+   "failure_file": "pmg/common.py",
+   "hypothesis": "json-encoders@pmg/common.py#field-serializer",
+   "kind": "field-serializer",
+   "text": "Remove Config.json_encoders; add @field_serializer for the affected fields (or a PlainSerializer in Annotated) that produces the same output, and move other Config keys to model_config = ConfigDict(...).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/common.py",
+   "tau": 4.2364506328125
+  },
+  {
+   "failure": "json-encoders@pmg/common.py",
+   "signature": "json-encoders",
+   "failure_status": "fixed",
+   "failure_file": "pmg/common.py",
+   "hypothesis": "json-encoders@pmg/common.py#model-serializer",
+   "kind": "model-serializer",
+   "text": "Remove json_encoders and add a @model_serializer(mode='wrap') that formats datetimes the same way.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/common.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "custom-root@pmg/m09_tag_list.py",
+   "signature": "custom-root",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m09_tag_list.py",
+   "hypothesis": "custom-root@pmg/m09_tag_list.py#root-model",
+   "kind": "root-model",
+   "text": "Turn the __root__ model into a pydantic.RootModel[...] subclass and use .root instead of .__root__; parse with model_validate.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m09_tag_list.py",
+   "tau": 1.1026378359375
+  },
+  {
+   "failure": "custom-root@pmg/m09_tag_list.py",
+   "signature": "custom-root",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m09_tag_list.py",
+   "hypothesis": "custom-root@pmg/m09_tag_list.py#type-adapter",
+   "kind": "type-adapter",
+   "text": "Replace the __root__ model with a TypeAdapter over the inner type plus a plain helper class.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m09_tag_list.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "forward-refs@pmg/m12_tree.py",
+   "signature": "forward-refs",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m12_tree.py",
+   "hypothesis": "forward-refs@pmg/m12_tree.py#model-rebuild",
+   "kind": "model-rebuild",
+   "text": "Replace Model.update_forward_refs() with Model.model_rebuild().",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m12_tree.py",
+   "tau": 1.1026378359375
+  },
+  {
+   "failure": "validator@pmg/m19_tags_each.py",
+   "signature": "validator",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m19_tags_each.py",
+   "hypothesis": "validator@pmg/m19_tags_each.py#field-validator",
+   "kind": "field-validator",
+   "text": "Replace @validator with @field_validator plus @classmethod; pre=True becomes mode='before', each_item=True becomes validating the list items in the function, always=True becomes validate_default=True on the Field.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m19_tags_each.py",
+   "tau": 1.2249209453125
+  },
+  {
+   "failure": "validator@pmg/m19_tags_each.py",
+   "signature": "validator",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m19_tags_each.py",
+   "hypothesis": "validator@pmg/m19_tags_each.py#annotated-validator",
+   "kind": "annotated-validator",
+   "text": "Move the check into an Annotated type with AfterValidator / BeforeValidator.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m19_tags_each.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "validate-arguments@pmg/m23_pricing.py",
+   "signature": "validate-arguments",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m23_pricing.py",
+   "hypothesis": "validate-arguments@pmg/m23_pricing.py#validate-call",
+   "kind": "validate-call",
+   "text": "Replace @validate_arguments with @validate_call.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m23_pricing.py",
+   "tau": 1.1820521953125
+  },
+  {
+   "failure": "config-key-removed@pmg/m25_immutable.py",
+   "signature": "config-key-removed",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m25_immutable.py",
+   "hypothesis": "config-key-removed@pmg/m25_immutable.py#config-dict",
+   "kind": "config-dict",
+   "text": "Rename removed config keys to their v2 names in model_config = ConfigDict(...) (allow_mutation=False->frozen=True, orm_mode->from_attributes, fields={...alias}->Field(alias=...)).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m25_immutable.py",
+   "tau": 1.2249209453125
+  },
+  {
+   "failure": "validator-values@pmg/m26_ticket.py",
+   "signature": "validator-values",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m26_ticket.py",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#field-validator-info",
+   "kind": "field-validator-info",
+   "text": "Replace @validator with @field_validator plus @classmethod, take info: ValidationInfo and read earlier fields from info.data instead of values.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m26_ticket.py",
+   "tau": 1.2249209453125
+  },
+  {
+   "failure": "validator-values@pmg/m26_ticket.py",
+   "signature": "validator-values",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m26_ticket.py",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#model-validator-after",
+   "kind": "model-validator-after",
+   "text": "Replace the field validator with @model_validator(mode='after') that reads and sets fields on self.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m26_ticket.py",
+   "tau": 1.2249209453125
+  },
+  {
+   "failure": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py",
+   "signature": "other:PydanticDeprecatedSince20",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m32_postcode.py",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-core-schema-hook",
+   "kind": "llm-core-schema-hook",
+   "text": "Replace the deprecated `__get_validators__` method with `__get_pydantic_core_schema__(cls, source_type, handler)` that returns `core_schema.no_info_after_validator_function(cls.validate, handler(str))`; import `core_schema` from `pydantic_core` and keep the existing normalization and validation in `validate`.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m32_postcode.py",
+   "tau": 1.425
+  },
+  {
+   "failure": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py",
+   "signature": "other:PydanticDeprecatedSince20",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m32_postcode.py",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-annotated-validator",
+   "kind": "llm-annotated-validator",
+   "text": "Replace the `PostCode(str)` class with a `PostCode = Annotated[str, AfterValidator(validate_post_code)]` alias. Implement `validate_post_code` to normalize spaces and case, reject values that are not exactly five digits, and return the normalized string; import `Annotated` and `AfterValidator` from `typing` and `pydantic` respectively.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m32_postcode.py",
+   "tau": 1.425
+  },
+  {
+   "failure": "config-key-removed@pmg/m36_session_cache.py",
+   "signature": "config-key-removed",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m36_session_cache.py",
+   "hypothesis": "config-key-removed@pmg/m36_session_cache.py#config-dict",
+   "kind": "config-dict",
+   "text": "Rename removed config keys to their v2 names in model_config = ConfigDict(...) (allow_mutation=False->frozen=True, orm_mode->from_attributes, fields={...alias}->Field(alias=...)).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m36_session_cache.py",
+   "tau": 1.1026378359375
+  },
+  {
+   "failure": "parse-obj@pmg/m07_import_rows.py",
+   "signature": "parse-obj",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m07_import_rows.py",
+   "hypothesis": "parse-obj@pmg/m07_import_rows.py#model-validate",
+   "kind": "model-validate",
+   "text": "Replace Model.parse_obj(data) with Model.model_validate(data).",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m07_import_rows.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "parse-obj@pmg/m07_import_rows.py",
+   "signature": "parse-obj",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m07_import_rows.py",
+   "hypothesis": "parse-obj@pmg/m07_import_rows.py#constructor",
+   "kind": "constructor",
+   "text": "Replace Model.parse_obj(data) with Model(**data).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m07_import_rows.py",
+   "tau": 1.9151078203125
+  },
+  {
+   "failure": "parse-raw@pmg/m08_webhook.py",
+   "signature": "parse-raw",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m08_webhook.py",
+   "hypothesis": "parse-raw@pmg/m08_webhook.py#model-validate-json",
+   "kind": "model-validate-json",
+   "text": "Replace Model.parse_raw(body) with Model.model_validate_json(body).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m08_webhook.py",
+   "tau": 1.1413268828125
+  },
+  {
+   "failure": "parse-raw@pmg/m08_webhook.py",
+   "signature": "parse-raw",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m08_webhook.py",
+   "hypothesis": "parse-raw@pmg/m08_webhook.py#json-loads",
+   "kind": "json-loads",
+   "text": "Replace Model.parse_raw(body) with Model.model_validate(json.loads(body)).",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m08_webhook.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "parse-obj@pmg/m10_api_response.py",
+   "signature": "parse-obj",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m10_api_response.py",
+   "hypothesis": "parse-obj@pmg/m10_api_response.py#model-validate",
+   "kind": "model-validate",
+   "text": "Replace Model.parse_obj(data) with Model.model_validate(data).",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m10_api_response.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "parse-obj@pmg/m10_api_response.py",
+   "signature": "parse-obj",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m10_api_response.py",
+   "hypothesis": "parse-obj@pmg/m10_api_response.py#constructor",
+   "kind": "constructor",
+   "text": "Replace Model.parse_obj(data) with Model(**data).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m10_api_response.py",
+   "tau": 1.8377297265625
+  },
+  {
+   "failure": "schema-call@pmg/m13_schema_docs.py",
+   "signature": "schema-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m13_schema_docs.py",
+   "hypothesis": "schema-call@pmg/m13_schema_docs.py#model-json-schema",
+   "kind": "model-json-schema",
+   "text": "Replace Model.schema() with Model.model_json_schema().",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m13_schema_docs.py",
+   "tau": 2.0822959453125
+  },
+  {
+   "failure": "copy-call@pmg/m14_draft_copy.py",
+   "signature": "copy-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m14_draft_copy.py",
+   "hypothesis": "copy-call@pmg/m14_draft_copy.py#model-copy",
+   "kind": "model-copy",
+   "text": "Replace .copy(update=...) with .model_copy(update=...).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m14_draft_copy.py",
+   "tau": 1.9151078203125
+  },
+  {
+   "failure": "copy-call@pmg/m14_draft_copy.py",
+   "signature": "copy-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m14_draft_copy.py",
+   "hypothesis": "copy-call@pmg/m14_draft_copy.py#rebuild",
+   "kind": "rebuild",
+   "text": "Replace .copy(update=...) with Model(**{**obj.model_dump(), **update}).",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m14_draft_copy.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "fields-attr@pmg/m15_form_fields.py",
+   "signature": "fields-attr",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m15_form_fields.py",
+   "hypothesis": "fields-attr@pmg/m15_form_fields.py#model-fields",
+   "kind": "model-fields",
+   "text": "Replace Model.__fields__ with Model.model_fields; field.required becomes field.is_required(), outer_type_ becomes annotation.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m15_form_fields.py",
+   "tau": 1.1820521953125
+  },
+  {
+   "failure": "from-orm@pmg/m17_orm_rows.py",
+   "signature": "from-orm",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m17_orm_rows.py",
+   "hypothesis": "from-orm@pmg/m17_orm_rows.py#from-attributes",
+   "kind": "from-attributes",
+   "text": "Set model_config = ConfigDict(from_attributes=True) and replace Model.from_orm(obj) with Model.model_validate(obj).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m17_orm_rows.py",
+   "tau": 1.1026378359375
+  },
+  {
+   "failure": "construct-call@pmg/m22_fast_load.py",
+   "signature": "construct-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m22_fast_load.py",
+   "hypothesis": "construct-call@pmg/m22_fast_load.py#model-construct",
+   "kind": "model-construct",
+   "text": "Replace Model.construct(**data) with Model.model_construct(**data).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m22_fast_load.py",
+   "tau": 1.1026378359375
+  },
+  {
+   "failure": "dict-call@pmg/m28_feature_flags.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m28_feature_flags.py",
+   "hypothesis": "dict-call@pmg/m28_feature_flags.py#model-dump",
+   "kind": "model-dump",
+   "text": "Replace .dict(...) with .model_dump(...), keeping the same keyword arguments.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m28_feature_flags.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "dict-call@pmg/m28_feature_flags.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m28_feature_flags.py",
+   "hypothesis": "dict-call@pmg/m28_feature_flags.py#dict-builtin",
+   "kind": "dict-builtin",
+   "text": "Replace .dict() with dict(obj) and filter keys by hand.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m28_feature_flags.py",
+   "tau": 1.1026378359375
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m29_lookup_key.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m29_lookup_key.py",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-left-to-right-union",
+   "kind": "llm-left-to-right-union",
+   "text": "Import Annotated and Field, then declare key as Annotated[Union[int, str], Field(union_mode=\"left_to_right\")]. This makes Pydantic try int first, coercing \"42\" to 42 before considering str.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m29_lookup_key.py",
+   "tau": 1.35375
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m29_lookup_key.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m29_lookup_key.py",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-coerce-numeric-strings",
+   "kind": "llm-coerce-numeric-strings",
+   "text": "Add a @field_validator(\"key\", mode=\"before\") that converts a string to int when it represents an integer, and otherwise returns it unchanged. This explicitly normalizes numeric strings while preserving nonnumeric strings.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m29_lookup_key.py",
+   "tau": 1.35375
+  },
+  {
+   "failure": "other:ValidationError@pmg/m30_sku_label.py",
+   "signature": "other:ValidationError",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m30_sku_label.py",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-coerce-numeric-strings",
+   "kind": "llm-coerce-numeric-strings",
+   "text": "Add `model_config = ConfigDict(coerce_numbers_to_str=True)` to `Label` (import `ConfigDict` from `pydantic`) so numeric `sku` values are accepted as strings.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m30_sku_label.py",
+   "tau": 1.35375
+  },
+  {
+   "failure": "other:ValidationError@pmg/m30_sku_label.py",
+   "signature": "other:ValidationError",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m30_sku_label.py",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-convert-sku-before-validation",
+   "kind": "llm-convert-sku-before-validation",
+   "text": "Add a `@field_validator(\"sku\", mode=\"before\")` that converts integer inputs to `str` and returns other inputs unchanged (import `field_validator` from `pydantic`).",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m30_sku_label.py",
+   "tau": 1.35375
+  },
+  {
+   "failure": "other:ValidationError@pmg/m31_stock_level.py",
+   "signature": "other:ValidationError",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m31_stock_level.py",
+   "hypothesis": "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-at-ingress",
+   "kind": "llm-truncate-at-ingress",
+   "text": "In `from_sensor`, convert the reading with `int(reading)` when constructing `StockLevel`, so fractional sensor values are truncated before integer validation.",
+   "status": "open",
+   "origin": "llm",
+   "file": "pmg/m31_stock_level.py",
+   "tau": 0.45125
+  },
+  {
+   "failure": "other:ValidationError@pmg/m31_stock_level.py",
+   "signature": "other:ValidationError",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m31_stock_level.py",
+   "hypothesis": "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-units-before-validation",
+   "kind": "llm-truncate-units-before-validation",
+   "text": "Add a `@field_validator(\"units\", mode=\"before\")` to `StockLevel` that returns `int(value)` for numeric inputs, truncating fractional readings before Pydantic validates the integer field.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m31_stock_level.py",
+   "tau": 1.40125
+  },
+  {
+   "failure": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py",
+   "signature": "other:PydanticDeprecatedSince20",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m33_bulk_users.py",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-type-adapter",
+   "kind": "llm-type-adapter",
+   "text": "Replace the `parse_obj_as` import with `TypeAdapter` and return `TypeAdapter(List[User]).validate_python(rows)` from `load_users`.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m33_bulk_users.py",
+   "tau": 1.35375
+  },
+  {
+   "failure": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py",
+   "signature": "other:PydanticDeprecatedSince20",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m33_bulk_users.py",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-validate-each-user",
+   "kind": "llm-validate-each-user",
+   "text": "Remove the `parse_obj_as` import and return `[User.model_validate(row) for row in rows]` from `load_users`.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m33_bulk_users.py",
+   "tau": 1.35375
+  },
+  {
+   "failure": "json-call@pmg/m34_price_feed.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m34_price_feed.py",
+   "hypothesis": "json-call@pmg/m34_price_feed.py#model-dump-json",
+   "kind": "model-dump-json",
+   "text": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m34_price_feed.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "json-call@pmg/m34_price_feed.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m34_price_feed.py",
+   "hypothesis": "json-call@pmg/m34_price_feed.py#json-dumps",
+   "kind": "json-dumps",
+   "text": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m34_price_feed.py",
+   "tau": 1.1026378359375
+  },
+  {
+   "failure": "json-call@pmg/m35_shift_log.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m35_shift_log.py",
+   "hypothesis": "json-call@pmg/m35_shift_log.py#model-dump-json",
+   "kind": "model-dump-json",
+   "text": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m35_shift_log.py",
+   "tau": 1.1413268828125
+  },
+  {
+   "failure": "json-call@pmg/m35_shift_log.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m35_shift_log.py",
+   "hypothesis": "json-call@pmg/m35_shift_log.py#json-dumps",
+   "kind": "json-dumps",
+   "text": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m35_shift_log.py",
+   "tau": 0.3675459453125
+  },
+  {
+   "failure": "schema-call@pmg/m37_api_docs.py",
+   "signature": "schema-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m37_api_docs.py",
+   "hypothesis": "schema-call@pmg/m37_api_docs.py#model-json-schema",
+   "kind": "model-json-schema",
+   "text": "Replace Model.schema() with Model.model_json_schema().",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m37_api_docs.py",
+   "tau": 1.2249209453125
+  },
+  {
+   "failure": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py",
+   "signature": "other:PydanticDeprecatedSince20",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m38_patch_request.py",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-model-fields-set",
+   "kind": "llm-use-model-fields-set",
+   "text": "In `changed_fields`, replace `ProfilePatch(**raw).__fields_set__` with `ProfilePatch(**raw).model_fields_set`, retaining the `sorted(...)` call.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m38_patch_request.py",
+   "tau": 1.35375
+  },
+  {
+   "failure": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py",
+   "signature": "other:PydanticDeprecatedSince20",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m38_patch_request.py",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-exclude-unset-dump",
+   "kind": "llm-use-exclude-unset-dump",
+   "text": "In `changed_fields`, dump the parsed model with `model_dump(exclude_unset=True)` and return the sorted keys of that dictionary; this preserves explicitly supplied fields whose value is `None`.",
+   "status": "open",
+   "origin": "llm",
+   "file": "pmg/m38_patch_request.py",
+   "tau": 0.45125
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m34_price_feed.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m34_price_feed.py",
+   "hypothesis": "other:AssertionError@tests/test_m34_price_feed.py#llm-serialize-price-as-float",
+   "kind": "llm-serialize-price-as-float",
+   "text": "Import `field_serializer` from Pydantic and add a `@field_serializer(\"price\", when_used=\"json\")` method on `Quote` that returns `float(value)`. This makes `model_dump(mode=\"json\")` emit a JSON number while keeping `price` as a `Decimal` in the model.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m34_price_feed.py",
+   "tau": 1.425
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m34_price_feed.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m34_price_feed.py",
+   "hypothesis": "other:AssertionError@tests/test_m34_price_feed.py#llm-use-float-price-field",
+   "kind": "llm-use-float-price-field",
+   "text": "Change `Quote.price` from `Decimal` to `float`, removing the `Decimal` import. Then `model_dump(mode=\"json\")` emits `price` as a JSON number.",
+   "status": "open",
+   "origin": "llm",
+   "file": "pmg/m34_price_feed.py",
+   "tau": 0.475
+  },
+  {
+   "failure": "config-key-removed@pmg/m16_staff.py",
+   "signature": "config-key-removed",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m16_staff.py",
+   "hypothesis": "config-key-removed@pmg/m16_staff.py#config-dict",
+   "kind": "config-dict",
+   "text": "Rename removed config keys to their v2 names in model_config = ConfigDict(...) (allow_mutation=False->frozen=True, orm_mode->from_attributes, fields={...alias}->Field(alias=...)).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m16_staff.py",
+   "tau": 1.24426546875
+  },
+  {
+   "failure": "json-call@pmg/m06_event_payload.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m06_event_payload.py",
+   "hypothesis": "json-call@pmg/m06_event_payload.py#model-dump-json",
+   "kind": "model-dump-json",
+   "text": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m06_event_payload.py",
+   "tau": 2.01590296875
+  },
+  {
+   "failure": "json-call@pmg/m06_event_payload.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m06_event_payload.py",
+   "hypothesis": "json-call@pmg/m06_event_payload.py#json-dumps",
+   "kind": "json-dumps",
+   "text": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m06_event_payload.py",
+   "tau": 0.38689046875
+  },
+  {
+   "failure": "json-call@pmg/m20_audit_log.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m20_audit_log.py",
+   "hypothesis": "json-call@pmg/m20_audit_log.py#model-dump-json",
+   "kind": "model-dump-json",
+   "text": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m20_audit_log.py",
+   "tau": 1.20139671875
+  },
+  {
+   "failure": "json-call@pmg/m20_audit_log.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m20_audit_log.py",
+   "hypothesis": "json-call@pmg/m20_audit_log.py#json-dumps",
+   "kind": "json-dumps",
+   "text": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m20_audit_log.py",
+   "tau": 0.38689046875
+  },
+  {
+   "failure": "dict-call@pmg/m27_report.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m27_report.py",
+   "hypothesis": "dict-call@pmg/m27_report.py#model-dump",
+   "kind": "model-dump",
+   "text": "Replace .dict(...) with .model_dump(...), keeping the same keyword arguments.",
+   "status": "open",
+   "origin": "template",
+   "file": "pmg/m27_report.py",
+   "tau": 0.38689046875
+  },
+  {
+   "failure": "dict-call@pmg/m27_report.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "pmg/m27_report.py",
+   "hypothesis": "dict-call@pmg/m27_report.py#dict-builtin",
+   "kind": "dict-builtin",
+   "text": "Replace .dict() with dict(obj) and filter keys by hand.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "pmg/m27_report.py",
+   "tau": 1.20139671875
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m35_shift_log.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m35_shift_log.py",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-field-serializer",
+   "kind": "llm-field-serializer",
+   "text": "Add a Pydantic v2 `@field_serializer(\"started\", when_used=\"json\")` method on `Shift` that returns `value.isoformat()`. This serializes UTC offsets as `+00:00` instead of `Z`.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m35_shift_log.py",
+   "tau": 1.425
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m35_shift_log.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m35_shift_log.py",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-model-serializer",
+   "kind": "llm-model-serializer",
+   "text": "Add a Pydantic v2 wrap-mode `@model_serializer` on `Shift`. Call the handler to get the serialized mapping, replace its `started` value with `self.started.isoformat()`, and return the mapping so `to_wire` emits the `+00:00` offset.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m35_shift_log.py",
+   "tau": 1.425
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m20_audit_log.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m20_audit_log.py",
+   "hypothesis": "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-field-serializer",
+   "kind": "llm-date-only-field-serializer",
+   "text": "Import `field_serializer` from `pydantic` and add a serializer to `AuditEntry` for `at` that returns `value.date().isoformat()`, so `model_dump_json()` emits `2024-05-06`.",
+   "status": "open",
+   "origin": "llm",
+   "file": "pmg/m20_audit_log.py",
+   "tau": 0.475
+  },
+  {
+   "failure": "other:AssertionError@tests/test_m20_audit_log.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_m20_audit_log.py",
+   "hypothesis": "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-model-serializer",
+   "kind": "llm-date-only-model-serializer",
+   "text": "Add a wrap-mode `model_serializer` to `AuditEntry` that calls the provided handler, replaces the resulting `at` value with `self.at.date().isoformat()`, and returns the updated data.",
+   "status": "fixed",
+   "origin": "llm",
+   "file": "pmg/m20_audit_log.py",
+   "tau": 1.425
+  }
+ ],
+ "attempts": [
+  {
+   "id": "A5-7abaa24a",
+   "agent": "A5",
+   "hypothesis": "forward-refs@pmg/m12_tree.py#model-rebuild",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m12_tree.py b/pmg/m12_tree.py\nindex 1e0d066..fc065f9 100644\n--- a/pmg/m12_tree.py\n+++ b/pmg/m12_tree.py\n@@ -12,4 +12,4 @@ class Node(BaseModel):\n         return 1 + sum(c.size() for c in self.children)\n \n \n-Node.update_forward_refs()\n+Node.model_rebuild()\n",
+   "diff_hash": "b1d828f384481dd9",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 862,
+   "ms": 2027,
+   "at": 1792082688862,
+   "merged": true,
+   "commit": "49d93c17467bab1c6a23a74c2c3316e35d2734bc"
+  },
+  {
+   "id": "A1-9c97de65",
+   "agent": "A1",
+   "hypothesis": "from-orm@pmg/m17_orm_rows.py#from-attributes",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m17_orm_rows.py b/pmg/m17_orm_rows.py\nindex cae0570..8f8bd76 100644\n--- a/pmg/m17_orm_rows.py\n+++ b/pmg/m17_orm_rows.py\n@@ -16,4 +16,4 @@ class Book(BaseModel):\n \n \n def load(rows) -> list:\n-    return [Book.from_orm(r) for r in rows]\n+    return [Book.model_validate(r) for r in rows]\n",
+   "diff_hash": "d06e6113de7e022a",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 810,
+   "ms": 2035,
+   "at": 1792082688866,
+   "merged": true,
+   "commit": "34f846f1a65238150936f766b81f7f7221ba3e9e"
+  },
+  {
+   "id": "A2-b0d60125",
+   "agent": "A2",
+   "hypothesis": "construct-call@pmg/m22_fast_load.py#model-construct",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m22_fast_load.py b/pmg/m22_fast_load.py\nindex 65b942e..85fab39 100644\n--- a/pmg/m22_fast_load.py\n+++ b/pmg/m22_fast_load.py\n@@ -7,4 +7,4 @@ class Metric(BaseModel):\n \n \n def trusted(rows: list) -> list:\n-    return [Metric.construct(**r) for r in rows]\n+    return [Metric.model_construct(**r) for r in rows]\n",
+   "diff_hash": "8de0768889a75556",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 693,
+   "ms": 2086,
+   "at": 1792082688918,
+   "merged": true,
+   "commit": "7d40f158f5ef9dd72f98b808f73a5362203612da"
+  },
+  {
+   "id": "A3-ebec0d0e",
+   "agent": "A3",
+   "hypothesis": "custom-root@pmg/m09_tag_list.py#root-model",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m09_tag_list.py b/pmg/m09_tag_list.py\nindex 6b24b78..e49a1fd 100644\n--- a/pmg/m09_tag_list.py\n+++ b/pmg/m09_tag_list.py\n@@ -1,14 +1,13 @@\n from typing import List\n \n-from pydantic import BaseModel\n+from pydantic import RootModel\n \n \n-class Tags(BaseModel):\n-    __root__: List[str]\n+class Tags(RootModel[List[str]]):\n \n     def normalized(self) -> List[str]:\n-        return sorted({t.strip().lower() for t in self.__root__})\n+        return sorted({t.strip().lower() for t in self.root})\n \n \n def parse_tags(raw: list) -> Tags:\n-    return Tags.parse_obj(raw)\n+    return Tags.model_validate(raw)\n",
+   "diff_hash": "b020e28ef0241209",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1045,
+   "ms": 3151,
+   "at": 1792082689979,
+   "merged": true,
+   "commit": "3d287901e1157e08d932eb14d5590c4f8475e542"
+  },
+  {
+   "id": "A4-bfd455d2",
+   "agent": "A4",
+   "hypothesis": "dict-call@pmg/m28_feature_flags.py#dict-builtin",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m28_feature_flags.py b/pmg/m28_feature_flags.py\nindex aa68f23..f4f763c 100644\n--- a/pmg/m28_feature_flags.py\n+++ b/pmg/m28_feature_flags.py\n@@ -10,4 +10,4 @@ class Flags(BaseModel):\n \n def enabled(raw: Dict[str, bool]) -> list:\n     flags = Flags(**raw)\n-    return sorted(k for k, v in flags.dict().items() if v)\n+    return sorted(k for k, v in dict(flags).items() if v)\n",
+   "diff_hash": "c35c6d2c00925135",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 858,
+   "ms": 3209,
+   "at": 1792082690043,
+   "merged": true,
+   "commit": "805d81b8816440e7fdb6d42c7c6be8126df39664"
+  },
+  {
+   "id": "A0-626ef0a0",
+   "agent": "A0",
+   "hypothesis": "config-key-removed@pmg/m36_session_cache.py#config-dict",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m36_session_cache.py b/pmg/m36_session_cache.py\nindex 479ba01..845b20d 100644\n--- a/pmg/m36_session_cache.py\n+++ b/pmg/m36_session_cache.py\n@@ -4,9 +4,7 @@ from pydantic import ConfigDict, BaseModel\n class Session(BaseModel):\n     user_id: int\n     _cache: dict = {}\n-    # TODO[pydantic]: The following keys were removed: `underscore_attrs_are_private`.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.\n-    model_config = ConfigDict(underscore_attrs_are_private=True)\n+\n \n     def remember(self, key: str, value: str) -> None:\n         self._cache = {**self._cache, key: value}\n",
+   "diff_hash": "34bce3404042c3d4",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1191,
+   "ms": 3662,
+   "at": 1792082690431,
+   "merged": true,
+   "commit": "117fd6d8d8b8bf53efc7dc7e410b8198b7143218"
+  },
+  {
+   "id": "A2-80e37b82",
+   "agent": "A2",
+   "hypothesis": "parse-obj@pmg/m10_api_response.py#constructor",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m10_api_response.py b/pmg/m10_api_response.py\nindex 66a097b..f99909e 100644\n--- a/pmg/m10_api_response.py\n+++ b/pmg/m10_api_response.py\n@@ -10,4 +10,4 @@ class Page(BaseModel, Generic[T]):\n \n \n def first_page(raw: dict) -> Page[int]:\n-    return Page[int].parse_obj(raw)\n+    return Page[int](**raw)\n",
+   "diff_hash": "f22ec5d05e04b36b",
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 742,
+   "ms": 1788,
+   "at": 1792082696089,
+   "merged": true,
+   "commit": "b50a80168ef15f5ca79eeac02f3995fc8e1fce76"
+  },
+  {
+   "id": "A1-0e319c64",
+   "agent": "A1",
+   "hypothesis": "json-call@pmg/m34_price_feed.py#json-dumps",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m34_price_feed.py b/pmg/m34_price_feed.py\nindex 7939b33..d453c1e 100644\n--- a/pmg/m34_price_feed.py\n+++ b/pmg/m34_price_feed.py\n@@ -1,3 +1,4 @@\n+import json\n from decimal import Decimal\n \n from pydantic import BaseModel\n@@ -9,4 +10,4 @@ class Quote(BaseModel):\n \n \n def publish(q: Quote) -> str:\n-    return q.json()\n+    return json.dumps(q.model_dump(mode=\"json\"))\n",
+   "diff_hash": "03af0bcd0362e2a6",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 879,
+   "ms": 3555,
+   "at": 1792082696200,
+   "merged": true,
+   "commit": "c8db54b3ba9954daa603498e22071eb89d21e7aa"
+  },
+  {
+   "id": "A3-e1b794d3",
+   "agent": "A3",
+   "hypothesis": "copy-call@pmg/m14_draft_copy.py#model-copy",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m14_draft_copy.py b/pmg/m14_draft_copy.py\nindex 26b4fde..09b4e2a 100644\n--- a/pmg/m14_draft_copy.py\n+++ b/pmg/m14_draft_copy.py\n@@ -7,4 +7,4 @@ class Draft(BaseModel):\n \n \n def bump(d: Draft) -> Draft:\n-    return d.copy(update={\"version\": d.version + 1})\n+    return d.model_copy(update={\"version\": d.version + 1})\n",
+   "diff_hash": "81dfa93ca0dd403d",
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 760,
+   "ms": 1798,
+   "at": 1792082697719,
+   "merged": true,
+   "commit": "f1a36c57685c7c0d5edb9fb6b6015eeb32b670eb"
+  },
+  {
+   "id": "A5-def48a08",
+   "agent": "A5",
+   "hypothesis": "json-encoders@pmg/common.py#field-serializer",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/common.py b/pmg/common.py\nindex 1973468..c963a8d 100644\n--- a/pmg/common.py\n+++ b/pmg/common.py\n@@ -1,16 +1,16 @@\n from datetime import datetime, timezone\n \n-from pydantic import ConfigDict, BaseModel\n+from pydantic import BaseModel, field_serializer\n \n \n class Timestamped(BaseModel):\n     created_at: datetime = datetime(2024, 1, 1, tzinfo=timezone.utc)\n-    # TODO[pydantic]: The following keys were removed: `json_encoders`.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.\n-    model_config = ConfigDict(json_encoders={datetime: lambda d: d.strftime(\"%Y-%m-%d\")})\n+    @field_serializer(\"created_at\")\n+    def serialize_created_at(self, value: datetime) -> str:\n+        return value.strftime(\"%Y-%m-%d\")\n \n     def to_record(self) -> dict:\n-        return self.dict(exclude_none=True)\n+        return self.model_dump(exclude_none=True)\n \n \n class Entity(Timestamped):\n",
+   "diff_hash": "0a10691a2a65cbab",
+   "resolved": 5,
+   "broken": 0,
+   "tokens": 1827,
+   "ms": 7739,
+   "at": 1792082699011,
+   "merged": true,
+   "commit": "229d3816f064f675d7fe74c24e176cc679b8e5eb"
+  },
+  {
+   "id": "A4-eca634bb",
+   "agent": "A4",
+   "hypothesis": "parse-obj@pmg/m07_import_rows.py#constructor",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m07_import_rows.py b/pmg/m07_import_rows.py\nindex 42ea488..f7d9221 100644\n--- a/pmg/m07_import_rows.py\n+++ b/pmg/m07_import_rows.py\n@@ -7,4 +7,4 @@ class Product(BaseModel):\n \n \n def import_rows(rows: list) -> list:\n-    return [Product.parse_obj(r) for r in rows]\n+    return [Product(**r) for r in rows]\n",
+   "diff_hash": "f4729bdf66dc785e",
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 719,
+   "ms": 2075,
+   "at": 1792082699620,
+   "merged": true,
+   "commit": "3e1d423739d576c3bcc175cda4f93f5e4d8a84ad"
+  },
+  {
+   "id": "A2-032a543e",
+   "agent": "A2",
+   "hypothesis": "json-call@pmg/m35_shift_log.py#model-dump-json",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m35_shift_log.py b/pmg/m35_shift_log.py\nindex 1154695..702739b 100644\n--- a/pmg/m35_shift_log.py\n+++ b/pmg/m35_shift_log.py\n@@ -9,4 +9,4 @@ class Shift(BaseModel):\n \n \n def to_wire(s: Shift) -> str:\n-    return s.json()\n+    return s.model_dump_json()\n",
+   "diff_hash": "114462d2919e9dd0",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 697,
+   "ms": 1924,
+   "at": 1792082702688,
+   "merged": true,
+   "commit": "18c979e8bc00397f108635cf52595d3e8cdf4661"
+  },
+  {
+   "id": "A1-b6e0103f",
+   "agent": "A1",
+   "hypothesis": "parse-raw@pmg/m08_webhook.py#model-validate-json",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m08_webhook.py b/pmg/m08_webhook.py\nindex c9b54ad..77ba184 100644\n--- a/pmg/m08_webhook.py\n+++ b/pmg/m08_webhook.py\n@@ -7,4 +7,4 @@ class Webhook(BaseModel):\n \n \n def from_body(body: bytes) -> Webhook:\n-    return Webhook.parse_raw(body)\n+    return Webhook.model_validate_json(body)\n",
+   "diff_hash": "d2f772f00b126fda",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 716,
+   "ms": 1455,
+   "at": 1792082703819,
+   "merged": true,
+   "commit": "fa87d663d8114141239a6e05c707e9545bb266e5"
+  },
+  {
+   "id": "A0-8644b14c",
+   "agent": "A0",
+   "hypothesis": "root-validator@pmg/m03_date_range.py#model-validator-before",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m03_date_range.py b/pmg/m03_date_range.py\nindex 097143a..b569472 100644\n--- a/pmg/m03_date_range.py\n+++ b/pmg/m03_date_range.py\n@@ -1,13 +1,14 @@\n from datetime import date\n \n-from pydantic import BaseModel, root_validator\n+from pydantic import BaseModel, model_validator\n \n \n class DateRange(BaseModel):\n     start: date\n     end: date\n \n-    @root_validator\n+    @model_validator(mode=\"before\")\n+    @classmethod\n     def check_order(cls, values):\n         start, end = values.get(\"start\"), values.get(\"end\")\n         if start and end and end < start:\n",
+   "diff_hash": "83688563e05a820a",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1174,
+   "ms": 5160,
+   "at": 1792082704277,
+   "merged": true,
+   "commit": "26b41c28c65b5d4d39bd8011e15074e37fded279"
+  },
+  {
+   "id": "A3-56b899a8",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m02_order_line.py#model-validator-after",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m02_order_line.py b/pmg/m02_order_line.py\nindex 157b22b..76c3856 100644\n--- a/pmg/m02_order_line.py\n+++ b/pmg/m02_order_line.py\n@@ -1,4 +1,4 @@\n-from pydantic import BaseModel, validator\n+from pydantic import BaseModel, model_validator\n \n \n class OrderLine(BaseModel):\n@@ -6,8 +6,7 @@ class OrderLine(BaseModel):\n     unit_price: float\n     total: float = 0.0\n \n-    # TODO[pydantic]: We couldn't refactor the `validator`, please replace it by `field_validator` manually.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-validators for more information.\n-    @validator(\"total\", always=True)\n-    def compute_total(cls, v, values):\n-        return round(values[\"quantity\"] * values[\"unit_price\"], 2)\n+    @model_validator(mode=\"after\")\n+    def compute_total(self):\n+        self.total = round(self.quantity * self.unit_price, 2)\n+        return self\n",
+   "diff_hash": "496f097ed9d3a34c",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1047,
+   "ms": 3581,
+   "at": 1792082707527,
+   "merged": true,
+   "commit": "12371797f288503675a9ecaae4a60b66dcaa7f28"
+  },
+  {
+   "id": "A5-65ee964a",
+   "agent": "A5",
+   "hypothesis": "dict-call@pmg/m27_report.py#dict-builtin",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m27_report.py b/pmg/m27_report.py\nindex e409911..170afa6 100644\n--- a/pmg/m27_report.py\n+++ b/pmg/m27_report.py\n@@ -8,4 +8,5 @@ class Report(Entity):\n \n \n def summary(r: Report) -> dict:\n-    return r.dict(include={\"id\", \"rows\"})\n+    data = dict(r)\n+    return {key: data[key] for key in (\"id\", \"rows\") if key in data}\n",
+   "diff_hash": "9e8652d9431e6f7d",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 842,
+   "ms": 3058,
+   "at": 1792082708714,
+   "merged": true,
+   "commit": "85f9dab9febeebcae13141ecd69c4082072ea173"
+  },
+  {
+   "id": "A4-a33d2694",
+   "agent": "A4",
+   "hypothesis": "fields-attr@pmg/m15_form_fields.py#model-fields",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m15_form_fields.py b/pmg/m15_form_fields.py\nindex 67a55aa..bff7a10 100644\n--- a/pmg/m15_form_fields.py\n+++ b/pmg/m15_form_fields.py\n@@ -10,4 +10,4 @@ class ContactForm(BaseModel):\n \n \n def required_fields(model=ContactForm) -> list:\n-    return [name for name, f in model.__fields__.items() if f.required]\n+    return [name for name, f in model.model_fields.items() if f.is_required()]\n",
+   "diff_hash": "c56c84d0ad83262f",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 772,
+   "ms": 1899,
+   "at": 1792082708873,
+   "merged": true,
+   "commit": "d1a62e74afb8322d7dcfd7101ea93ae7be0ad0c9"
+  },
+  {
+   "id": "A1-c59c9233",
+   "agent": "A1",
+   "hypothesis": "validate-arguments@pmg/m23_pricing.py#validate-call",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m23_pricing.py b/pmg/m23_pricing.py\nindex cb0711e..0e486af 100644\n--- a/pmg/m23_pricing.py\n+++ b/pmg/m23_pricing.py\n@@ -1,6 +1,6 @@\n-from pydantic import validate_arguments\n+from pydantic import validate_call\n \n \n-@validate_arguments\n+@validate_call\n def discounted(price: float, percent: int = 10) -> float:\n     return round(price * (100 - percent) / 100, 2)\n",
+   "diff_hash": "25475695eab142e3",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 673,
+   "ms": 1750,
+   "at": 1792082711366,
+   "merged": true,
+   "commit": "c5ee1af2ad89c86f79c16c437ac9475e3ddcd3ce"
+  },
+  {
+   "id": "A2-197e3d7b",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m01_signup.py#field-validator-info",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m01_signup.py b/pmg/m01_signup.py\nindex 3a5ad4a..1c016ba 100644\n--- a/pmg/m01_signup.py\n+++ b/pmg/m01_signup.py\n@@ -1,4 +1,4 @@\n-from pydantic import BaseModel, validator\n+from pydantic import BaseModel, ValidationInfo, field_validator\n \n \n class Signup(BaseModel):\n@@ -6,10 +6,9 @@ class Signup(BaseModel):\n     password: str\n     password_confirm: str\n \n-    # TODO[pydantic]: We couldn't refactor the `validator`, please replace it by `field_validator` manually.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-validators for more information.\n-    @validator(\"password_confirm\")\n-    def passwords_match(cls, v, values):\n-        if \"password\" in values and v != values[\"password\"]:\n+    @field_validator(\"password_confirm\")\n+    @classmethod\n+    def passwords_match(cls, v, info: ValidationInfo):\n+        if \"password\" in info.data and v != info.data[\"password\"]:\n             raise ValueError(\"passwords do not match\")\n         return v\n",
+   "diff_hash": "6cc02cdcbacc5e33",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1040,
+   "ms": 3402,
+   "at": 1792082711696,
+   "merged": true,
+   "commit": "6afd9f53db2cdb0e3be30eecae173fc5b2033f30"
+  },
+  {
+   "id": "A0-100c9eb2",
+   "agent": "A0",
+   "hypothesis": "json-call@pmg/m06_event_payload.py#model-dump-json",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m06_event_payload.py b/pmg/m06_event_payload.py\nindex ac7c968..ed9088f 100644\n--- a/pmg/m06_event_payload.py\n+++ b/pmg/m06_event_payload.py\n@@ -9,4 +9,4 @@ class Event(Timestamped):\n \n \n def to_wire(e: Event) -> str:\n-    return e.json(by_alias=True)\n+    return e.model_dump_json(by_alias=True)\n",
+   "diff_hash": "a8fc88df71094b9f",
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 711,
+   "ms": 2177,
+   "at": 1792082713098,
+   "merged": true,
+   "commit": "95163a0cf321d0a1915c900c70f59b6756240424"
+  },
+  {
+   "id": "A5-63949147",
+   "agent": "A5",
+   "hypothesis": "json-call@pmg/m20_audit_log.py#model-dump-json",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m20_audit_log.py b/pmg/m20_audit_log.py\nindex 42e1b78..231fbb2 100644\n--- a/pmg/m20_audit_log.py\n+++ b/pmg/m20_audit_log.py\n@@ -9,4 +9,4 @@ class AuditEntry(Timestamped):\n \n \n def serialize(entries: list) -> list:\n-    return [e.json() for e in entries]\n+    return [e.model_dump_json() for e in entries]\n",
+   "diff_hash": "4ffa837fce2001c1",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 718,
+   "ms": 1590,
+   "at": 1792082715129,
+   "merged": true,
+   "commit": "fb26a7e9ad76205afd52c735665bf136285d995f"
+  },
+  {
+   "id": "A3-c63aa7c9",
+   "agent": "A3",
+   "hypothesis": "validator@pmg/m19_tags_each.py#field-validator",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m19_tags_each.py b/pmg/m19_tags_each.py\nindex 1e078b3..d09087d 100644\n--- a/pmg/m19_tags_each.py\n+++ b/pmg/m19_tags_each.py\n@@ -1,13 +1,12 @@\n from typing import List\n \n-from pydantic import BaseModel, validator\n+from pydantic import BaseModel, field_validator\n \n \n class Post(BaseModel):\n     tags: List[str]\n \n-    # TODO[pydantic]: We couldn't refactor the `validator`, please replace it by `field_validator` manually.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-validators for more information.\n-    @validator(\"tags\", each_item=True)\n+    @field_validator(\"tags\")\n+    @classmethod\n     def lower(cls, v):\n-        return v.strip().lower()\n+        return [tag.strip().lower() for tag in v]\n",
+   "diff_hash": "e5185686752442bc",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1102,
+   "ms": 4739,
+   "at": 1792082716948,
+   "merged": true,
+   "commit": "bc4c81a947ad3e0e3594424ada3eec6ee32cb5e1"
+  },
+  {
+   "id": "A4-8d5997c0",
+   "agent": "A4",
+   "hypothesis": "config-key-removed@pmg/m25_immutable.py#config-dict",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m25_immutable.py b/pmg/m25_immutable.py\nindex e87c229..632dbc0 100644\n--- a/pmg/m25_immutable.py\n+++ b/pmg/m25_immutable.py\n@@ -4,9 +4,7 @@ from pydantic import ConfigDict, BaseModel\n class Currency(BaseModel):\n     code: str\n     decimals: int = 2\n-    # TODO[pydantic]: The following keys were removed: `allow_mutation`.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.\n-    model_config = ConfigDict(allow_mutation=False)\n+    model_config = ConfigDict(frozen=True)\n \n \n EUR = Currency(code=\"EUR\")\n",
+   "diff_hash": "5c21f9ddcd946f3a",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 881,
+   "ms": 2725,
+   "at": 1792082717536,
+   "merged": true,
+   "commit": "23f0c930ec2b7c362e17fc0c29baa9eeb1b47601"
+  },
+  {
+   "id": "A1-55871d4e",
+   "agent": "A1",
+   "hypothesis": "schema-call@pmg/m37_api_docs.py#model-json-schema",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m37_api_docs.py b/pmg/m37_api_docs.py\nindex 2c77cd3..4a7b45d 100644\n--- a/pmg/m37_api_docs.py\n+++ b/pmg/m37_api_docs.py\n@@ -8,4 +8,4 @@ class CreateOrder(BaseModel):\n \n \n def example() -> dict:\n-    return CreateOrder.schema()[\"example\"]\n+    return CreateOrder.model_json_schema()[\"example\"]\n",
+   "diff_hash": "b1082877f1fe4fef",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 704,
+   "ms": 1738,
+   "at": 1792082717851,
+   "merged": true,
+   "commit": "308bddb1285b62c3ae7b173777f6cd92fb4cfe61"
+  },
+  {
+   "id": "A0-090b5797",
+   "agent": "A0",
+   "hypothesis": "schema-call@pmg/m13_schema_docs.py#model-json-schema",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m13_schema_docs.py b/pmg/m13_schema_docs.py\nindex 1b492b0..a4b6684 100644\n--- a/pmg/m13_schema_docs.py\n+++ b/pmg/m13_schema_docs.py\n@@ -7,5 +7,5 @@ class Address(BaseModel):\n \n \n def documented_fields() -> dict:\n-    props = Address.schema()[\"properties\"]\n+    props = Address.model_json_schema()[\"properties\"]\n     return {k: v.get(\"description\", \"\") for k, v in props.items()}\n",
+   "diff_hash": "a43fc41fd255318f",
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 707,
+   "ms": 1645,
+   "at": 1792082720360,
+   "merged": true,
+   "commit": "514eba8e8fbb62bdb4e684b2e22a76c1d466818c"
+  },
+  {
+   "id": "A2-dbe57803",
+   "agent": "A2",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#field-validator-info",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m26_ticket.py b/pmg/m26_ticket.py\nindex 129fbde..38dda15 100644\n--- a/pmg/m26_ticket.py\n+++ b/pmg/m26_ticket.py\n@@ -1,6 +1,6 @@\n from enum import Enum\n \n-from pydantic import ConfigDict, BaseModel, validator\n+from pydantic import BaseModel, ConfigDict, Field, ValidationInfo, field_validator\n \n \n class Priority(str, Enum):\n@@ -11,11 +11,10 @@ class Priority(str, Enum):\n class Ticket(BaseModel):\n     title: str\n     priority: Priority = Priority.low\n-    escalated: bool = False\n+    escalated: bool = Field(default=False, validate_default=True)\n \n-    # TODO[pydantic]: We couldn't refactor the `validator`, please replace it by `field_validator` manually.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-validators for more information.\n-    @validator(\"escalated\", always=True)\n-    def escalate_high(cls, v, values):\n-        return v or values.get(\"priority\") == Priority.high\n+    @field_validator(\"escalated\")\n+    @classmethod\n+    def escalate_high(cls, v: bool, info: ValidationInfo) -> bool:\n+        return v or info.data.get(\"priority\") == Priority.high\n     model_config = ConfigDict(use_enum_values=True, str_strip_whitespace=True)\n",
+   "diff_hash": "31c3a13d5e5de57e",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1376,
+   "ms": 5696,
+   "at": 1792082723074,
+   "merged": true,
+   "commit": "af8f7ab5c68d0546cf360cf266767e3882e3624b"
+  },
+  {
+   "id": "A5-c01cbec2",
+   "agent": "A5",
+   "hypothesis": "config-key-removed@pmg/m16_staff.py#config-dict",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m16_staff.py b/pmg/m16_staff.py\nindex 24514a4..6461e40 100644\n--- a/pmg/m16_staff.py\n+++ b/pmg/m16_staff.py\n@@ -1,15 +1,14 @@\n from typing import Optional\n \n from pmg.common import Entity\n-from pydantic import ConfigDict\n+from pydantic import ConfigDict, Field\n \n \n class Staff(Entity):\n     full_name: str\n     manager_id: Optional[int] = None\n-    # TODO[pydantic]: The following keys were removed: `fields`.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.\n-    model_config = ConfigDict(populate_by_name=True, fields={\"full_name\": {\"alias\": \"fullName\"}})\n+    model_config = ConfigDict(populate_by_name=True)\n+    full_name: str = Field(alias=\"fullName\")\n \n \n def from_api(raw: dict) -> Staff:\n",
+   "diff_hash": "130bafedf53612d1",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1011,
+   "ms": 3184,
+   "at": 1792082723173,
+   "merged": true,
+   "commit": "85f04953260603b3c8e77756a7cc1601fe665996"
+  },
+  {
+   "id": "A3-8a8bdea7",
+   "agent": "A3",
+   "hypothesis": "validator-values@pmg/m26_ticket.py#model-validator-after",
+   "outcome": "superseded",
+   "diff": "diff --git a/pmg/m26_ticket.py b/pmg/m26_ticket.py\nindex 129fbde..591337f 100644\n--- a/pmg/m26_ticket.py\n+++ b/pmg/m26_ticket.py\n@@ -1,6 +1,6 @@\n from enum import Enum\n \n-from pydantic import ConfigDict, BaseModel, validator\n+from pydantic import ConfigDict, BaseModel, model_validator\n \n \n class Priority(str, Enum):\n@@ -13,9 +13,8 @@ class Ticket(BaseModel):\n     priority: Priority = Priority.low\n     escalated: bool = False\n \n-    # TODO[pydantic]: We couldn't refactor the `validator`, please replace it by `field_validator` manually.\n-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-validators for more information.\n-    @validator(\"escalated\", always=True)\n-    def escalate_high(cls, v, values):\n-        return v or values.get(\"priority\") == Priority.high\n+    @model_validator(mode=\"after\")\n+    def escalate_high(self):\n+        self.escalated = self.escalated or self.priority == Priority.high\n+        return self\n     model_config = ConfigDict(use_enum_values=True, str_strip_whitespace=True)\n",
+   "diff_hash": "776269aa78185126",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1132,
+   "ms": 3680,
+   "at": 1792082724904,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A4-3a0e93e7",
+   "agent": "A4",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-coerce-numeric-strings",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m30_sku_label.py b/pmg/m30_sku_label.py\nindex ccc945b..d0c53d5 100644\n--- a/pmg/m30_sku_label.py\n+++ b/pmg/m30_sku_label.py\n@@ -1,7 +1,9 @@\n-from pydantic import BaseModel\n+from pydantic import BaseModel, ConfigDict\n \n \n class Label(BaseModel):\n+    model_config = ConfigDict(coerce_numbers_to_str=True)\n+\n     sku: str\n     title: str\n \n",
+   "diff_hash": "78fd4b6d47d539c0",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 679,
+   "ms": 2076,
+   "at": 1792082728834,
+   "merged": true,
+   "commit": "b7e5416f7bd09f213394cd0130e00325339e504e"
+  },
+  {
+   "id": "A5-49ca10df",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-left-to-right-union",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m29_lookup_key.py b/pmg/m29_lookup_key.py\nindex d74d700..96d9172 100644\n--- a/pmg/m29_lookup_key.py\n+++ b/pmg/m29_lookup_key.py\n@@ -1,10 +1,10 @@\n-from typing import Union\n+from typing import Annotated, Union\n \n-from pydantic import BaseModel\n+from pydantic import BaseModel, Field\n \n \n class Lookup(BaseModel):\n-    key: Union[int, str]\n+    key: Annotated[Union[int, str], Field(union_mode=\"left_to_right\")]\n \n \n def normalize(raw: dict) -> Lookup:\n",
+   "diff_hash": "6be7a326d5de976c",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 656,
+   "ms": 2490,
+   "at": 1792082730015,
+   "merged": true,
+   "commit": "cf4eb35ba31cbc1419abcad2016234ef606e30bc"
+  },
+  {
+   "id": "A1-f5f75b56",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m29_lookup_key.py#llm-coerce-numeric-strings",
+   "outcome": "superseded",
+   "diff": "diff --git a/pmg/m29_lookup_key.py b/pmg/m29_lookup_key.py\nindex d74d700..1779011 100644\n--- a/pmg/m29_lookup_key.py\n+++ b/pmg/m29_lookup_key.py\n@@ -1,11 +1,21 @@\n from typing import Union\n \n-from pydantic import BaseModel\n+from pydantic import BaseModel, field_validator\n \n \n class Lookup(BaseModel):\n     key: Union[int, str]\n \n+    @field_validator(\"key\", mode=\"before\")\n+    @classmethod\n+    def normalize_numeric_string(cls, value):\n+        if isinstance(value, str):\n+            try:\n+                return int(value)\n+            except ValueError:\n+                pass\n+        return value\n+\n \n def normalize(raw: dict) -> Lookup:\n     return Lookup(**raw)\n",
+   "diff_hash": "1ffbb2ae508d2ff2",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 774,
+   "ms": 3576,
+   "at": 1792082731048,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A3-bc5b5f73",
+   "agent": "A3",
+   "hypothesis": "other:ValidationError@pmg/m30_sku_label.py#llm-convert-sku-before-validation",
+   "outcome": "superseded",
+   "diff": "diff --git a/pmg/m30_sku_label.py b/pmg/m30_sku_label.py\nindex ccc945b..1423757 100644\n--- a/pmg/m30_sku_label.py\n+++ b/pmg/m30_sku_label.py\n@@ -1,10 +1,15 @@\n-from pydantic import BaseModel\n+from pydantic import BaseModel, field_validator\n \n \n class Label(BaseModel):\n     sku: str\n     title: str\n \n+    @field_validator(\"sku\", mode=\"before\")\n+    @classmethod\n+    def convert_integer_sku(cls, value):\n+        return str(value) if isinstance(value, int) else value\n+\n \n def from_row(row: dict) -> Label:\n     return Label(**row)\n",
+   "diff_hash": "f729ef13a1b28175",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 818,
+   "ms": 3550,
+   "at": 1792082731076,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A2-29303abc",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py#llm-use-model-fields-set",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m38_patch_request.py b/pmg/m38_patch_request.py\nindex fb83089..38b51e8 100644\n--- a/pmg/m38_patch_request.py\n+++ b/pmg/m38_patch_request.py\n@@ -9,4 +9,4 @@ class ProfilePatch(BaseModel):\n \n \n def changed_fields(raw: dict) -> list:\n-    return sorted(ProfilePatch(**raw).__fields_set__)\n+    return sorted(ProfilePatch(**raw).model_fields_set)\n",
+   "diff_hash": "a8a446becdc4f463",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 750,
+   "ms": 1862,
+   "at": 1792082731166,
+   "merged": true,
+   "commit": "42fb3b7dff00298f7c7c2a3092d74b4cec729294"
+  },
+  {
+   "id": "A0-8f4e516b",
+   "agent": "A0",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-type-adapter",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m33_bulk_users.py b/pmg/m33_bulk_users.py\nindex e933164..25e1b99 100644\n--- a/pmg/m33_bulk_users.py\n+++ b/pmg/m33_bulk_users.py\n@@ -1,6 +1,6 @@\n from typing import List\n \n-from pydantic import BaseModel, parse_obj_as\n+from pydantic import BaseModel, TypeAdapter\n \n \n class User(BaseModel):\n@@ -9,4 +9,4 @@ class User(BaseModel):\n \n \n def load_users(rows: list) -> List[User]:\n-    return parse_obj_as(List[User], rows)\n+    return TypeAdapter(List[User]).validate_python(rows)\n",
+   "diff_hash": "41dde126e955442d",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 803,
+   "ms": 1976,
+   "at": 1792082731987,
+   "merged": true,
+   "commit": "5559f93ca1e4b512daf3d5632b8c8d480d74078a"
+  },
+  {
+   "id": "A4-9efaf005",
+   "agent": "A4",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py#llm-validate-each-user",
+   "outcome": "superseded",
+   "diff": "diff --git a/pmg/m33_bulk_users.py b/pmg/m33_bulk_users.py\nindex e933164..939217d 100644\n--- a/pmg/m33_bulk_users.py\n+++ b/pmg/m33_bulk_users.py\n@@ -1,6 +1,6 @@\n from typing import List\n \n-from pydantic import BaseModel, parse_obj_as\n+from pydantic import BaseModel\n \n \n class User(BaseModel):\n@@ -9,4 +9,4 @@ class User(BaseModel):\n \n \n def load_users(rows: list) -> List[User]:\n-    return parse_obj_as(List[User], rows)\n+    return [User.model_validate(row) for row in rows]\n",
+   "diff_hash": "64b34797a89fab02",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 850,
+   "ms": 2917,
+   "at": 1792082733368,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A2-bf4f4e36",
+   "agent": "A2",
+   "hypothesis": "other:ValidationError@pmg/m31_stock_level.py#llm-truncate-units-before-validation",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m31_stock_level.py b/pmg/m31_stock_level.py\nindex 1777d08..1d92e60 100644\n--- a/pmg/m31_stock_level.py\n+++ b/pmg/m31_stock_level.py\n@@ -1,10 +1,17 @@\n-from pydantic import BaseModel\n+from pydantic import BaseModel, field_validator\n \n \n class StockLevel(BaseModel):\n     warehouse: str\n     units: int\n \n+    @field_validator(\"units\", mode=\"before\")\n+    @classmethod\n+    def truncate_fractional_readings(cls, value):\n+        if isinstance(value, (int, float)):\n+            return int(value)\n+        return value\n+\n \n def from_sensor(warehouse: str, reading: float) -> StockLevel:\n     return StockLevel(warehouse=warehouse, units=reading)\n",
+   "diff_hash": "19405f0c2a469df1",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 858,
+   "ms": 3197,
+   "at": 1792082739377,
+   "merged": true,
+   "commit": "bc20f5b7aa21c4908daab0e93fff6d3bc224bd75"
+  },
+  {
+   "id": "A1-2b0b1813",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m34_price_feed.py#llm-serialize-price-as-float",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m34_price_feed.py b/pmg/m34_price_feed.py\nindex d453c1e..df29c39 100644\n--- a/pmg/m34_price_feed.py\n+++ b/pmg/m34_price_feed.py\n@@ -1,13 +1,17 @@\n import json\n from decimal import Decimal\n \n-from pydantic import BaseModel\n+from pydantic import BaseModel, field_serializer\n \n \n class Quote(BaseModel):\n     symbol: str\n     price: Decimal\n \n+    @field_serializer(\"price\", when_used=\"json\")\n+    def serialize_price(self, value: Decimal) -> float:\n+        return float(value)\n+\n \n def publish(q: Quote) -> str:\n     return json.dumps(q.model_dump(mode=\"json\"))\n",
+   "diff_hash": "d7bc222a31c9d21c",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 671,
+   "ms": 3090,
+   "at": 1792082739883,
+   "merged": true,
+   "commit": "63f38b3d36559193bc7a25fcecf1f088baf7e74d"
+  },
+  {
+   "id": "A3-b5dac467",
+   "agent": "A3",
+   "hypothesis": "other:AssertionError@tests/test_m20_audit_log.py#llm-date-only-model-serializer",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m20_audit_log.py b/pmg/m20_audit_log.py\nindex 231fbb2..fccac68 100644\n--- a/pmg/m20_audit_log.py\n+++ b/pmg/m20_audit_log.py\n@@ -1,5 +1,7 @@\n from datetime import datetime\n \n+from pydantic import model_serializer\n+\n from pmg.common import Timestamped\n \n \n@@ -7,6 +9,12 @@ class AuditEntry(Timestamped):\n     actor: str\n     at: datetime\n \n+    @model_serializer(mode=\"wrap\")\n+    def serialize_model(self, handler):\n+        data = handler(self)\n+        data[\"at\"] = self.at.date().isoformat()\n+        return data\n+\n \n def serialize(entries: list) -> list:\n     return [e.model_dump_json() for e in entries]\n",
+   "diff_hash": "d1bfc718fe1e26b5",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 819,
+   "ms": 3775,
+   "at": 1792082742495,
+   "merged": true,
+   "commit": "0797bb6d98b8bf594dcc075ee56f83e2b299af81"
+  },
+  {
+   "id": "A5-3089ac16",
+   "agent": "A5",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-annotated-validator",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m32_postcode.py b/pmg/m32_postcode.py\nindex c70cf8c..f5e436f 100644\n--- a/pmg/m32_postcode.py\n+++ b/pmg/m32_postcode.py\n@@ -1,19 +1,16 @@\n-from pydantic import BaseModel\n+from typing import Annotated\n \n+from pydantic import AfterValidator, BaseModel\n \n-class PostCode(str):\n-    @classmethod\n-    # TODO[pydantic]: We couldn't refactor `__get_validators__`, please create the `__get_pydantic_core_schema__` manually.\n-    # Check https://docs.pydantic.dev/latest/migration/#defining-custom-types for more information.\n-    def __get_validators__(cls):\n-        yield cls.validate\n \n-    @classmethod\n-    def validate(cls, v):\n-        s = str(v).replace(\" \", \"\").upper()\n-        if len(s) != 5 or not s.isdigit():\n-            raise ValueError(\"invalid post code\")\n-        return cls(s)\n+def validate_post_code(value):\n+    post_code = str(value).replace(\" \", \"\").upper()\n+    if len(post_code) != 5 or not post_code.isdigit():\n+        raise ValueError(\"invalid post code\")\n+    return post_code\n+\n+\n+PostCode = Annotated[str, AfterValidator(validate_post_code)]\n \n \n class Delivery(BaseModel):\n",
+   "diff_hash": "e25ceb3694fdd244",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1654,
+   "ms": 4507,
+   "at": 1792082743399,
+   "merged": true,
+   "commit": "c757be74621efb032ed508556db8104ce9fedaa4"
+  },
+  {
+   "id": "A2-56d3f852",
+   "agent": "A2",
+   "hypothesis": "other:PydanticDeprecatedSince20@pmg/m32_postcode.py#llm-core-schema-hook",
+   "outcome": "superseded",
+   "diff": "diff --git a/pmg/m32_postcode.py b/pmg/m32_postcode.py\nindex c70cf8c..8d25533 100644\n--- a/pmg/m32_postcode.py\n+++ b/pmg/m32_postcode.py\n@@ -1,12 +1,11 @@\n from pydantic import BaseModel\n+from pydantic_core import core_schema\n \n \n class PostCode(str):\n     @classmethod\n-    # TODO[pydantic]: We couldn't refactor `__get_validators__`, please create the `__get_pydantic_core_schema__` manually.\n-    # Check https://docs.pydantic.dev/latest/migration/#defining-custom-types for more information.\n-    def __get_validators__(cls):\n-        yield cls.validate\n+    def __get_pydantic_core_schema__(cls, source_type, handler):\n+        return core_schema.no_info_after_validator_function(cls.validate, handler(str))\n \n     @classmethod\n     def validate(cls, v):\n",
+   "diff_hash": "8838942a6c8a5076",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1572,
+   "ms": 3562,
+   "at": 1792082744602,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A0-2f48d682",
+   "agent": "A0",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-field-serializer",
+   "outcome": "pass",
+   "diff": "diff --git a/pmg/m35_shift_log.py b/pmg/m35_shift_log.py\nindex 702739b..1dc9c49 100644\n--- a/pmg/m35_shift_log.py\n+++ b/pmg/m35_shift_log.py\n@@ -1,12 +1,16 @@\n from datetime import datetime\n \n-from pydantic import BaseModel\n+from pydantic import BaseModel, field_serializer\n \n \n class Shift(BaseModel):\n     worker: str\n     started: datetime\n \n+    @field_serializer(\"started\", when_used=\"json\")\n+    def serialize_started(self, value: datetime) -> str:\n+        return value.isoformat()\n+\n \n def to_wire(s: Shift) -> str:\n     return s.model_dump_json()\n",
+   "diff_hash": "97df11be3dc3addf",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 765,
+   "ms": 2975,
+   "at": 1792082744968,
+   "merged": true,
+   "commit": "801599c46b972b9dd6718e80a06b47b5ed52ca01"
+  },
+  {
+   "id": "A1-ebddc9a6",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_m35_shift_log.py#llm-model-serializer",
+   "outcome": "superseded",
+   "diff": "diff --git a/pmg/m35_shift_log.py b/pmg/m35_shift_log.py\nindex 702739b..6c02483 100644\n--- a/pmg/m35_shift_log.py\n+++ b/pmg/m35_shift_log.py\n@@ -1,12 +1,18 @@\n from datetime import datetime\n \n-from pydantic import BaseModel\n+from pydantic import BaseModel, model_serializer\n \n \n class Shift(BaseModel):\n     worker: str\n     started: datetime\n \n+    @model_serializer(mode=\"wrap\")\n+    def serialize_model(self, handler):\n+        data = handler(self)\n+        data[\"started\"] = self.started.isoformat()\n+        return data\n+\n \n def to_wire(s: Shift) -> str:\n     return s.model_dump_json()\n",
+   "diff_hash": "f24cd06d554d047e",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 831,
+   "ms": 3417,
+   "at": 1792082745590,
+   "merged": null,
+   "commit": null
+  }
+ ],
+ "tests": [
+  {
+   "nodeid": "tests/test_m16_staff.py::test_alias",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m08_webhook.py::test_parse_body",
+   "status": "green",
+   "failures": [
+    "parse-raw@pmg/m08_webhook.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m32_postcode.py::test_rejects",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m22_fast_load.py::test_no_validation",
+   "status": "green",
+   "failures": [
+    "construct-call@pmg/m22_fast_load.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m25_immutable.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "config-key-removed@pmg/m25_immutable.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m33_bulk_users.py::test_bulk",
+   "status": "green",
+   "failures": [
+    "other:PydanticDeprecatedSince20@pmg/m33_bulk_users.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m27_report.py::test_summary",
+   "status": "green",
+   "failures": [
+    "dict-call@pmg/m27_report.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m11_invoice.py::test_total_ignores_input",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m29_lookup_key.py::test_words_stay_strings",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m12_tree.py::test_nested",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m26_ticket.py::test_escalated",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m21_cart.py::test_ok",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m01_signup.py::test_matching_passwords",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m10_api_response.py::test_cursor_default",
+   "status": "green",
+   "failures": [
+    "parse-obj@pmg/m10_api_response.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m23_pricing.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validate-arguments@pmg/m23_pricing.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m28_feature_flags.py::test_extra_flags_kept",
+   "status": "green",
+   "failures": [
+    "dict-call@pmg/m28_feature_flags.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m34_price_feed.py::test_price_is_a_json_number",
+   "status": "green",
+   "failures": [
+    "json-call@pmg/m34_price_feed.py",
+    "other:AssertionError@tests/test_m34_price_feed.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m15_form_fields.py::test_required",
+   "status": "green",
+   "failures": [
+    "fields-attr@pmg/m15_form_fields.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m38_patch_request.py::test_only_sent_fields",
+   "status": "green",
+   "failures": [
+    "other:PydanticDeprecatedSince20@pmg/m38_patch_request.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m02_order_line.py::test_total_overrides_input",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m31_stock_level.py::test_whole_reading",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m36_session_cache.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "config-key-removed@pmg/m36_session_cache.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m05_customer_export.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m17_orm_rows.py::test_from_rows",
+   "status": "green",
+   "failures": [
+    "from-orm@pmg/m17_orm_rows.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m19_tags_each.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator@pmg/m19_tags_each.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m01_signup.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator-values@pmg/m01_signup.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m26_ticket.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator-values@pmg/m26_ticket.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m06_event_payload.py::test_custom_date_encoder",
+   "status": "green",
+   "failures": [
+    "json-call@pmg/m06_event_payload.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m03_date_range.py::test_days",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m14_draft_copy.py::test_original_untouched",
+   "status": "green",
+   "failures": [
+    "copy-call@pmg/m14_draft_copy.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m06_event_payload.py::test_alias_on_wire",
+   "status": "green",
+   "failures": [
+    "json-call@pmg/m06_event_payload.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m18_product_code.py::test_valid",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m11_invoice.py::test_total",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m05_customer_export.py::test_export_drops_none",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m23_pricing.py::test_coerces",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m04_app_settings.py::test_env_prefix",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m16_staff.py::test_field_name_allowed",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m26_ticket.py::test_strip_and_enum_value",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m04_app_settings.py::test_defaults",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m09_tag_list.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "custom-root@pmg/m09_tag_list.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m29_lookup_key.py::test_numeric_strings_become_ints",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_m29_lookup_key.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m30_sku_label.py::test_numeric_sku_is_text",
+   "status": "green",
+   "failures": [
+    "other:ValidationError@pmg/m30_sku_label.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m07_import_rows.py::test_import",
+   "status": "green",
+   "failures": [
+    "parse-obj@pmg/m07_import_rows.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m13_schema_docs.py::test_all_fields_listed",
+   "status": "green",
+   "failures": [
+    "schema-call@pmg/m13_schema_docs.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m35_shift_log.py::test_utc_offset_format",
+   "status": "green",
+   "failures": [
+    "json-call@pmg/m35_shift_log.py",
+    "other:AssertionError@tests/test_m35_shift_log.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m03_date_range.py::test_reversed_rejected",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m18_product_code.py::test_invalid",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m36_session_cache.py::test_sessions_do_not_share_cache",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m27_report.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m24_shipping.py::test_fee_default",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m02_order_line.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator-values@pmg/m02_order_line.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m12_tree.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "forward-refs@pmg/m12_tree.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m19_tags_each.py::test_each_item",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m25_immutable.py::test_equal_by_value",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m32_postcode.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "other:PydanticDeprecatedSince20@pmg/m32_postcode.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m21_cart.py::test_empty_rejected",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m32_postcode.py::test_normalizes",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m20_audit_log.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m10_api_response.py::test_coerces_items",
+   "status": "green",
+   "failures": [
+    "parse-obj@pmg/m10_api_response.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m09_tag_list.py::test_normalized",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m36_session_cache.py::test_private_cache",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m09_tag_list.py::test_single",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m05_customer_export.py::test_export_keeps_values",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m01_signup.py::test_mismatch_rejected",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m37_api_docs.py::test_example_in_schema",
+   "status": "green",
+   "failures": [
+    "schema-call@pmg/m37_api_docs.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m16_staff.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py",
+    "config-key-removed@pmg/m16_staff.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m14_draft_copy.py::test_bump",
+   "status": "green",
+   "failures": [
+    "copy-call@pmg/m14_draft_copy.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m13_schema_docs.py::test_descriptions",
+   "status": "green",
+   "failures": [
+    "schema-call@pmg/m13_schema_docs.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m06_event_payload.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "json-encoders@pmg/common.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m24_shipping.py::test_express",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m03_date_range.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "root-validator@pmg/m03_date_range.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m07_import_rows.py::test_import_many",
+   "status": "green",
+   "failures": [
+    "parse-obj@pmg/m07_import_rows.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m31_stock_level.py::test_fractional_reading_truncates",
+   "status": "green",
+   "failures": [
+    "other:ValidationError@pmg/m31_stock_level.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m20_audit_log.py::test_dates_encoded",
+   "status": "green",
+   "failures": [
+    "json-call@pmg/m20_audit_log.py",
+    "other:AssertionError@tests/test_m20_audit_log.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_m02_order_line.py::test_total_computed",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_m25_immutable.py::test_frozen",
+   "status": "green",
+   "failures": []
+  }
+ ]
+}

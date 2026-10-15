@@ -1,0 +1,1702 @@
+{
+ "runs": [
+  {
+   "run": "gym-baseline-1015-184132",
+   "mode": "baseline",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 37,
+   "red_at_end": 0,
+   "seconds_to_green": 191.235,
+   "seconds": 190.6,
+   "tokens": 176204,
+   "attempts": 110,
+   "merged": 39,
+   "superseded": 71,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 159,
+   "proposals": 72,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     37
+    ],
+    [
+     8.27,
+     36
+    ],
+    [
+     9.959,
+     35
+    ],
+    [
+     11.643,
+     34
+    ],
+    [
+     13.379,
+     33
+    ],
+    [
+     16.897,
+     32
+    ],
+    [
+     18.806,
+     30
+    ],
+    [
+     21.957,
+     30
+    ],
+    [
+     24.902,
+     29
+    ],
+    [
+     27.16,
+     27
+    ],
+    [
+     28.539,
+     26
+    ],
+    [
+     30.83,
+     25
+    ],
+    [
+     32.234,
+     23
+    ],
+    [
+     33.664,
+     22
+    ],
+    [
+     36.034,
+     21
+    ],
+    [
+     37.391,
+     20
+    ],
+    [
+     38.785,
+     18
+    ],
+    [
+     40.352,
+     18
+    ],
+    [
+     42.119,
+     17
+    ],
+    [
+     44.267,
+     16
+    ],
+    [
+     46.079,
+     15
+    ],
+    [
+     47.435,
+     13
+    ],
+    [
+     48.756,
+     13
+    ],
+    [
+     50.105,
+     12
+    ],
+    [
+     51.495,
+     12
+    ],
+    [
+     54.272,
+     11
+    ],
+    [
+     55.829,
+     10
+    ],
+    [
+     60.244,
+     9
+    ],
+    [
+     71.853,
+     8
+    ],
+    [
+     81.843,
+     8
+    ],
+    [
+     91.132,
+     8
+    ],
+    [
+     104.182,
+     8
+    ],
+    [
+     130.884,
+     7
+    ],
+    [
+     140.121,
+     6
+    ],
+    [
+     148.791,
+     5
+    ],
+    [
+     156.661,
+     4
+    ],
+    [
+     165.161,
+     3
+    ],
+    [
+     173.781,
+     2
+    ],
+    [
+     183.533,
+     1
+    ],
+    [
+     191.235,
+     0
+    ]
+   ],
+   "repo": "gym"
+  },
+  {
+   "run": "gym-baseline-1015-184547",
+   "mode": "baseline",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 37,
+   "red_at_end": 0,
+   "seconds_to_green": 132.834,
+   "seconds": 132.6,
+   "tokens": 122508,
+   "attempts": 89,
+   "merged": 35,
+   "superseded": 54,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 98,
+   "proposals": 45,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     37
+    ],
+    [
+     8.424,
+     36
+    ],
+    [
+     10.098,
+     35
+    ],
+    [
+     11.879,
+     34
+    ],
+    [
+     15.387,
+     33
+    ],
+    [
+     17.027,
+     32
+    ],
+    [
+     22.085,
+     30
+    ],
+    [
+     23.719,
+     29
+    ],
+    [
+     27.489,
+     28
+    ],
+    [
+     29.256,
+     28
+    ],
+    [
+     30.684,
+     26
+    ],
+    [
+     32.116,
+     25
+    ],
+    [
+     35.521,
+     24
+    ],
+    [
+     36.919,
+     22
+    ],
+    [
+     38.29,
+     21
+    ],
+    [
+     39.676,
+     20
+    ],
+    [
+     41.09,
+     19
+    ],
+    [
+     42.46,
+     19
+    ],
+    [
+     43.849,
+     17
+    ],
+    [
+     45.265,
+     16
+    ],
+    [
+     47.34,
+     15
+    ],
+    [
+     48.683,
+     14
+    ],
+    [
+     50.334,
+     13
+    ],
+    [
+     51.623,
+     12
+    ],
+    [
+     52.988,
+     12
+    ],
+    [
+     54.317,
+     11
+    ],
+    [
+     55.669,
+     9
+    ],
+    [
+     57.441,
+     8
+    ],
+    [
+     70.784,
+     7
+    ],
+    [
+     80.543,
+     6
+    ],
+    [
+     88.904,
+     5
+    ],
+    [
+     96.769,
+     4
+    ],
+    [
+     104.622,
+     3
+    ],
+    [
+     113.348,
+     2
+    ],
+    [
+     124.858,
+     1
+    ],
+    [
+     132.834,
+     0
+    ]
+   ],
+   "repo": "gym"
+  },
+  {
+   "run": "gym-baseline-1015-184906",
+   "mode": "baseline",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 37,
+   "red_at_end": 0,
+   "seconds_to_green": 209.814,
+   "seconds": 209.7,
+   "tokens": 192340,
+   "attempts": 111,
+   "merged": 40,
+   "superseded": 71,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 131,
+   "proposals": 76,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     37
+    ],
+    [
+     9.145,
+     36
+    ],
+    [
+     10.882,
+     35
+    ],
+    [
+     15.195,
+     34
+    ],
+    [
+     16.844,
+     33
+    ],
+    [
+     18.547,
+     32
+    ],
+    [
+     20.316,
+     32
+    ],
+    [
+     21.893,
+     31
+    ],
+    [
+     23.311,
+     30
+    ],
+    [
+     26.194,
+     28
+    ],
+    [
+     28.035,
+     26
+    ],
+    [
+     29.459,
+     24
+    ],
+    [
+     30.86,
+     22
+    ],
+    [
+     32.228,
+     21
+    ],
+    [
+     33.579,
+     20
+    ],
+    [
+     34.933,
+     19
+    ],
+    [
+     37.506,
+     18
+    ],
+    [
+     38.841,
+     17
+    ],
+    [
+     40.15,
+     16
+    ],
+    [
+     41.485,
+     15
+    ],
+    [
+     42.806,
+     15
+    ],
+    [
+     46.607,
+     15
+    ],
+    [
+     48.033,
+     14
+    ],
+    [
+     49.362,
+     14
+    ],
+    [
+     50.674,
+     13
+    ],
+    [
+     51.984,
+     13
+    ],
+    [
+     53.283,
+     12
+    ],
+    [
+     57.3,
+     11
+    ],
+    [
+     69.922,
+     10
+    ],
+    [
+     93.227,
+     11
+    ],
+    [
+     106.428,
+     9
+    ],
+    [
+     123.995,
+     8
+    ],
+    [
+     138.171,
+     8
+    ],
+    [
+     147.928,
+     7
+    ],
+    [
+     156.239,
+     6
+    ],
+    [
+     165.316,
+     5
+    ],
+    [
+     172.759,
+     4
+    ],
+    [
+     181.594,
+     3
+    ],
+    [
+     190.905,
+     2
+    ],
+    [
+     201.558,
+     1
+    ],
+    [
+     209.814,
+     0
+    ]
+   ],
+   "repo": "gym"
+  },
+  {
+   "run": "gym-swarm-1015-184444",
+   "mode": "swarm",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 37,
+   "red_at_end": 0,
+   "seconds_to_green": 61.267,
+   "seconds": 60.8,
+   "tokens": 46292,
+   "attempts": 42,
+   "merged": 36,
+   "superseded": 6,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 6,
+   "proposals": 9,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     37
+    ],
+    [
+     5.803,
+     36
+    ],
+    [
+     7.475,
+     35
+    ],
+    [
+     9.119,
+     34
+    ],
+    [
+     10.734,
+     33
+    ],
+    [
+     12.362,
+     32
+    ],
+    [
+     13.96,
+     31
+    ],
+    [
+     15.596,
+     29
+    ],
+    [
+     17.197,
+     29
+    ],
+    [
+     18.795,
+     27
+    ],
+    [
+     20.487,
+     27
+    ],
+    [
+     21.813,
+     25
+    ],
+    [
+     23.151,
+     25
+    ],
+    [
+     24.474,
+     24
+    ],
+    [
+     25.747,
+     23
+    ],
+    [
+     27.064,
+     22
+    ],
+    [
+     28.371,
+     21
+    ],
+    [
+     29.667,
+     20
+    ],
+    [
+     30.945,
+     19
+    ],
+    [
+     32.229,
+     18
+    ],
+    [
+     33.541,
+     16
+    ],
+    [
+     34.819,
+     16
+    ],
+    [
+     36.081,
+     15
+    ],
+    [
+     37.338,
+     14
+    ],
+    [
+     38.618,
+     13
+    ],
+    [
+     39.874,
+     11
+    ],
+    [
+     41.094,
+     10
+    ],
+    [
+     42.34,
+     9
+    ],
+    [
+     45.288,
+     8
+    ],
+    [
+     46.543,
+     7
+    ],
+    [
+     47.816,
+     6
+    ],
+    [
+     49.042,
+     5
+    ],
+    [
+     55.786,
+     4
+    ],
+    [
+     57.017,
+     3
+    ],
+    [
+     58.904,
+     2
+    ],
+    [
+     60.147,
+     1
+    ],
+    [
+     61.267,
+     0
+    ]
+   ],
+   "repo": "gym"
+  },
+  {
+   "run": "gym-swarm-1015-184801",
+   "mode": "swarm",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 37,
+   "red_at_end": 0,
+   "seconds_to_green": 63.655,
+   "seconds": 63.5,
+   "tokens": 50617,
+   "attempts": 47,
+   "merged": 35,
+   "superseded": 12,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 11,
+   "proposals": 8,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     37
+    ],
+    [
+     5.865,
+     36
+    ],
+    [
+     7.504,
+     35
+    ],
+    [
+     9.146,
+     34
+    ],
+    [
+     10.819,
+     33
+    ],
+    [
+     12.422,
+     32
+    ],
+    [
+     14.012,
+     31
+    ],
+    [
+     15.636,
+     31
+    ],
+    [
+     17.228,
+     29
+    ],
+    [
+     18.838,
+     27
+    ],
+    [
+     20.434,
+     25
+    ],
+    [
+     21.991,
+     25
+    ],
+    [
+     23.519,
+     24
+    ],
+    [
+     25.049,
+     22
+    ],
+    [
+     26.575,
+     21
+    ],
+    [
+     28.103,
+     20
+    ],
+    [
+     29.637,
+     19
+    ],
+    [
+     31.158,
+     18
+    ],
+    [
+     32.676,
+     17
+    ],
+    [
+     34.181,
+     16
+    ],
+    [
+     35.677,
+     15
+    ],
+    [
+     37.275,
+     15
+    ],
+    [
+     38.564,
+     14
+    ],
+    [
+     40.959,
+     12
+    ],
+    [
+     42.201,
+     11
+    ],
+    [
+     43.468,
+     10
+    ],
+    [
+     45.293,
+     9
+    ],
+    [
+     46.638,
+     8
+    ],
+    [
+     47.87,
+     7
+    ],
+    [
+     51.708,
+     6
+    ],
+    [
+     54.535,
+     5
+    ],
+    [
+     55.774,
+     4
+    ],
+    [
+     58.854,
+     3
+    ],
+    [
+     60.234,
+     2
+    ],
+    [
+     62.171,
+     1
+    ],
+    [
+     63.655,
+     0
+    ]
+   ],
+   "repo": "gym"
+  },
+  {
+   "run": "gym-swarm-1015-185238",
+   "mode": "swarm",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 37,
+   "red_at_end": 0,
+   "seconds_to_green": 60.709,
+   "seconds": 60.2,
+   "tokens": 49608,
+   "attempts": 46,
+   "merged": 35,
+   "superseded": 11,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 9,
+   "proposals": 8,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     37
+    ],
+    [
+     5.991,
+     36
+    ],
+    [
+     7.642,
+     35
+    ],
+    [
+     9.26,
+     34
+    ],
+    [
+     10.893,
+     32
+    ],
+    [
+     12.516,
+     31
+    ],
+    [
+     14.1,
+     30
+    ],
+    [
+     15.721,
+     28
+    ],
+    [
+     17.313,
+     27
+    ],
+    [
+     18.907,
+     27
+    ],
+    [
+     20.471,
+     26
+    ],
+    [
+     22.138,
+     26
+    ],
+    [
+     23.462,
+     25
+    ],
+    [
+     24.802,
+     25
+    ],
+    [
+     26.122,
+     24
+    ],
+    [
+     27.435,
+     23
+    ],
+    [
+     28.765,
+     21
+    ],
+    [
+     30.07,
+     20
+    ],
+    [
+     31.351,
+     18
+    ],
+    [
+     32.601,
+     17
+    ],
+    [
+     33.889,
+     15
+    ],
+    [
+     35.161,
+     14
+    ],
+    [
+     36.437,
+     13
+    ],
+    [
+     37.701,
+     12
+    ],
+    [
+     38.922,
+     11
+    ],
+    [
+     40.121,
+     10
+    ],
+    [
+     41.315,
+     9
+    ],
+    [
+     43.089,
+     8
+    ],
+    [
+     47.104,
+     7
+    ],
+    [
+     48.624,
+     6
+    ],
+    [
+     50.026,
+     5
+    ],
+    [
+     51.269,
+     4
+    ],
+    [
+     56.254,
+     3
+    ],
+    [
+     57.686,
+     2
+    ],
+    [
+     58.796,
+     1
+    ],
+    [
+     60.709,
+     0
+    ]
+   ],
+   "repo": "gym"
+  },
+  {
+   "run": "krr-baseline-1015-185340",
+   "mode": "baseline",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 1,
+   "red_at_end": 0,
+   "seconds_to_green": 267.272,
+   "seconds": 272.1,
+   "tokens": 289901,
+   "attempts": 50,
+   "merged": 10,
+   "superseded": 39,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 97,
+   "proposals": 6,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     1
+    ],
+    [
+     10.514,
+     1
+    ],
+    [
+     17.083,
+     1
+    ],
+    [
+     33.278,
+     2
+    ],
+    [
+     54.998,
+     2
+    ],
+    [
+     101.488,
+     13
+    ],
+    [
+     147.749,
+     13
+    ],
+    [
+     192.118,
+     6
+    ],
+    [
+     228.244,
+     4
+    ],
+    [
+     248.189,
+     2
+    ],
+    [
+     267.272,
+     0
+    ]
+   ],
+   "repo": "krr"
+  },
+  {
+   "run": "krr-baseline-1015-190541",
+   "mode": "baseline",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 1,
+   "red_at_end": 0,
+   "seconds_to_green": 222.042,
+   "seconds": 226.4,
+   "tokens": 172764,
+   "attempts": 42,
+   "merged": 9,
+   "superseded": 33,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 86,
+   "proposals": 0,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     1
+    ],
+    [
+     10.402,
+     1
+    ],
+    [
+     17.285,
+     1
+    ],
+    [
+     29.471,
+     2
+    ],
+    [
+     63.461,
+     13
+    ],
+    [
+     106.57,
+     13
+    ],
+    [
+     149.925,
+     6
+    ],
+    [
+     184.645,
+     4
+    ],
+    [
+     202.763,
+     2
+    ],
+    [
+     222.042,
+     0
+    ]
+   ],
+   "repo": "krr"
+  },
+  {
+   "run": "krr-swarm-1015-185816",
+   "mode": "swarm",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 1,
+   "red_at_end": 0,
+   "seconds_to_green": 198.65,
+   "seconds": 198.0,
+   "tokens": 120228,
+   "attempts": 22,
+   "merged": 9,
+   "superseded": 7,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 1,
+   "collisions": 11,
+   "proposals": 1,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     1
+    ],
+    [
+     8.442,
+     1
+    ],
+    [
+     14.744,
+     1
+    ],
+    [
+     27.477,
+     2
+    ],
+    [
+     56.084,
+     13
+    ],
+    [
+     91.01,
+     13
+    ],
+    [
+     127.174,
+     6
+    ],
+    [
+     161.631,
+     4
+    ],
+    [
+     180.852,
+     2
+    ],
+    [
+     198.65,
+     0
+    ]
+   ],
+   "repo": "krr"
+  },
+  {
+   "run": "krr-swarm-1015-190930",
+   "mode": "swarm",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 1,
+   "red_at_end": 0,
+   "seconds_to_green": 263.798,
+   "seconds": 261.5,
+   "tokens": 67237,
+   "attempts": 14,
+   "merged": 10,
+   "superseded": 3,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 5,
+   "proposals": 1,
+   "recipe_hit_rate": 0.0,
+   "burn_down": [
+    [
+     0.0,
+     1
+    ],
+    [
+     8.371,
+     1
+    ],
+    [
+     13.709,
+     1
+    ],
+    [
+     23.445,
+     2
+    ],
+    [
+     49.496,
+     2
+    ],
+    [
+     101.689,
+     13
+    ],
+    [
+     135.774,
+     13
+    ],
+    [
+     169.723,
+     6
+    ],
+    [
+     201.185,
+     4
+    ],
+    [
+     233.276,
+     2
+    ],
+    [
+     263.798,
+     0
+    ]
+   ],
+   "repo": "krr"
+  },
+  {
+   "run": "krr-swarm-recipes-1015-190136",
+   "mode": "swarm+recipes",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 1,
+   "red_at_end": 0,
+   "seconds_to_green": 244.261,
+   "seconds": 242.2,
+   "tokens": 62285,
+   "attempts": 13,
+   "merged": 10,
+   "superseded": 3,
+   "repeated_diffs": 0,
+   "repeated_dead_ends": 0,
+   "collisions": 5,
+   "proposals": 1,
+   "recipe_hit_rate": 0.7,
+   "burn_down": [
+    [
+     0.0,
+     1
+    ],
+    [
+     7.526,
+     1
+    ],
+    [
+     12.449,
+     1
+    ],
+    [
+     25.511,
+     2
+    ],
+    [
+     42.745,
+     2
+    ],
+    [
+     79.339,
+     13
+    ],
+    [
+     115.04,
+     13
+    ],
+    [
+     148.049,
+     6
+    ],
+    [
+     180.955,
+     4
+    ],
+    [
+     212.818,
+     2
+    ],
+    [
+     244.261,
+     0
+    ]
+   ],
+   "repo": "krr"
+  },
+  {
+   "run": "krr-swarm-recipes-1015-191354",
+   "mode": "swarm+recipes",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "red_at_start": 1,
+   "red_at_end": 0,
+   "seconds_to_green": 190.372,
+   "seconds": 197.2,
+   "tokens": 118773,
+   "attempts": 23,
+   "merged": 9,
+   "superseded": 8,
+   "repeated_diffs": 2,
+   "repeated_dead_ends": 0,
+   "collisions": 12,
+   "proposals": 2,
+   "recipe_hit_rate": 0.667,
+   "burn_down": [
+    [
+     0.0,
+     1
+    ],
+    [
+     7.762,
+     1
+    ],
+    [
+     13.081,
+     1
+    ],
+    [
+     23.471,
+     2
+    ],
+    [
+     51.954,
+     13
+    ],
+    [
+     85.724,
+     13
+    ],
+    [
+     120.047,
+     6
+    ],
+    [
+     154.301,
+     4
+    ],
+    [
+     172.24,
+     2
+    ],
+    [
+     190.372,
+     0
+    ]
+   ],
+   "repo": "krr"
+  }
+ ],
+ "recipes": [
+  {
+   "signature": "config-key-removed",
+   "kind": "config-dict",
+   "transform": "Rename removed config keys to their v2 names in model_config = ConfigDict(...) (allow_mutation=False->frozen=True, orm_mode->from_attributes, fields={...alias}->Field(alias=...)).",
+   "support": 9,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "json-call",
+   "kind": "model-dump-json",
+   "transform": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "support": 7,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "schema-call",
+   "kind": "model-json-schema",
+   "transform": "Replace Model.schema() with Model.model_json_schema().",
+   "support": 6,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "dict-call",
+   "kind": "dict-builtin",
+   "transform": "Replace .dict() with dict(obj) and filter keys by hand.",
+   "support": 5,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "json-call",
+   "kind": "json-dumps",
+   "transform": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "support": 5,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "validator-values",
+   "kind": "field-validator-info",
+   "transform": "Replace @validator with @field_validator plus @classmethod, take info: ValidationInfo and read earlier fields from info.data instead of values.",
+   "support": 5,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "validator-values",
+   "kind": "model-validator-after",
+   "transform": "Replace the field validator with @model_validator(mode='after') that reads and sets fields on self.",
+   "support": 4,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "construct-call",
+   "kind": "model-construct",
+   "transform": "Replace Model.construct(**data) with Model.model_construct(**data).",
+   "support": 3,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "fields-attr",
+   "kind": "model-fields",
+   "transform": "Replace Model.__fields__ with Model.model_fields; field.required becomes field.is_required(), outer_type_ becomes annotation.",
+   "support": 3,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "forward-refs",
+   "kind": "model-rebuild",
+   "transform": "Replace Model.update_forward_refs() with Model.model_rebuild().",
+   "support": 3,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "from-orm",
+   "kind": "from-attributes",
+   "transform": "Set model_config = ConfigDict(from_attributes=True) and replace Model.from_orm(obj) with Model.model_validate(obj).",
+   "support": 3,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "parse-obj",
+   "kind": "constructor",
+   "transform": "Replace Model.parse_obj(data) with Model(**data).",
+   "support": 3,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801"
+   ]
+  },
+  {
+   "signature": "parse-obj",
+   "kind": "model-validate",
+   "transform": "Replace Model.parse_obj(data) with Model.model_validate(data).",
+   "support": 3,
+   "runs": [
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "validate-arguments",
+   "kind": "validate-call",
+   "transform": "Replace @validate_arguments with @validate_call.",
+   "support": 3,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "copy-call",
+   "kind": "model-copy",
+   "transform": "Replace .copy(update=...) with .model_copy(update=...).",
+   "support": 2,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801"
+   ]
+  },
+  {
+   "signature": "custom-root",
+   "kind": "root-model",
+   "transform": "Turn the __root__ model into a pydantic.RootModel[...] subclass and use .root instead of .__root__; parse with model_validate.",
+   "support": 2,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "json-encoders",
+   "kind": "field-serializer",
+   "transform": "Remove Config.json_encoders; add @field_serializer for the affected fields (or a PlainSerializer in Annotated) that produces the same output, and move other Config keys to model_config = ConfigDict(...).",
+   "support": 2,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "parse-raw",
+   "kind": "model-validate-json",
+   "transform": "Replace Model.parse_raw(body) with Model.model_validate_json(body).",
+   "support": 2,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-184801"
+   ]
+  },
+  {
+   "signature": "root-validator",
+   "kind": "model-validator-before",
+   "transform": "Replace @root_validator with @model_validator(mode='before') on a classmethod that works on the input dict.",
+   "support": 2,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "validator",
+   "kind": "field-validator",
+   "transform": "Replace @validator with @field_validator plus @classmethod; pre=True becomes mode='before', each_item=True becomes validating the list items in the function, always=True becomes validate_default=True on the Field.",
+   "support": 2,
+   "runs": [
+    "gym-swarm-1015-184444",
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "copy-call",
+   "kind": "rebuild",
+   "transform": "Replace .copy(update=...) with Model(**{**obj.model_dump(), **update}).",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "custom-root",
+   "kind": "type-adapter",
+   "transform": "Replace the __root__ model with a TypeAdapter over the inner type plus a plain helper class.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1015-184801"
+   ]
+  },
+  {
+   "signature": "dict-call",
+   "kind": "model-dump",
+   "transform": "Replace .dict(...) with .model_dump(...), keeping the same keyword arguments.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1015-184801"
+   ]
+  },
+  {
+   "signature": "json-encoders",
+   "kind": "model-serializer",
+   "transform": "Remove json_encoders and add a @model_serializer(mode='wrap') that formats datetimes the same way.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1015-184801"
+   ]
+  },
+  {
+   "signature": "parse-raw",
+   "kind": "json-loads",
+   "transform": "Replace Model.parse_raw(body) with Model.model_validate(json.loads(body)).",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1015-185238"
+   ]
+  },
+  {
+   "signature": "root-validator",
+   "kind": "model-validator",
+   "transform": "Replace @root_validator with @model_validator; pre=True becomes mode='before' on a classmethod taking the raw dict, otherwise mode='after' on an instance method returning self.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1015-184801"
+   ]
+  },
+  {
+   "signature": "validator",
+   "kind": "annotated-validator",
+   "transform": "Move the check into an Annotated type with AfterValidator / BeforeValidator.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1015-184801"
+   ]
+  }
+ ],
+ "generated_at": "2026-10-15T17:17:14+00:00"
+}
