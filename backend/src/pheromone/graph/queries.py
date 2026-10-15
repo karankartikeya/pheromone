@@ -135,6 +135,32 @@ WHERE h.status IN ['open', 'claimed']
 RETURN count(DISTINCT f) AS failures, count(DISTINCT h) AS hypotheses
 """
 
+# Merger: a passing patch that fails the merge gate counts as a failed attempt.
+MERGE_REJECTED = """
+MATCH (a:Attempt {id:$aid})-[:TESTED]->(h:Hypothesis)<-[s:SUSPECTS]-(:Failure)
+SET a.outcome = 'merge_failed', h.status = 'open',
+    s.pheromone = CASE WHEN s.pheromone * $mult < $tmin THEN $tmin ELSE s.pheromone * $mult END
+RETURN count(s) AS edges
+"""
+
+MARK_MERGED = """
+MATCH (a:Attempt {id:$aid}) SET a.merged = true, a.commit = $commit
+"""
+
+# After the full-suite rerun: failures no longer present are closed.
+CLOSE_FAILURES = """
+MATCH (f:Failure {status:'open'}) WHERE NOT f.id IN $open_ids
+SET f.status = 'fixed', f.fixed_at = $now
+RETURN collect(f.id) AS closed
+"""
+
+SUITE_STATUS = """
+MATCH (t:Test) WITH t, t.nodeid ENDS WITH '::__collect__' AS pseudo
+WHERE NOT pseudo OR t.status = 'red'
+RETURN sum(CASE WHEN t.status = 'green' THEN 1 ELSE 0 END) AS green,
+       sum(CASE WHEN t.status = 'red' THEN 1 ELSE 0 END) AS red
+"""
+
 # 4. Evaporation (every 10 s). MAX-MIN floor keeps every trail explorable.
 EVAPORATE = """
 MATCH (:Failure)-[s:SUSPECTS]->(:Hypothesis)
