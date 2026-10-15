@@ -40,7 +40,7 @@ class RunHandle:
 
 
 async def launch(target: str, mode: str, workers: int, budget: int, minutes: float = 0,
-                 seed_value: int = 0, echo: bool = False) -> RunHandle:
+                 seed_value: int = 0, echo: bool = False, learn: bool = True) -> RunHandle:
     run_id = f"{target}-{mode.replace('+', '-')}-{datetime.now():%m%d-%H%M%S}"
     repo = TARGETS_DIR / target
     python = repo / ".venv/bin/python"
@@ -51,7 +51,7 @@ async def launch(target: str, mode: str, workers: int, budget: int, minutes: flo
     llm = provider()
 
     summary = await seed(run_id, target, repo, python, mode, commit=base, model=llm.model, budget=budget)
-    rec.emit({"type": "seeded", "run": run_id, "model": llm.model, "workers": workers, **summary})
+    rec.emit({"type": "seeded", "run": run_id, "model": llm.model, "workers": workers, "learn": learn, **summary})
 
     g = Graph(config.run_graph(run_id))
     merger = await Merger.create(g, repo, WORKTREES_DIR / run_id / "merge", python, run_id, base, mode, rec.emit)
@@ -63,7 +63,8 @@ async def launch(target: str, mode: str, workers: int, budget: int, minutes: flo
 
     async def body() -> None:
         jobs = [asyncio.create_task(evaporator.run(g, ctx.stop, rec.emit))]
-        if mode != "baseline":  # Recipes are shared memory; the ablation gets none
+        # Recipes are shared memory: the ablation gets none, and control runs can opt out
+        if mode != "baseline" and learn:
             jobs.append(asyncio.create_task(crystallizer.run(g, run_id, ctx.stop, rec.emit)))
         tasks = [asyncio.create_task(w.run(), name=w.id) for w in pool]
         t0 = time.monotonic()
@@ -96,13 +97,14 @@ def main() -> None:
     p.add_argument("--budget", type=int, default=2_000_000, help="token budget for the whole run")
     p.add_argument("--minutes", type=float, default=0, help="wall-clock cap (0 = none)")
     p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--no-learn", action="store_true", help="do not write Recipes from this run")
     p.add_argument("--lease-s", type=float, default=PARAMS.lease_ms / 1000,
                    help="claim lease; short leases make the kill-agent handoff visible in demos")
     a = p.parse_args()
     PARAMS.lease_ms = int(a.lease_s * 1000)
 
     async def go() -> str:
-        h = await launch(a.target, a.mode, a.workers, a.budget, a.minutes, a.seed, echo=True)
+        h = await launch(a.target, a.mode, a.workers, a.budget, a.minutes, a.seed, echo=True, learn=not a.no_learn)
         await h.task
         return h.run_id
 
