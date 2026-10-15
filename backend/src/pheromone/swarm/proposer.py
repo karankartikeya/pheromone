@@ -22,6 +22,8 @@ INSTRUCTIONS = """You help a swarm of agents migrate a Python codebase from Pyda
 A test still fails and no known fix applies. Propose exactly 2 different, concrete hypotheses for a source-code fix.
 Each hypothesis must name ONE file to change, chosen from the candidate files, and describe the change precisely
 enough for another agent to implement it. Never propose editing tests or silencing warnings.
+Prefer the idiomatic Pydantic v2 API (model_config keys such as frozen=True, field/model validators and
+serializers). Never propose overriding dunder methods (__eq__, __setattr__, ...) to imitate v1 behaviour.
 Answer with JSON only: [{"kind": "short-kebab-name", "file": "path/from/candidates.py", "text": "what to change"}, ...]"""
 
 

@@ -18,6 +18,8 @@ Rules:
 - Fix the root cause in source code. Do not edit tests and do not silence warnings.
 - The finished code must not use deprecated Pydantic v1 APIs (tests treat DeprecationWarning as an error).
 - Keep behaviour identical: same field names, aliases, defaults, output formats.
+- Use the idiomatic Pydantic v2 API (model_config keys, validators, serializers). Never override dunder
+  methods such as __eq__, __setattr__ or __init__ to imitate v1 behaviour, and never keep removed config keys.
 - Learn from earlier attempts: do not repeat a diff that already failed.
 
 Answer with SEARCH/REPLACE blocks only, no prose. Format, one block per edit:
