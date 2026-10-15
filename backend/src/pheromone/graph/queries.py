@@ -33,7 +33,9 @@ FRONTIER = """
 MATCH (f:Failure {status:'open'})-[s:SUSPECTS]->(h:Hypothesis {status:'open'})
 OPTIONAL MATCH (h)<-[:TESTED]-(a:Attempt)
 OPTIONAL MATCH (h)-[:SAME_SIGNATURE]-(o:Hypothesis {status:'claimed'})
-WITH h, max(s.pheromone) AS tau, count(DISTINCT a) AS tries, count(DISTINCT o) AS crowd
+OPTIONAL MATCH (f)-[:SUSPECTS]->(sib:Hypothesis {status:'claimed'})
+WITH h, max(s.pheromone) AS tau, count(DISTINCT a) AS tries,
+     count(DISTINCT o) + count(DISTINCT sib) AS crowd
 RETURN h.id AS id, h.text AS text, h.kind AS kind, h.signature AS signature,
        h.file AS file, h.eta AS eta, h.cluster AS cluster, tau, tries, crowd
 ORDER BY tau DESC
@@ -180,6 +182,18 @@ MATCH (a:Attempt {id:$aid})-[:TESTED]->(h:Hypothesis)<-[s:SUSPECTS]-(:Failure)
 SET a.outcome = 'merge_failed', h.status = 'open',
     s.pheromone = CASE WHEN s.pheromone * $mult < $tmin THEN $tmin ELSE s.pheromone * $mult END
 RETURN count(s) AS edges
+"""
+
+# Another agent's fix closed this failure first: not a dead end, so no decay.
+MARK_SUPERSEDED = """
+MATCH (a:Attempt {id:$aid})-[:TESTED]->(:Hypothesis)<-[:SUSPECTS]-(f:Failure)
+SET a.outcome = 'superseded'
+RETURN f.status AS status
+"""
+
+FAILURE_OF_ATTEMPT = """
+MATCH (:Attempt {id:$aid})-[:TESTED]->(:Hypothesis)<-[:SUSPECTS]-(f:Failure)
+RETURN f.status AS status
 """
 
 MARK_MERGED = """

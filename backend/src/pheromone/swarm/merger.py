@@ -49,6 +49,13 @@ class Merger:
         return False
 
     async def _merge(self, agent: str, aid: str, hid: str, diff: str) -> bool:
+        # 0. someone else's merge already closed this failure while we worked on it
+        status = await self.g.q(Q.FAILURE_OF_ATTEMPT, aid=aid)
+        if status and status[0]["status"] != "open":
+            await self.g.q(Q.MARK_SUPERSEDED, aid=aid)
+            self.emit({"type": "superseded", "agent": agent, "hypothesis": hid})
+            return False
+
         # 1. apply on top of everything merged so far
         with tempfile.NamedTemporaryFile("w", suffix=".diff", delete=False) as f:
             f.write(diff)
