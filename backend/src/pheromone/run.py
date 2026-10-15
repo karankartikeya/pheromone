@@ -18,7 +18,7 @@ from pheromone.graph.client import Graph
 from pheromone.repo import worktrees as wt
 from pheromone.repo.bootstrap import TARGETS
 from pheromone.seed.seeder import seed
-from pheromone.swarm import evaporator
+from pheromone.swarm import crystallizer, evaporator
 from pheromone.swarm.baseline import BaselineWorker
 from pheromone.swarm.llm import provider
 from pheromone.swarm.merger import Merger
@@ -63,6 +63,8 @@ async def launch(target: str, mode: str, workers: int, budget: int, minutes: flo
 
     async def body() -> None:
         jobs = [asyncio.create_task(evaporator.run(g, ctx.stop, rec.emit))]
+        if mode != "baseline":  # Recipes are shared memory; the ablation gets none
+            jobs.append(asyncio.create_task(crystallizer.run(g, run_id, ctx.stop, rec.emit)))
         tasks = [asyncio.create_task(w.run(), name=w.id) for w in pool]
         t0 = time.monotonic()
         try:
