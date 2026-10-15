@@ -11,11 +11,13 @@ from datetime import datetime
 from pheromone import config
 from pheromone.config import PARAMS, TARGETS_DIR, WORKTREES_DIR
 from pheromone.events import Recorder
+from pheromone.graph import queries as Q
 from pheromone.graph.client import Graph
 from pheromone.repo import worktrees as wt
 from pheromone.seed.seeder import seed
 from pheromone.swarm import evaporator
 from pheromone.swarm.llm import provider
+from pheromone.swarm.merger import Merger
 from pheromone.swarm.worker import Budget, RunCtx, Worker
 
 MODES = ("swarm", "swarm+recipes")  # baseline lands with baseline.py
@@ -33,8 +35,9 @@ async def start(target: str, mode: str, workers: int, budget: int, minutes: floa
     rec.emit({"type": "seeded", "run": run_id, "model": llm.model, **summary})
 
     g = Graph(config.run_graph(run_id))
-    ctx = RunCtx(graph=g, run_id=run_id, mode=mode, repo=repo, python=python, run_ref="pheromone-base",
-                 llm=llm, budget=Budget(budget), emit=rec.emit)
+    merger = await Merger.create(g, repo, WORKTREES_DIR / run_id / "merge", python, run_id, base, mode, rec.emit)
+    ctx = RunCtx(graph=g, run_id=run_id, mode=mode, repo=repo, python=python, run_ref=merger.branch,
+                 llm=llm, budget=Budget(budget), emit=rec.emit, merger=merger)
     trees = [await wt.create(repo, WORKTREES_DIR / run_id / f"A{i}", f"A{i}", base) for i in range(workers)]
     pool = [Worker(f"A{i}", ctx, trees[i], seed=seed_value + i) for i in range(workers)]
     jobs = [asyncio.create_task(evaporator.run(g, ctx.stop, rec.emit))]
@@ -48,9 +51,11 @@ async def start(target: str, mode: str, workers: int, budget: int, minutes: floa
     finally:
         ctx.stop.set()
         await asyncio.gather(*jobs, *tasks, return_exceptions=True)
-        for t in trees:
+        for t in [*trees, merger.tree]:
             await wt.git(repo, "worktree", "remove", "--force", str(t), check=False)
-    rec.emit({"type": "stopped", "tokens": ctx.budget.used, "seconds": round(time.monotonic() - t0, 1)})
+    suite = (await g.q(Q.SUITE_STATUS))[0]
+    rec.emit({"type": "stopped", "tokens": ctx.budget.used, "seconds": round(time.monotonic() - t0, 1),
+              "merged": merger.merged, "branch": merger.branch, **suite})
     rec.close()
     return run_id
 
