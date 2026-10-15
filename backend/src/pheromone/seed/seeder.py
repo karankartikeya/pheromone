@@ -75,6 +75,102 @@ def group_failures(root: Path, run: TestRun) -> list[FailureSeed]:
     return list(groups.values())
 
 
+async def sync_tests(g: Graph, run: TestRun) -> None:
+    """Upsert every test seen in a run with its current status and DEFINED_IN file."""
+    tests = sorted(run.passed | run.red_ids)
+    await g.q(
+        """
+        UNWIND $tests AS t
+        MERGE (x:Test {nodeid:t[0]}) SET x.status = t[2]
+        MERGE (f:File {path:t[1]}) ON CREATE SET f.pagerank = 0.0
+        MERGE (x)-[:DEFINED_IN]->(f)
+        """,
+        tests=[[t, t.split("::")[0], "red" if t in run.red_ids else "green"] for t in tests],
+    )
+
+
+async def add_failures(g: Graph, failures: list[FailureSeed], mode: str) -> tuple[list[dict], list[str]]:
+    """Upsert Failures with IN/FAILS_WITH; seed hypotheses for failures new to the graph.
+
+    Idempotent: the merger calls this after every merge with the current reds.
+    Returns (created hypotheses, failure ids with no hypothesis).
+    """
+    known = {r["id"] for r in await g.q(
+        "MATCH (f:Failure) WHERE f.id IN $ids RETURN f.id AS id", ids=[f.id for f in failures])}
+    await g.q(
+        """
+        UNWIND $fs AS f
+        MERGE (x:Failure {id:f.id})
+        ON CREATE SET x.signature = f.signature, x.file = f.file, x.line = f.line,
+                      x.phase = f.phase, x.message_head = f.message
+        SET x.status = 'open'
+        MERGE (file:File {path:f.file}) ON CREATE SET file.pagerank = 0.0
+        MERGE (x)-[:IN]->(file)
+        WITH x, f
+        UNWIND f.tests AS tid
+        MATCH (t:Test {nodeid:tid})
+        MERGE (t)-[:FAILS_WITH]->(x)
+        """,
+        fs=[f.__dict__ for f in failures],
+    )
+    new = [f for f in failures if f.id not in known]
+    if not new:
+        return [], []
+    pr = {r["path"]: r["pr"] for r in await g.q(
+        "MATCH (f:File) WHERE f.path IN $ps RETURN f.path AS path, f.pagerank AS pr",
+        ps=sorted({f.file for f in new}))}
+
+    # Recipes from earlier runs (run 2)
+    recipes: dict[str, list[dict]] = defaultdict(list)
+    if mode == "swarm+recipes":
+        rg = Graph(config.RECIPES_GRAPH)
+        for r in await rg.q(Q.RECIPES_FOR, sigs=sorted({f.signature for f in new})):
+            recipes[r["signature"]].append(r)
+
+    # Hypotheses: templates, merged with matching Recipes
+    hyps, unseeded = [], []
+    for f in new:
+        options = {kind: {"kind": kind, "text": text, "recipe_id": None, "prior": 1.0}
+                   for kind, text in templates.for_signature(f.signature)}
+        for r in recipes.get(f.signature, []):
+            prior = 1.0 + math.log(1.0 + (r["support"] or 0))
+            h = options.setdefault(r["kind"], {"kind": r["kind"], "text": r["transform"]})
+            h.update(recipe_id=f"{r['signature']}/{r['kind']}", prior=prior, example=r["example"])
+        if not options:
+            unseeded.append(f.id)
+        for o in options.values():
+            hyps.append({
+                "id": f"{f.id}#{o['kind']}", "failure": f.id, "file": f.file,
+                "signature": f.signature, "kind": o["kind"], "text": o["text"],
+                "recipe_id": o.get("recipe_id"), "example": o.get("example"),
+                "eta": o["prior"] * (1.0 + (pr.get(f.file) or 0.0)),
+                "origin": "recipe" if o.get("recipe_id") else "template",
+            })
+    await g.q(
+        """
+        UNWIND $hs AS h
+        MATCH (f:Failure {id:h.failure}), (file:File {path:h.file})
+        MERGE (x:Hypothesis {id:h.id})
+        ON CREATE SET x.text = h.text, x.kind = h.kind, x.signature = h.signature, x.file = h.file,
+                      x.status = 'open', x.lease_until = 0, x.eta = h.eta, x.recipe_id = h.recipe_id,
+                      x.example = h.example, x.origin = h.origin, x.depth = 0
+        MERGE (f)-[s:SUSPECTS]->(x) ON CREATE SET s.pheromone = $tau0
+        MERGE (x)-[:TOUCHES]->(file)
+        """,
+        hs=hyps, tau0=PARAMS.tau0,
+    )
+    if unseeded:
+        await g.q("UNWIND $ids AS id MATCH (f:Failure {id:id}) SET f.needs_proposal = true", ids=unseeded)
+    await g.q(
+        """
+        MATCH (a:Hypothesis), (b:Hypothesis)
+        WHERE a.signature = b.signature AND a.file <> b.file AND id(a) < id(b)
+        MERGE (a)-[:SAME_SIGNATURE]->(b)
+        """
+    )
+    return hyps, unseeded
+
+
 async def seed(run_id: str, repo: str, worktree: Path, python: Path, mode: str,
                commit: str = "", model: str = "", budget: int = 0) -> dict:
     g = Graph(config.run_graph(run_id))
@@ -90,7 +186,7 @@ async def seed(run_id: str, repo: str, worktree: Path, python: Path, mode: str,
     run = await run_pytest(worktree, python)
     failures = group_failures(worktree, run)
 
-    # Files and imports
+    # Files and imports, then PageRank (agent tool #1): central modules get a higher prior
     files = imports.python_files(worktree)
     await g.q("UNWIND $paths AS p MERGE (:File {path:p, pagerank:0.0})", paths=files)
     edges = imports.scan(worktree)
@@ -98,84 +194,10 @@ async def seed(run_id: str, repo: str, worktree: Path, python: Path, mode: str,
         "UNWIND $edges AS e MATCH (a:File {path:e[0]}), (b:File {path:e[1]}) MERGE (a)-[:IMPORTS]->(b)",
         edges=[list(e) for e in edges],
     )
+    await g.q(Q.PAGERANK)
 
-    # Tests (green and red) with DEFINED_IN
-    tests = sorted(run.passed | run.red_ids)
-    await g.q(
-        """
-        UNWIND $tests AS t
-        MERGE (x:Test {nodeid:t[0]}) SET x.status = t[2]
-        MERGE (f:File {path:t[1]}) ON CREATE SET f.pagerank = 0.0
-        MERGE (x)-[:DEFINED_IN]->(f)
-        """,
-        tests=[[t, t.split("::")[0], "red" if t in run.red_ids else "green"] for t in tests],
-    )
-
-    # Failures with FAILS_WITH and IN
-    await g.q(
-        """
-        UNWIND $fs AS f
-        CREATE (x:Failure {id:f.id, signature:f.signature, file:f.file, line:f.line,
-                           phase:f.phase, message_head:f.message, status:'open'})
-        MERGE (file:File {path:f.file}) ON CREATE SET file.pagerank = 0.0
-        CREATE (x)-[:IN]->(file)
-        WITH x, f
-        UNWIND f.tests AS tid
-        MATCH (t:Test {nodeid:tid})
-        CREATE (t)-[:FAILS_WITH]->(x)
-        """,
-        fs=[f.__dict__ for f in failures],
-    )
-
-    # PageRank (agent tool #1): central modules get a higher prior
-    pr = {r["path"]: r["score"] for r in await g.q(Q.PAGERANK)}
-
-    # Recipes from earlier runs (run 2)
-    recipes: dict[str, list[dict]] = defaultdict(list)
-    if mode == "swarm+recipes":
-        rg = Graph(config.RECIPES_GRAPH)
-        for r in await rg.q(Q.RECIPES_FOR, sigs=sorted({f.signature for f in failures})):
-            recipes[r["signature"]].append(r)
-
-    # Hypotheses: templates, merged with matching Recipes
-    hyps, unseeded = [], []
-    for f in failures:
-        options = {kind: {"kind": kind, "text": text, "recipe_id": None, "prior": 1.0}
-                   for kind, text in templates.for_signature(f.signature)}
-        for r in recipes.get(f.signature, []):
-            prior = 1.0 + math.log(1.0 + (r["support"] or 0))
-            h = options.setdefault(r["kind"], {"kind": r["kind"], "text": r["transform"]})
-            h.update(recipe_id=f"{r['signature']}/{r['kind']}", prior=prior, example=r["example"])
-        if not options:
-            unseeded.append(f.id)
-        for o in options.values():
-            hyps.append({
-                "id": f"{f.id}#{o['kind']}", "failure": f.id, "file": f.file,
-                "signature": f.signature, "kind": o["kind"], "text": o["text"],
-                "recipe_id": o.get("recipe_id"), "example": o.get("example"),
-                "eta": o["prior"] * (1.0 + pr.get(f.file, 0.0)), "origin": "recipe" if o.get("recipe_id") else "template",
-            })
-    await g.q(
-        """
-        UNWIND $hs AS h
-        MATCH (f:Failure {id:h.failure}), (file:File {path:h.file})
-        CREATE (x:Hypothesis {id:h.id, text:h.text, kind:h.kind, signature:h.signature, file:h.file,
-                              status:'open', claimed_by:null, lease_until:0, eta:h.eta,
-                              recipe_id:h.recipe_id, example:h.example, origin:h.origin, depth:0})
-        CREATE (f)-[:SUSPECTS {pheromone:$tau0}]->(x)
-        CREATE (x)-[:TOUCHES]->(file)
-        """,
-        hs=hyps, tau0=PARAMS.tau0,
-    )
-    if unseeded:
-        await g.q("UNWIND $ids AS id MATCH (f:Failure {id:id}) SET f.needs_proposal = true", ids=unseeded)
-    await g.q(
-        """
-        MATCH (a:Hypothesis), (b:Hypothesis)
-        WHERE a.signature = b.signature AND a.file <> b.file AND id(a) < id(b)
-        CREATE (a)-[:SAME_SIGNATURE]->(b)
-        """
-    )
+    await sync_tests(g, run)
+    hyps, unseeded = await add_failures(g, failures, mode)
 
     # WCC (agent tool #2): independent failure clusters spread agents out
     for row in await g.q(Q.WCC):
@@ -187,7 +209,7 @@ async def seed(run_id: str, repo: str, worktree: Path, python: Path, mode: str,
             )
 
     summary = {
-        "tests": len(tests), "red_tests": len(run.red), "failures": len(failures),
+        "tests": len(run.passed | run.red_ids), "red_tests": len(run.red), "failures": len(failures),
         "hypotheses": len(hyps), "unseeded_failures": len(unseeded),
         "files": len(files), "imports": len(edges), "pytest_ms": run.ms,
     }
