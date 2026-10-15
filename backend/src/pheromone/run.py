@@ -5,6 +5,7 @@
 
 import argparse
 import asyncio
+import os
 import time
 from dataclasses import dataclass
 from datetime import datetime
@@ -15,6 +16,7 @@ from pheromone.events import Recorder
 from pheromone.graph import queries as Q
 from pheromone.graph.client import Graph
 from pheromone.repo import worktrees as wt
+from pheromone.repo.bootstrap import TARGETS
 from pheromone.seed.seeder import seed
 from pheromone.swarm import evaporator
 from pheromone.swarm.baseline import BaselineWorker
@@ -42,6 +44,8 @@ async def launch(target: str, mode: str, workers: int, budget: int, minutes: flo
     run_id = f"{target}-{mode.replace('+', '-')}-{datetime.now():%m%d-%H%M%S}"
     repo = TARGETS_DIR / target
     python = repo / ".venv/bin/python"
+    # pytest subprocesses inherit this; one target per process at a time
+    os.environ["PYTEST_ADDOPTS"] = TARGETS[target].pytest_addopts if target in TARGETS else ""
     base = (await wt.git(repo, "rev-parse", "pheromone-base")).strip()
     rec = Recorder(run_id, echo=echo)
     llm = provider()

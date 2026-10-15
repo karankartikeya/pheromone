@@ -27,6 +27,9 @@ class Target:
     source: str  # "gym" or a git URL
     commit: str = ""  # v1 commit for git sources
     requirements: tuple[str, ...] = field(default_factory=tuple)
+    # Same definition of "migrated" for every target: no Pydantic v1 deprecations left.
+    # The gym sets this in its own pytest config; for real repos it is passed here.
+    pytest_addopts: str = ""
 
 
 TARGETS = {
@@ -37,6 +40,7 @@ TARGETS = {
         source="https://github.com/robusta-dev/krr.git",
         commit="c40fe379e12f29d6e82fbe35146069e65d0c7b0b",
         requirements=("-r", "requirements.txt"),
+        pytest_addopts="-W error::pydantic.warnings.PydanticDeprecatedSince20",
     ),
 }
 
