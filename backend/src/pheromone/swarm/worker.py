@@ -17,7 +17,7 @@ from pheromone.graph import queries as Q
 from pheromone.graph.client import Graph
 from pheromone.repo import worktrees as wt
 from pheromone.repo.pytest_runner import run_pytest
-from pheromone.swarm import reporter
+from pheromone.swarm import proposer, reporter
 from pheromone.swarm.llm import PatchRequest, read_files
 from pheromone.swarm.scoring import roulette_order
 
@@ -72,13 +72,15 @@ class Worker:
         await self.beat("reading frontier")
         while self.alive:
             hid = await self.claim_next()
-            if hid is None:
-                work = (await self.g.q(Q.OPEN_WORK))[0]
-                if work["failures"] == 0:
-                    break
-                await asyncio.sleep(1 + self.rng.random())
+            if hid is not None:
+                await self.attempt(hid)
                 continue
-            await self.attempt(hid)
+            if await self.propose_next():
+                continue
+            work = (await self.g.q(Q.OPEN_WORK))[0]
+            if work["failures"] == 0 and self.ctx.merger is not None and not self.ctx.merger.lock.locked():
+                break
+            await asyncio.sleep(1 + self.rng.random())
         if self.id in self.ctx.killed:
             await self.beat("killed")  # lease is NOT released: the evaporator reopens it later
         else:
@@ -93,6 +95,23 @@ class Worker:
                 return row["id"]
             self.ctx.emit({"type": "claim_lost", "agent": self.id, "hypothesis": row["id"]})
         return None
+
+    async def propose_next(self) -> bool:
+        """Frontier empty: claim a failure that needs new ideas and ask the LLM for hypotheses."""
+        now = now_ms()
+        for row in await self.g.q(Q.PROPOSAL_NEEDED, max=proposer.MAX_PROPOSALS, now=now):
+            won = await self.g.q(Q.CLAIM_PROPOSAL, fid=row["id"], now=now, max=proposer.MAX_PROPOSALS,
+                                 lease_ms=PARAMS.lease_ms)
+            if not won:
+                continue
+            await self.beat("proposing", row["id"])
+            await wt.reset(self.tree, self.ctx.run_ref)
+            created, tokens = await proposer.propose(self.g, self.ctx.llm, self.id, self.tree, self.ctx.python, row["id"])
+            self.ctx.budget.used += tokens
+            self.ctx.emit({"type": "proposed", "agent": self.id, "failure": row["id"],
+                           "hypotheses": created, "tokens": tokens})
+            return True
+        return False
 
     async def attempt(self, hid: str) -> None:
         h = (await self.g.q(Q.HYPOTHESIS_CONTEXT, hid=hid))[0]
