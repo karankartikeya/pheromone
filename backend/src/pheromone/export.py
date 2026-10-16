@@ -42,8 +42,32 @@ async def export(run_id: str) -> dict:
         RETURN t.nodeid AS nodeid, t.status AS status, collect(f.id) AS failures
         """
     )
+    # Merge gate evidence: for every file a merged fix touched, the import chains the
+    # blast-radius traversal followed to test files, and how many tests each selected.
+    blast = {}
+    merged_files = {e["file"] for e in edges if e["hypothesis"] in
+                    {a["hypothesis"] for a in attempts if str(a.get("merged")) in ("True", "true")}}
+    for path in sorted(f for f in merged_files if f):
+        chains = await g.ro(
+            """
+            MATCH p = (f:File {path:$path})<-[:IMPORTS*0..3]-(dep:File)
+            WHERE (dep)<-[:DEFINED_IN]-(:Test)
+            RETURN [n IN nodes(p) | n.path] AS chain
+            """,
+            path=path,
+        )
+        tests = await g.ro(
+            """
+            MATCH (f:File {path:$path})<-[:IMPORTS*0..3]-(dep:File)<-[:DEFINED_IN]-(t:Test)
+            RETURN dep.path AS file, count(DISTINCT t) AS tests
+            """,
+            path=path,
+        )
+        blast[path] = {"chains": [r["chain"] for r in chains], "tests": {r["file"]: r["tests"] for r in tests}}
+
     data = {
         "run": run[0]["r"] if run else {"id": run_id},
+        "blast": blast,
         "events": read(RUNS_DIR / f"{run_id}.events.jsonl"),
         "edges": edges,
         "attempts": attempts,
