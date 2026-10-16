@@ -32,3 +32,4 @@ node_modules/
 /runs/*
 !/runs/protocol.txt
 !/runs/protocol_v2.csv
+/VIDEO_SCRIPT.md
