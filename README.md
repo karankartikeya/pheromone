@@ -127,34 +127,95 @@ Model: one model for every agent in every mode (`LLM_MODEL`, default `gpt-6-luna
 
 ## Results
 
-**First measured batch** (Thursday): [`bench/protocol.sh`](bench/protocol.sh), 12 runs. Same target commits, model (`gpt-6-luna`), 6 workers, prompts, templates and merge gate in every run. The token budget is a per-run cap of 2M; no run came close. The gym was run 3 times per mode and krr twice. Recipes were learned only from the gym swarm runs; every krr run used `--no-learn`, so it could not write to the Recipes it was evaluated with. The run order was gym (baseline, swarm alternating), then krr. Every run reached the green criterion: all tests pass with Pydantic deprecation warnings treated as errors (60/60 on the gym, 55/55 on krr). Each run's graph is kept as `run:<id>`; the dashboard's scoreboard shows the same numbers.
+**Measured batch** ([`bench/protocol_v2.py`](bench/protocol_v2.py), code frozen at tag [`measured-v2`](../../tree/measured-v2)): 50 runs, every one ending fully green (60/60 tests on the gym, 55/55 on krr, with Pydantic deprecation warnings treated as errors). Same target commits, model (`gpt-6-luna`), 6 workers, prompts, hypothesis templates and merge gate in every run; the token budget is a per-run cap of 2M that no run came close to. Run order was shuffled within each target. Phase 1 ran the gym 10 times per mode; its Swarm runs wrote the Recipes. Phase 2 ran krr 5 times per mode with `--no-learn`, so the Recipes it was evaluated with stayed frozen. The per-run log with commit, start/end time and exit code is [`runs/protocol_v2.csv`](runs/protocol_v2.csv); every run's graph is kept as `run:<id>` and can be [queried on FalkorDB Cloud](#query-the-real-graphs-yourself).
+
+Four modes, from no coordination to full memory:
+
+- **Baseline**: independent agents. Each learns the failures by running the tests itself and keeps a private list; no shared claims, history or pheromone.
+- **Coordinated** (ablation): shared graph, claims, leases and attempt history, but pheromone never influences which hypothesis an agent picks.
+- **Swarm**: Coordinated plus pheromone-weighted selection.
+- **Swarm + Recipes**: Swarm plus hypotheses seeded from Recipes learned on the gym.
 
 Medians, with min–max:
 
 | Target | Mode | Tokens | Time to green | Collisions | Wasted attempts |
 | --- | --- | --- | --- | --- | --- |
-| gym (37 red tests at start) | Baseline (independent agents) | 176k (123k–192k) | 191 s (133–210) | 131 (98–159) | 71 (54–71) |
-| gym | **Swarm** | **50k** (46k–51k) | **61 s** (61–64) | **9** (6–11) | **11** (6–12) |
-| krr (one import error blocks all 55 tests) | Baseline (independent agents) | 231k (173k–290k) | 245 s (222–267) | 92 (86–97) | 36 (33–39) |
-| krr | **Swarm** | **94k** (67k–120k) | 231 s (199–264) | **8** (5–11) | **5.5** (3–8) |
-| krr | Swarm + Recipes | 91k (62k–119k) | 217 s (190–244) | 9 (5–12) | 6.5 (3–10) |
+| gym (37 red tests at start) | Baseline | 150k (124k–194k) | 166 s (135–262) | 124 (111–148) | 64 (54–74) |
+| gym | **Coordinated** | **47k** (44k–50k) | **72 s** (66–83) | **7** (6–9) | **7.5** (6–9) |
+| gym | **Swarm** | **48k** (46k–54k) | **73 s** (70–85) | **8** (5–13) | **8.5** (6–13) |
+| krr (one import error blocks all 55 tests) | Baseline | 178k (168k–287k) | 243 s (231–270) | 88 (77–100) | 34 (31–40) |
+| krr | **Coordinated** | **121k** (64k–136k) | **207 s** (194–275) | **11** (5–11) | **8** (3–9) |
+| krr | **Swarm** | **119k** (117k–129k) | **205 s** (186–211) | **13** (11–13) | **8** (7–10) |
+| krr | Swarm + Recipes | 101k (63k–133k) | 253 s (187–450) | 5 (5–12) | 3 (3–10) |
 
-Every run:
+<details>
+<summary>All 50 runs</summary>
 
-| Run | Target | Mode | Tests green | Tokens | Time to green | Attempts | Wasted | Collisions | Proposals | Recipe share |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `gym-baseline-1015-184132` | gym | baseline | 60/60 | 176,204 | 191 s | 110 | 71 | 159 | 72 | – |
-| `gym-baseline-1015-184547` | gym | baseline | 60/60 | 122,508 | 133 s | 89 | 54 | 98 | 45 | – |
-| `gym-baseline-1015-184906` | gym | baseline | 60/60 | 192,340 | 210 s | 111 | 71 | 131 | 76 | – |
-| `gym-swarm-1015-184444` | gym | swarm | 60/60 | 46,292 | 61 s | 42 | 6 | 6 | 9 | – |
-| `gym-swarm-1015-184801` | gym | swarm | 60/60 | 50,617 | 64 s | 47 | 12 | 11 | 8 | – |
-| `gym-swarm-1015-185238` | gym | swarm | 60/60 | 49,608 | 61 s | 46 | 11 | 9 | 8 | – |
-| `krr-baseline-1015-185340` | krr | baseline | 55/55 | 289,901 | 267 s | 50 | 39 | 97 | 6 | – |
-| `krr-baseline-1015-190541` | krr | baseline | 55/55 | 172,764 | 222 s | 42 | 33 | 86 | 0 | – |
-| `krr-swarm-1015-185816` | krr | swarm | 55/55 | 120,228 | 199 s | 22 | 8 | 11 | 1 | – |
-| `krr-swarm-1015-190930` | krr | swarm | 55/55 | 67,237 | 264 s | 14 | 3 | 5 | 1 | – |
-| `krr-swarm-recipes-1015-190136` | krr | swarm+recipes | 55/55 | 62,285 | 244 s | 13 | 3 | 5 | 1 | 70% |
-| `krr-swarm-recipes-1015-191354` | krr | swarm+recipes | 55/55 | 118,773 | 190 s | 23 | 10 | 12 | 2 | 67% |
+| Run | Target | Mode | Tests green | Tokens | Time to green | Attempts | Wasted | Collisions | Recipe share |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `gym-baseline-1016-135331` | gym | baseline | 60/60 | 160,397 | 206 s | 101 | 62 | 111 | – |
+| `gym-baseline-1016-135814` | gym | baseline | 60/60 | 151,459 | 194 s | 111 | 74 | 143 | – |
+| `gym-baseline-1016-141323` | gym | baseline | 60/60 | 194,468 | 262 s | 110 | 70 | 127 | – |
+| `gym-baseline-1016-141748` | gym | baseline | 60/60 | 136,101 | 154 s | 94 | 58 | 118 | – |
+| `gym-baseline-1016-142026` | gym | baseline | 60/60 | 150,852 | 164 s | 104 | 67 | 121 | – |
+| `gym-baseline-1016-142314` | gym | baseline | 60/60 | 123,759 | 135 s | 93 | 58 | 122 | – |
+| `gym-baseline-1016-142642` | gym | baseline | 60/60 | 182,529 | 213 s | 114 | 74 | 148 | – |
+| `gym-baseline-1016-143018` | gym | baseline | 60/60 | 128,961 | 149 s | 91 | 54 | 123 | – |
+| `gym-baseline-1016-143359` | gym | baseline | 60/60 | 133,366 | 143 s | 97 | 62 | 144 | – |
+| `gym-baseline-1016-144447` | gym | baseline | 60/60 | 149,375 | 168 s | 103 | 65 | 125 | – |
+| `gym-coordinated-1016-135153` | gym | coordinated | 60/60 | 46,626 | 71 s | 42 | 7 | 7 | – |
+| `gym-coordinated-1016-135700` | gym | coordinated | 60/60 | 48,135 | 71 s | 44 | 9 | 9 | – |
+| `gym-coordinated-1016-140130` | gym | coordinated | 60/60 | 45,540 | 79 s | 43 | 8 | 8 | – |
+| `gym-coordinated-1016-140924` | gym | coordinated | 60/60 | 49,463 | 83 s | 46 | 8 | 8 | – |
+| `gym-coordinated-1016-141048` | gym | coordinated | 60/60 | 47,740 | 76 s | 45 | 9 | 8 | – |
+| `gym-coordinated-1016-141206` | gym | coordinated | 60/60 | 50,054 | 75 s | 43 | 7 | 6 | – |
+| `gym-coordinated-1016-143250` | gym | coordinated | 60/60 | 46,558 | 68 s | 42 | 7 | 6 | – |
+| `gym-coordinated-1016-143737` | gym | coordinated | 60/60 | 46,762 | 68 s | 43 | 8 | 7 | – |
+| `gym-coordinated-1016-144112` | gym | coordinated | 60/60 | 44,000 | 66 s | 41 | 6 | 6 | – |
+| `gym-coordinated-1016-144219` | gym | coordinated | 60/60 | 48,758 | 72 s | 43 | 7 | 7 | – |
+| `gym-swarm-1016-140251` | gym | swarm | 60/60 | 48,538 | 78 s | 46 | 11 | 11 | – |
+| `gym-swarm-1016-140410` | gym | swarm | 60/60 | 52,783 | 76 s | 48 | 13 | 12 | – |
+| `gym-swarm-1016-140528` | gym | swarm | 60/60 | 48,169 | 85 s | 43 | 6 | 6 | – |
+| `gym-swarm-1016-140654` | gym | swarm | 60/60 | 48,081 | 76 s | 44 | 9 | 8 | – |
+| `gym-swarm-1016-140810` | gym | swarm | 60/60 | 46,574 | 73 s | 41 | 6 | 5 | – |
+| `gym-swarm-1016-142531` | gym | swarm | 60/60 | 51,045 | 70 s | 48 | 13 | 13 | – |
+| `gym-swarm-1016-143624` | gym | swarm | 60/60 | 47,535 | 71 s | 44 | 7 | 7 | – |
+| `gym-swarm-1016-143846` | gym | swarm | 60/60 | 47,398 | 70 s | 43 | 8 | 8 | – |
+| `gym-swarm-1016-143957` | gym | swarm | 60/60 | 53,835 | 74 s | 48 | 11 | 11 | – |
+| `gym-swarm-1016-144333` | gym | swarm | 60/60 | 46,394 | 72 s | 44 | 8 | 6 | – |
+| `krr-baseline-1016-150219` | krr | baseline | 55/55 | 177,509 | 231 s | 41 | 31 | 83 | – |
+| `krr-baseline-1016-150618` | krr | baseline | 55/55 | 286,898 | 270 s | 50 | 40 | 100 | – |
+| `krr-baseline-1016-151532` | krr | baseline | 55/55 | 285,834 | 267 s | 49 | 39 | 100 | – |
+| `krr-baseline-1016-154636` | krr | baseline | 55/55 | 167,654 | 243 s | 40 | 31 | 77 | – |
+| `krr-baseline-1016-160251` | krr | baseline | 55/55 | 177,218 | 232 s | 43 | 34 | 88 | – |
+| `krr-coordinated-1016-144737` | krr | coordinated | 55/55 | 136,493 | 212 s | 23 | 7 | 11 | – |
+| `krr-coordinated-1016-151056` | krr | coordinated | 55/55 | 63,953 | 275 s | 13 | 3 | 5 | – |
+| `krr-coordinated-1016-152346` | krr | coordinated | 55/55 | 121,406 | 195 s | 22 | 9 | 11 | – |
+| `krr-coordinated-1016-153908` | krr | coordinated | 55/55 | 117,687 | 194 s | 22 | 9 | 11 | – |
+| `krr-coordinated-1016-154255` | krr | coordinated | 55/55 | 130,453 | 207 s | 22 | 8 | 10 | – |
+| `krr-swarm-1016-145849` | krr | swarm | 55/55 | 117,421 | 205 s | 22 | 7 | 13 | – |
+| `krr-swarm-1016-153157` | krr | swarm | 55/55 | 118,698 | 186 s | 22 | 8 | 11 | – |
+| `krr-swarm-1016-155047` | krr | swarm | 55/55 | 116,834 | 211 s | 23 | 8 | 13 | – |
+| `krr-swarm-1016-155844` | krr | swarm | 55/55 | 128,747 | 205 s | 22 | 8 | 11 | – |
+| `krr-swarm-1016-160651` | krr | swarm | 55/55 | 118,921 | 205 s | 23 | 10 | 13 | – |
+| `krr-swarm-recipes-1016-145119` | krr | swarm+recipes | 55/55 | 118,743 | 450 s | 20 | 3 | 5 | 73% |
+| `krr-swarm-recipes-1016-152006` | krr | swarm+recipes | 55/55 | 132,877 | 197 s | 22 | 9 | 10 | 89% |
+| `krr-swarm-recipes-1016-152718` | krr | swarm+recipes | 55/55 | 78,716 | 279 s | 14 | 3 | 5 | 73% |
+| `krr-swarm-recipes-1016-153547` | krr | swarm+recipes | 55/55 | 101,288 | 187 s | 23 | 10 | 12 | 89% |
+| `krr-swarm-recipes-1016-155431` | krr | swarm+recipes | 55/55 | 62,885 | 253 s | 13 | 3 | 5 | 80% |
+
+</details>
+
+**What this shows:**
+
+- **Shared state through the graph carries the result.** Against independent agents, the coordinated modes used 68–69% fewer tokens on the gym and 32–33% fewer on krr, reached green 56–57% faster on the gym and 15–16% faster on krr, and collided about ten times less often.
+- **Pheromone-weighted selection added nothing measurable on these targets.** Coordinated and Swarm are within each other's range on every metric, on both repos. The gains come from shared claims, leases and attempt history, not from reinforcement. On failures this easy for the model (almost every attempt passes), there is little for pheromone to choose between; whether it helps on harder targets, where many attempts fail, is untested.
+- **Recipes are inconclusive.** Recipe-seeded hypotheses produced 80% of the merged krr fixes (73–89%), and median tokens were 15% lower than Swarm, but the ranges overlap and one run was slow (450 s), so median time was worse. Five runs per mode can't settle it.
+- **Limits.** Two targets, one of them written for this project; the gym served as the development benchmark (`sibling_weight` was tuned while watching gym runs), krr as the check on a repo we did not tune on. Tests decide what is "fixed", so a migration is only as verified as the target's tests.
+
+**Concurrency.** [`bench/stress_claims.py`](bench/stress_claims.py) runs 30 agents for 60 s against the real claim and report queries, with 800 ms leases and agents that deliberately stall past them. Result ([`bench/results/stress_30x60.json`](bench/results/stress_30x60.json)): 274 claims won, 91 races lost, 8 forced takeovers, 22 stale reports rejected; **0 double claims, 0 reports accepted after a takeover, and 0 pheromone mismatches** against an exact replay of the accepted reports. Claim latency 0.8 ms median, 9.6 ms p95. At this load FalkorDB's default query queue (25) rejects the overflow ("Max pending queries exceeded", 526 times), which the agents absorb with jittered backoff; the 6-agent swarm never came close.
+
+**First batch** (Thursday, 12 runs, [`bench/protocol.sh`](bench/protocol.sh)): Baseline vs Swarm only, 3 gym and 2 krr runs per mode, run on an earlier version of the code. It pointed the same way (gym tokens 176k → 50k, krr 231k → 94k) and is superseded by the batch above.
 
 **Metric definitions** (computed by [`metrics.py`](backend/src/pheromone/metrics.py) from the event log and the attempts stored in each run graph):
 
@@ -164,11 +225,21 @@ Every run:
 - **Wasted attempts**: passing patches for a failure another agent had already fixed (superseded), plus attempts that repeated a diff or a hypothesis that had already failed.
 - **Recipe share**: share of merged fixes whose hypothesis was seeded from a Recipe. It says where the winning hypothesis came from, not that the run needed it.
 
-**Reading these numbers.** In these runs, coordinated agents used 59–72% fewer tokens than independent agents (medians) and recorded far fewer collisions and wasted attempts. On the gym, where failures are independent, median time to green was also 68% lower. On krr it was only 6% lower: krr's failures form a chain where each fix reveals the next layer, so every layer waits for a merge and a full test run whichever mode runs it. With 3 and 2 runs per mode these are preliminary, descriptive results. They don't show that the approach generalizes, and the baseline compares the whole coordination system against independent agents: it does not separate shared claims from pheromone-weighted ranking, or a graph from other shared stores. Recipe-seeded hypotheses produced about two thirds of the merged krr fixes, but their effect on cost and time was within the swarm's own range over two runs, so it is inconclusive.
+**Parameters.** α = 1, β = 2, τ0 = 0.5, τ_min = 0.05, evaporation ×0.95 every 10 s, lease 120 s, retirement after 3 failed or duplicate attempts, `sibling_weight` = 10. η = template prior (1, or 1 + ln(1 + support) for Recipe-seeded hypotheses) × (1 + PageRank of the file).
 
-**Parameters.** α = 1, β = 2, τ0 = 0.5, τ_min = 0.05, evaporation ×0.95 every 10 s, lease 120 s, retirement after 3 failed or duplicate attempts. η = template prior (1, or 1 + ln(1 + support) for Recipe-seeded hypotheses) × (1 + PageRank of the file). These are starting values from the plan except `sibling_weight = 10`, which was chosen after watching gym runs; treat the gym as the development benchmark and krr as the check on a repo we did not tune on.
+**krr vs the human migration.** In the measured swarm runs on krr the final diff touches 7 files; human PR #512 touches 8 (+33/−21). Similar file counts don't establish equal quality. Two concrete differences: the swarm runs also replaced a deprecated `result.json(indent=2)` in `formatters/json.py` that the PR left in place, and the PR changed a mutable default and an `__init__` override that no test exercises, which the swarm left alone.
 
-**krr vs the human migration.** In all four measured swarm runs on krr the final diff touches 7 files (+26, −17 to −19); human PR #512 touches 8 (+33/−21). Similar file counts don't establish equal quality. Two concrete differences: every swarm run also replaced a deprecated `result.json(indent=2)` in `formatters/json.py` that the PR left in place, and the PR changed a mutable default and an `__init__` override that no test exercises, which the swarm left alone.
+## Query the real graphs yourself
+
+All 50 measured run graphs and the shared `recipes` graph are on FalkorDB Cloud, with a read-only user. Read-only users must use `GRAPH.RO_QUERY`:
+
+```bash
+redis-cli -h r-6jissuruar.instance-9l47qt9zq.hc-7up0crkyn.ap-south-1.aws.f2e0a955bb84.cloud -p 55194 --user demo_user --pass demo123 \
+  GRAPH.RO_QUERY "run:krr-swarm-1016-160651" \
+  "MATCH (ag:Agent)-[:MADE]->(a:Attempt {merged:true})-[:TESTED]->(h:Hypothesis)<-[:SUSPECTS]-(f:Failure) RETURN f.signature, h.kind, ag.id ORDER BY a.at"
+```
+
+`GRAPH.LIST` shows every graph; the queries in [`docs/QUERIES.md`](docs/QUERIES.md) run as they are (the read-only ones). To ask in plain language instead, point an MCP client at the same instance: [`docs/MCP.md`](docs/MCP.md) has a read-only FalkorDB MCP setup and questions to try.
 
 ## Honest notes
 
