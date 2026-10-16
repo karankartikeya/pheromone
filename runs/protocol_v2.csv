@@ -1,0 +1,8 @@
+commit,phase,target,mode,seed,start,end,run_id,exit
+9d8b4f0,smoke,gym,swarm,1,2026-10-16T05:26:28+00:00,2026-10-16T05:28:23+00:00,gym-swarm-1016-072628,0
+6cd06ba,smoke,gym,coordinated,1,2026-10-16T05:28:23+00:00,2026-10-16T05:30:26+00:00,gym-coordinated-1016-072823,0
+6cd06ba,smoke,gym,baseline,1,2026-10-16T05:30:26+00:00,2026-10-16T05:34:36+00:00,gym-baseline-1016-073026,0
+e62ee2f,smoke,krr,swarm+recipes,1,2026-10-16T05:34:36+00:00,2026-10-16T05:40:17+00:00,krr-swarm-recipes-1016-073436,0
+e62ee2f,smoke,krr,baseline,1,2026-10-16T05:40:17+00:00,2026-10-16T05:49:16+00:00,krr-baseline-1016-074018,0
+e62ee2f,smoke,krr,coordinated,1,2026-10-16T05:49:16+00:00,2026-10-16T05:54:44+00:00,krr-coordinated-1016-074916,0
+e62ee2f,smoke,krr,swarm,1,2026-10-16T05:54:44+00:00,2026-10-16T06:00:46+00:00,krr-swarm-1016-075444,0
