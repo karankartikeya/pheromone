@@ -31,6 +31,8 @@ RECIPE_INDEXES = [
 #    and a short list would hand all agents the same candidates. Failures with
 #    a passing hypothesis waiting in the merge queue are skipped (if the merge
 #    is rejected, the hypothesis reopens and the failure comes back).
+#    $use_tau = false is the "coordinated" ablation: same query, but the top-12
+#    cut is random, so pheromone cannot decide which hypotheses are eligible.
 FRONTIER = """
 MATCH (f:Failure {status:'open'})-[s:SUSPECTS]->(h:Hypothesis {status:'open'})
 WHERE NOT (f)-[:SUSPECTS]->(:Hypothesis {status:'fixed'})
@@ -41,7 +43,7 @@ WITH h, max(s.pheromone) AS tau, count(DISTINCT a) AS tries,
      count(DISTINCT o) AS crowd, count(DISTINCT sib) AS siblings
 RETURN h.id AS id, h.text AS text, h.kind AS kind, h.signature AS signature,
        h.file AS file, h.eta AS eta, h.cluster AS cluster, tau, tries, crowd, siblings
-ORDER BY tau DESC
+ORDER BY CASE WHEN $use_tau THEN tau ELSE rand() END DESC
 LIMIT $limit
 """
 

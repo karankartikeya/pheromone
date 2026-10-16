@@ -87,7 +87,10 @@ class Worker:
             await self.beat("done")
 
     async def claim_next(self) -> str | None:
-        rows = await self.g.q(Q.FRONTIER, limit=PARAMS.frontier_limit)
+        use_tau = self.ctx.mode != "coordinated"
+        rows = await self.g.q(Q.FRONTIER, limit=PARAMS.frontier_limit, use_tau=use_tau)
+        if not use_tau:  # ablation: identical scheduler, pheromone held constant
+            rows = [{**r, "tau": PARAMS.tau0} for r in rows]
         for row in roulette_order(rows, self.rng):
             won = await self.g.q(Q.CLAIM, hid=row["id"], agent=self.id, now=now_ms(), lease_ms=PARAMS.lease_ms)
             if won:

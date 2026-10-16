@@ -151,3 +151,18 @@ async def test_regressed_failure_reopens_its_fixed_hypotheses(g):
     assert rows[0]["reopened"] == ["h1"]
     rows = await g.q(Q.REOPEN_REGRESSED, ids=["other"])
     assert rows[0]["reopened"] == []
+
+
+async def test_frontier_ablation_ignores_pheromone(g):
+    for i in range(20):
+        await g.q(
+            """
+            CREATE (:Failure {id:$f, signature:'s', status:'open'})-[:SUSPECTS {pheromone:$tau}]->
+                   (:Hypothesis {id:$h, status:'open', signature:'s', eta:1.0})
+            """,
+            f=f"f{i}", h=f"h{i}", tau=float(i),
+        )
+    ranked = await g.q(Q.FRONTIER, limit=12, use_tau=True)
+    assert [r["id"] for r in ranked][:3] == ["h19", "h18", "h17"]
+    firsts = {(await g.q(Q.FRONTIER, limit=12, use_tau=False))[0]["id"] for _ in range(15)}
+    assert len(firsts) > 3  # random cut: the strongest trail is not always on top

@@ -24,7 +24,8 @@ from pheromone.swarm.llm import provider
 from pheromone.swarm.merger import Merger
 from pheromone.swarm.worker import Budget, RunCtx, Worker
 
-MODES = ("baseline", "swarm", "swarm+recipes")
+# coordinated = shared graph, claims and leases, but pheromone never influences selection (ablation)
+MODES = ("baseline", "coordinated", "swarm", "swarm+recipes")
 
 
 @dataclass
