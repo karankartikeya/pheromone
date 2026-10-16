@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import BlastRadius from "@/components/BlastRadius";
 import { fetchIndex, fetchRun, fmt } from "@/lib/data";
 import type { Attempt, RunExport, RunIndex } from "@/lib/types";
 
@@ -133,6 +134,7 @@ function TrailsView() {
                   </li>
                 ))}
               </ol>
+              {edge?.file && <BlastRadius file={edge.file} blast={data?.blast?.[edge.file]} />}
               <div className="grid gap-4 xl:grid-cols-[1fr_420px]">
                 {winner?.diff ? <Diff text={winner.diff} /> : <p className="text-sm text-faint">No merged diff for this failure.</p>}
                 <div className="space-y-3">

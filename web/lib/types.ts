@@ -34,8 +34,11 @@ export type Attempt = {
 
 export type TestRow = { nodeid: string; status: string; failures: string[] };
 
+export type Blast = { chains: string[][]; tests: Record<string, number> };
+
 export type RunExport = {
   run: Record<string, unknown> & { id: string; mode?: string; model?: string; repo?: string };
+  blast?: Record<string, Blast>;
   events: RunEvent[];
   edges: Edge[];
   attempts: Attempt[];
