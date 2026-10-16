@@ -81,6 +81,17 @@ RETURN a.id AS id, count(s) AS edges, h.status AS status
 
 **Frontier**, **evaporation**, **lease release**, **blast radius** (`IMPORTS*0..3`), **crystallization**, **the trail behind a fix**, **PageRank** and **WCC** are in [`docs/QUERIES.md`](docs/QUERIES.md).
 
+**One agent attempt, in queries** (counted from [`worker.py`](backend/src/pheromone/swarm/worker.py) and [`reporter.py`](backend/src/pheromone/swarm/reporter.py)):
+
+| Step | Queries | What one query covers |
+| --- | --- | --- |
+| Choose work | 1 frontier read + 1 claim (+1 per lost race) | pheromone, attempts, crowding, claimed siblings, pending merges; compare-and-set with lease |
+| Gather context | 4 reads | hypothesis and failure, prior attempts (the handoff history), failing tests, blast radius over `IMPORTS*0..3` |
+| Duplicate check | 1 read | has this exact diff already failed anywhere |
+| Report | 1 write + up to 3 link writes | Attempt node, Agent/Hypothesis edges, status, retirement and the pheromone deposit on every `SUSPECTS` edge, atomically, guarded against stale owners |
+
+The context reads were one query until a FalkorDB crash forced a split (see Honest notes). Heartbeats for the dashboard add a few writes per attempt.
+
 Two FalkorDB facts shaped every query: writes to a graph are serialized and each query is atomic, but there are no multi-query transactions, so every coordination step is one compare-and-set query; and `SET`/`CREATE` run on every matched row even if a `LIMIT` comes later, so no write relies on `LIMIT`.
 
 ## Targets
