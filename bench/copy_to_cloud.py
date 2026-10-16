@@ -6,6 +6,10 @@ Credentials come from backend/.env: FALKORDB_CLOUD_HOST, FALKORDB_CLOUD_PORT, FA
 (and optionally FALKORDB_CLOUD_USERNAME). Graphs are rebuilt with plain Cypher rather than DUMP/RESTORE,
 so the copy does not depend on both servers running the same FalkorDB version. Node and edge counts
 are compared after each copy.
+
+The copies carry no indexes: judges run small read-only queries on ~200-node graphs, and on a
+free 100 MB instance 51 graphs with nine indexes each used most of the memory. The temporary
+_cid indexes used while copying edges are dropped at the end.
 """
 
 import asyncio
@@ -16,7 +20,6 @@ from falkordb.asyncio import FalkorDB
 
 from pheromone import config  # loads backend/.env
 from pheromone.graph.client import Graph
-from pheromone.graph.queries import INDEXES, RECIPE_INDEXES
 
 BATCH = 500
 
@@ -45,11 +48,6 @@ async def copy(name: str, dst_db: FalkorDB, prefix: str = "") -> None:
         await dst.delete()
     except Exception:
         pass
-    for stmt in RECIPE_INDEXES if name == "recipes" else INDEXES:
-        try:
-            await dst.query(stmt)
-        except Exception:
-            pass
     by_label: dict[str, list] = {}
     for n in nodes:
         by_label.setdefault(n["label"], []).append({"cid": n["id"], "props": n["props"]})
@@ -74,6 +72,11 @@ async def copy(name: str, dst_db: FalkorDB, prefix: str = "") -> None:
                 f"CREATE (a)-[e:`{etype}`]->(b) SET e = r.props",
                 {"rows": rows[i:i + BATCH]})
     await dst.query("MATCH (n) REMOVE n._cid")
+    for label in by_label:
+        try:
+            await dst.query(f"DROP INDEX ON :`{label}`(_cid)")
+        except Exception:
+            pass
     got_n = (await dst.ro_query("MATCH (n) RETURN count(n)")).result_set[0][0]
     got_e = (await dst.ro_query("MATCH ()-[e]->() RETURN count(e)")).result_set[0][0]
     status = "ok" if (got_n, got_e) == (len(nodes), len(edges)) else "MISMATCH"
