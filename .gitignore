@@ -27,3 +27,7 @@ node_modules/
 .DS_Store
 .gstack/
 /BLOG_DRAFT.md
+
+# local run logs (published copies live in web/public/runs)
+/runs/*
+!/runs/protocol.txt
