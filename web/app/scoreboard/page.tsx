@@ -5,13 +5,15 @@ import { fetchIndex, fmt } from "@/lib/data";
 import type { Metrics, RunIndex } from "@/lib/types";
 
 const MODES = [
-  { key: "baseline", title: "Baseline", note: "no shared graph" },
-  { key: "swarm", title: "Swarm", note: "graph on" },
+  { key: "baseline", title: "Baseline", note: "independent agents" },
+  { key: "coordinated", title: "Coordinated", note: "graph + claims, no pheromone" },
+  { key: "swarm", title: "Swarm", note: "graph + pheromone" },
   { key: "swarm+recipes", title: "Swarm + Recipes", note: "recipes from earlier runs" },
 ] as const;
 
 const COLORS: Record<string, { stroke: string; dash?: string }> = {
   baseline: { stroke: "var(--muted)" },
+  coordinated: { stroke: "var(--blue)" },
   swarm: { stroke: "var(--amber)" },
   "swarm+recipes": { stroke: "var(--text)", dash: "6 5" },
 };
@@ -137,7 +139,7 @@ export default function Scoreboard() {
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
         {MODES.map((m) => {
           const g = groups[m.key];
           const hot = m.key === "swarm";

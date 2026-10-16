@@ -12,6 +12,7 @@ const REPOS = [
 ];
 const MODES = [
   { key: "baseline", label: "Baseline", sub: "no graph" },
+  { key: "coordinated", label: "Coordinated", sub: "no pheromone" },
   { key: "swarm", label: "Swarm", sub: "" },
   { key: "swarm+recipes", label: "Swarm + Recipes", sub: "" },
 ];
@@ -97,7 +98,7 @@ export default function Launch() {
         </div>
 
         <p className="mt-8 font-mono text-xs tracking-widest text-muted">02 · MODE</p>
-        <div className="mt-3 grid grid-cols-1 gap-1 rounded-2xl border border-line bg-panel p-1.5 sm:grid-cols-3">
+        <div className="mt-3 grid grid-cols-1 gap-1 rounded-2xl border border-line bg-panel p-1.5 sm:grid-cols-2 lg:grid-cols-4">
           {MODES.map((m) => (
             <button key={m.key} onClick={() => setMode(m.key)}
                     className={`rounded-xl px-4 py-3 ${mode === m.key ? "bg-[#2a2216] text-amber" : "text-text"}`}>
