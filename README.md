@@ -12,14 +12,15 @@ Built for WeMakeDevs **Graph Hacks** (FalkorDB). Tracks: **Track 02, Agent Memor
 
 ## Why a graph
 
-Run six LLM agents on the same failing test suite without shared memory and they collide: they patch the same file at once, repeat each other's dead ends and redo work someone already finished. Pheromone puts the coordination in the data instead of in a planner:
+Independent coding agents working on the same red test suite need *some* coordination mechanism: without one they patch the same file at once, repeat each other's dead ends and redo fixes someone already made. Pheromone's coordination mechanism is shared, evidence-weighted state with no planner, and the state it coordinates on is a web of relations: failures, candidate fixes, attempts, agents, tests, files and the imports between them. A key-value store could hold the same state with enough extra indexes and scripts; in a graph those relations are represented directly, each coordination step is one atomic query, and the reasoning behind every decision can be inspected as a path.
 
-- **Claims are a compare-and-set** on a Hypothesis node with a lease. No agent assigns work; an expired lease is how work is handed off.
-- **Pheromone lives on edges.** `(:Failure)-[:SUSPECTS {pheromone}]->(:Hypothesis)` is reinforced only by deterministic test results and evaporates over time, so dead ends fade and fixes that work get chosen again.
-- **The graph knows the code.** `File-[:IMPORTS]->File` edges give every patch a multi-hop blast radius that must stay green before it merges. PageRank weights central modules; WCC clusters spread agents out.
-- **Memory outlives the run.** Repeated wins become Recipes in a separate `recipes` graph; a later run seeds its hypotheses from them.
+- **Claims are a compare-and-set** on a Hypothesis node with a lease. No agent assigns work; an expired lease is how work is handed off, with the full attempt history attached.
+- **Pheromone lives on edges.** `(:Failure)-[:SUSPECTS {pheromone}]->(:Hypothesis)` is changed only by deterministic test results and evaporates over time, so dead ends fade and fixes that work are chosen again.
+- **Picking work is one read across relations:** pheromone on the edge, past attempts, agents holding same-signature fixes in other files, claimed sibling fixes, and fixes waiting to merge.
+- **The graph knows the code.** `File-[:IMPORTS]->File` gives every patch a multi-hop blast radius (`IMPORTS*0..3`) of tests that must stay green before it merges. PageRank over imports weights central modules; WCC groups independent failures.
+- **Memory outlives the run.** Repeated wins become Recipes in a separate `recipes` graph that a later run, on another repo, seeds hypotheses from.
 
-The **Baseline** mode is the ablation: the same agents, model, budget and hypothesis templates, with every graph read taken away. Each baseline agent learns the failures from the test suite itself and keeps its own private candidate list. The scoreboard compares the two on the same repo.
+**Baseline** is the comparison: the same agents, model, budget, hypothesis templates, prompts and merge gate, with every graph read removed. Each baseline agent learns the failures by running the test suite itself and keeps a private candidate list, so it has no shared claims, pheromone or attempt history. It answers "does this coordination system beat independent agents?". It does not isolate graph storage from shared state in general (see [Results](#results)).
 
 ## How a run works
 
@@ -115,25 +116,48 @@ Model: one model for every agent in every mode (`LLM_MODEL`, default `gpt-6-luna
 
 ## Results
 
-Measured with [`bench/protocol.sh`](bench/protocol.sh): same repo, commit, model (`gpt-6-luna`), 6 workers and 2M-token budget for every run. The gym was run 3 times per mode, krr twice. Swarm runs on the gym wrote the Recipes; every krr run used `--no-learn` so it could not feed the Recipes it was tested with. Numbers are medians with the min–max range; the dashboard's scoreboard shows the same data, and each run's graph is kept as `run:<id>`. Every one of the 12 runs ended fully green.
+**First measured batch** (Thursday): [`bench/protocol.sh`](bench/protocol.sh), 12 runs. Same target commits, model (`gpt-6-luna`), 6 workers, prompts, templates and merge gate in every run. The token budget is a per-run cap of 2M; no run came close. The gym was run 3 times per mode and krr twice. Recipes were learned only from the gym swarm runs; every krr run used `--no-learn`, so it could not write to the Recipes it was evaluated with. The run order was gym (baseline, swarm alternating), then krr. Every run reached the green criterion: all tests pass with Pydantic deprecation warnings treated as errors (60/60 on the gym, 55/55 on krr). Each run's graph is kept as `run:<id>`; the dashboard's scoreboard shows the same numbers.
+
+Medians, with min–max:
 
 | Target | Mode | Tokens | Time to green | Collisions | Wasted attempts |
 | --- | --- | --- | --- | --- | --- |
-| gym (37 red tests) | Baseline, no graph | 176k (123k–192k) | 191 s (133–210) | 131 (98–159) | 71 (54–71) |
+| gym (37 red tests at start) | Baseline (independent agents) | 176k (123k–192k) | 191 s (133–210) | 131 (98–159) | 71 (54–71) |
 | gym | **Swarm** | **50k** (46k–51k) | **61 s** (61–64) | **9** (6–11) | **11** (6–12) |
-| krr (suite blocked at import) | Baseline, no graph | 231k (173k–290k) | 245 s (222–267) | 92 (86–97) | 36 (33–39) |
+| krr (one import error blocks all 55 tests) | Baseline (independent agents) | 231k (173k–290k) | 245 s (222–267) | 92 (86–97) | 36 (33–39) |
 | krr | **Swarm** | **94k** (67k–120k) | 231 s (199–264) | **8** (5–11) | **5.5** (3–8) |
 | krr | Swarm + Recipes | 91k (62k–119k) | 217 s (190–244) | 9 (5–12) | 6.5 (3–10) |
 
-_Collisions: two agents patching the same file at overlapping times. Wasted attempts: passes on a failure another agent had already fixed, plus repeats of a diff or hypothesis that had already failed. All runs ended 60/60 green on the gym and 55/55 on krr._
+Every run:
 
-What this shows, and what it doesn't:
+| Run | Target | Mode | Tests green | Tokens | Time to green | Attempts | Wasted | Collisions | Proposals | Recipe share |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `gym-baseline-1015-184132` | gym | baseline | 60/60 | 176,204 | 191 s | 110 | 71 | 159 | 72 | – |
+| `gym-baseline-1015-184547` | gym | baseline | 60/60 | 122,508 | 133 s | 89 | 54 | 98 | 45 | – |
+| `gym-baseline-1015-184906` | gym | baseline | 60/60 | 192,340 | 210 s | 111 | 71 | 131 | 76 | – |
+| `gym-swarm-1015-184444` | gym | swarm | 60/60 | 46,292 | 61 s | 42 | 6 | 6 | 9 | – |
+| `gym-swarm-1015-184801` | gym | swarm | 60/60 | 50,617 | 64 s | 47 | 12 | 11 | 8 | – |
+| `gym-swarm-1015-185238` | gym | swarm | 60/60 | 49,608 | 61 s | 46 | 11 | 9 | 8 | – |
+| `krr-baseline-1015-185340` | krr | baseline | 55/55 | 289,901 | 267 s | 50 | 39 | 97 | 6 | – |
+| `krr-baseline-1015-190541` | krr | baseline | 55/55 | 172,764 | 222 s | 42 | 33 | 86 | 0 | – |
+| `krr-swarm-1015-185816` | krr | swarm | 55/55 | 120,228 | 199 s | 22 | 8 | 11 | 1 | – |
+| `krr-swarm-1015-190930` | krr | swarm | 55/55 | 67,237 | 264 s | 14 | 3 | 5 | 1 | – |
+| `krr-swarm-recipes-1015-190136` | krr | swarm+recipes | 55/55 | 62,285 | 244 s | 13 | 3 | 5 | 1 | 70% |
+| `krr-swarm-recipes-1015-191354` | krr | swarm+recipes | 55/55 | 118,773 | 190 s | 23 | 10 | 12 | 2 | 67% |
 
-- **The graph is load-bearing.** Take it away and the same agents spend 2.5–3.6× the tokens and collide 11–15× more often, because they keep picking the same failures and redoing each other's fixes.
-- **On the gym it is also 3× faster.** Its failures are independent, so coordination turns directly into parallelism.
-- **On krr it saves cost, not time.** krr's failures form a chain (each fix reveals the next layer), so every layer waits for a merge and a full test run whichever mode runs it.
-- **Recipes did not measurably help yet.** Recipe-seeded hypotheses produced 67–70% of the merged krr fixes, but tokens and time stayed within the swarm's own range over two runs. The hand-written templates already cover the signatures krr needs; Recipes should matter more on repos whose failures the templates don't cover. We report this as measured.
-- **krr vs the human migration.** In all four measured swarm runs the final diff touches 7 files (+26, −17 to −19); human PR #512 touches 8 (+33/−21). Every one of those runs also replaced a deprecated `result.json(indent=2)` in `formatters/json.py` that the PR left in place. The PR additionally changed a mutable default and an `__init__` override that no test exercises; the swarm left those alone.
+**Metric definitions** (computed by [`metrics.py`](backend/src/pheromone/metrics.py) from the event log and the attempts stored in each run graph):
+
+- **Tokens**: all LLM input and output tokens in the run: patch generation, proposals, retries and failed patches.
+- **Time to green**: seconds from seeding until the merge after which no test is red.
+- **Collisions**: pairs of attempts by different agents on the same file whose time windows overlap.
+- **Wasted attempts**: passing patches for a failure another agent had already fixed (superseded), plus attempts that repeated a diff or a hypothesis that had already failed.
+- **Recipe share**: share of merged fixes whose hypothesis was seeded from a Recipe. It says where the winning hypothesis came from, not that the run needed it.
+
+**Reading these numbers.** In these runs, coordinated agents used 60–72% fewer tokens than independent agents (medians) and recorded far fewer collisions and wasted attempts. On the gym, where failures are independent, median time to green was also 68% lower. On krr it was only 6% lower: krr's failures form a chain where each fix reveals the next layer, so every layer waits for a merge and a full test run whichever mode runs it. With 3 and 2 runs per mode these are preliminary, descriptive results. They don't show that the approach generalizes, and the baseline compares the whole coordination system against independent agents: it does not separate shared claims from pheromone-weighted ranking, or a graph from other shared stores. Recipe-seeded hypotheses produced about two thirds of the merged krr fixes, but their effect on cost and time was within the swarm's own range over two runs, so it is inconclusive.
+
+**Parameters.** α = 1, β = 2, τ0 = 0.5, τ_min = 0.05, evaporation ×0.95 every 10 s, lease 120 s, retirement after 3 failed or duplicate attempts. η = template prior (1, or 1 + ln(1 + support) for Recipe-seeded hypotheses) × (1 + PageRank of the file). These are starting values from the plan except `sibling_weight = 10`, which was chosen after watching gym runs; treat the gym as the development benchmark and krr as the check on a repo we did not tune on.
+
+**krr vs the human migration.** In all four measured swarm runs on krr the final diff touches 7 files (+26, −17 to −19); human PR #512 touches 8 (+33/−21). Similar file counts don't establish equal quality. Two concrete differences: every swarm run also replaced a deprecated `result.json(indent=2)` in `formatters/json.py` that the PR left in place, and the PR changed a mutable default and an `__init__` override that no test exercises, which the swarm left alone.
 
 ## Honest notes
 
