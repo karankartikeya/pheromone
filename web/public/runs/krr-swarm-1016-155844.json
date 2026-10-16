@@ -1,0 +1,2783 @@
+{
+ "run": {
+  "id": "krr-swarm-1016-155844",
+  "repo": "krr",
+  "commit": "2d09451fe1aeb212e167ab6bc728b5bf26a57b74",
+  "mode": "swarm",
+  "model": "gpt-6-luna",
+  "budget": 2000000,
+  "started_at": 1792159125227,
+  "workers": 6,
+  "alpha": 1.0,
+  "beta": 2.0,
+  "tau0": 0.5,
+  "tau_min": 0.05,
+  "keep": 0.95,
+  "evaporate_every_s": 10.0,
+  "crystallize_every_s": 60.0,
+  "lease_ms": 120000,
+  "frontier_limit": 12,
+  "sibling_weight": 10.0,
+  "pass_per_fixed": 1.0,
+  "pass_per_broken": -0.5,
+  "fail_mult": 0.7,
+  "max_children": 2,
+  "max_fails": 3,
+  "max_depth": 2,
+  "test_timeout_s": 120,
+  "tests": 1,
+  "red_tests": 1,
+  "failures": 1,
+  "hypotheses": 2,
+  "unseeded_failures": 0,
+  "files": 76,
+  "imports": 192,
+  "pytest_ms": 1421,
+  "tokens": 128747,
+  "merged": 9,
+  "stopped_at": 1792159371429
+ },
+ "blast": {
+  "robusta_krr/core/models/allocations.py": {
+   "chains": [
+    [
+     "robusta_krr/core/models/allocations.py",
+     "tests/models/test_resource_allocations.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/formatters/csv.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/severity.py",
+     "robusta_krr/core/models/result.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/result.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/formatters/csv.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs_metrics_logic.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/objects.py",
+     "robusta_krr/core/models/result.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/objects.py",
+     "robusta_krr/core/models/config.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/objects.py",
+     "robusta_krr/core/models/config.py",
+     "tests/test_grouped_jobs.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/objects.py",
+     "robusta_krr/core/models/config.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/objects.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/objects.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs_metrics_logic.py"
+    ],
+    [
+     "robusta_krr/core/models/allocations.py",
+     "robusta_krr/core/models/objects.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_krr.py"
+    ]
+   ],
+   "tests": {
+    "tests/test_grouped_jobs.py": 8,
+    "tests/test_krr.py": 18,
+    "tests/formatters/test_csv_formatter.py": 6,
+    "tests/models/test_resource_allocations.py": 12,
+    "tests/test_grouped_jobs_metrics_logic.py": 7
+   }
+  },
+  "robusta_krr/core/models/config.py": {
+   "chains": [
+    [
+     "robusta_krr/core/models/config.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "tests/test_grouped_jobs.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/formatters/csv.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/runner.py",
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/runner.py",
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/models/result.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/formatters/csv.py",
+     "tests/formatters/test_csv_formatter.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs_metrics_logic.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/models/result.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_grouped_jobs_metrics_logic.py"
+    ],
+    [
+     "robusta_krr/core/models/config.py",
+     "robusta_krr/core/integrations/kubernetes/__init__.py",
+     "tests/test_krr.py"
+    ]
+   ],
+   "tests": {
+    "tests/test_grouped_jobs.py": 8,
+    "tests/formatters/test_csv_formatter.py": 6,
+    "tests/test_grouped_jobs_metrics_logic.py": 7,
+    "tests/test_krr.py": 18,
+    "tests/test_runner.py": 4
+   }
+  },
+  "robusta_krr/core/runner.py": {
+   "chains": [
+    [
+     "robusta_krr/core/runner.py",
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/core/runner.py",
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ]
+   ],
+   "tests": {
+    "tests/test_krr.py": 18,
+    "tests/test_runner.py": 4
+   }
+  },
+  "robusta_krr/formatters/json.py": {
+   "chains": [
+    [
+     "robusta_krr/formatters/json.py",
+     "robusta_krr/formatters/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/formatters/json.py",
+     "robusta_krr/formatters/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ]
+   ],
+   "tests": {
+    "tests/test_runner.py": 4,
+    "tests/test_krr.py": 18
+   }
+  },
+  "robusta_krr/formatters/pprint.py": {
+   "chains": [
+    [
+     "robusta_krr/formatters/pprint.py",
+     "robusta_krr/formatters/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/formatters/pprint.py",
+     "robusta_krr/formatters/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ]
+   ],
+   "tests": {
+    "tests/test_krr.py": 18,
+    "tests/test_runner.py": 4
+   }
+  },
+  "robusta_krr/formatters/yaml.py": {
+   "chains": [
+    [
+     "robusta_krr/formatters/yaml.py",
+     "robusta_krr/formatters/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/formatters/yaml.py",
+     "robusta_krr/formatters/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ]
+   ],
+   "tests": {
+    "tests/test_runner.py": 4,
+    "tests/test_krr.py": 18
+   }
+  },
+  "robusta_krr/main.py": {
+   "chains": [
+    [
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ],
+    [
+     "robusta_krr/main.py",
+     "robusta_krr/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_krr.py"
+    ],
+    [
+     "robusta_krr/main.py",
+     "robusta_krr/__init__.py",
+     "robusta_krr/main.py",
+     "tests/test_runner.py"
+    ],
+    [
+     "robusta_krr/main.py",
+     "robusta_krr/__init__.py",
+     "robusta_krr/core/models/allocations.py",
+     "tests/models/test_resource_allocations.py"
+    ]
+   ],
+   "tests": {
+    "tests/test_krr.py": 18,
+    "tests/models/test_resource_allocations.py": 12,
+    "tests/test_runner.py": 4
+   }
+  }
+ },
+ "events": [
+  {
+   "t": 2.224,
+   "type": "seeded",
+   "run": "krr-swarm-1016-155844",
+   "model": "gpt-6-luna",
+   "workers": 6,
+   "learn": false,
+   "tests": 1,
+   "red_tests": 1,
+   "failures": 1,
+   "hypotheses": 2,
+   "unseeded_failures": 0,
+   "files": 76,
+   "imports": 192,
+   "pytest_ms": 1421
+  },
+  {
+   "t": 2.507,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 2.514,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#annotated-validator",
+   "tau": 0.5
+  },
+  {
+   "t": 2.516,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 2.516,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 2.516,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 2.516,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 2.516,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 2.518,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator",
+   "tau": 0.5
+  },
+  {
+   "t": 2.519,
+   "type": "claim_lost",
+   "agent": "A1",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator"
+  },
+  {
+   "t": 2.519,
+   "type": "claim_lost",
+   "agent": "A3",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator"
+  },
+  {
+   "t": 2.519,
+   "type": "claim_lost",
+   "agent": "A2",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator"
+  },
+  {
+   "t": 2.522,
+   "type": "claim_lost",
+   "agent": "A5",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator"
+  },
+  {
+   "t": 2.971,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "annotated-validator"
+  },
+  {
+   "t": 3.004,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "field-validator"
+  },
+  {
+   "t": 5.773,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "field-validator"
+  },
+  {
+   "t": 6.092,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 6.097,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator",
+   "failure": "validator@robusta_krr/core/models/allocations.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1761
+  },
+  {
+   "t": 8.168,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator",
+   "commit": "ff6b3d08",
+   "closed": [
+    "validator@robusta_krr/core/models/allocations.py"
+   ],
+   "revealed": [
+    "base-settings@robusta_krr/core/models/config.py"
+   ],
+   "green": 0.0,
+   "red": 1.0
+  },
+  {
+   "t": 8.169,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 8.17,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-import",
+   "tau": 0.5
+  },
+  {
+   "t": 8.524,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "settings-import"
+  },
+  {
+   "t": 9.334,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-config-dict",
+   "tau": 0.5
+  },
+  {
+   "t": 9.687,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "settings-config-dict"
+  },
+  {
+   "t": 10.818,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "settings-import"
+  },
+  {
+   "t": 11.13,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 11.134,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-import",
+   "failure": "base-settings@robusta_krr/core/models/config.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 3023
+  },
+  {
+   "t": 12.511,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 13.256,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-import",
+   "commit": "419bc9f2",
+   "closed": [
+    "base-settings@robusta_krr/core/models/config.py"
+   ],
+   "revealed": [
+    "validator@robusta_krr/core/models/config.py"
+   ],
+   "green": 0.0,
+   "red": 1.0
+  },
+  {
+   "t": 13.257,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 13.259,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#field-validator",
+   "tau": 0.5
+  },
+  {
+   "t": 13.614,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "field-validator"
+  },
+  {
+   "t": 14.0,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#annotated-validator",
+   "tau": 0.5
+  },
+  {
+   "t": 14.355,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "annotated-validator"
+  },
+  {
+   "t": 15.337,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "annotated-validator"
+  },
+  {
+   "t": 15.653,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 15.658,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#annotated-validator",
+   "failure": "validator@robusta_krr/core/models/allocations.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 2809
+  },
+  {
+   "t": 15.659,
+   "type": "superseded",
+   "agent": "A0",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#annotated-validator"
+  },
+  {
+   "t": 15.66,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 19.953,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "field-validator"
+  },
+  {
+   "t": 20.259,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 20.264,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#field-validator",
+   "failure": "validator@robusta_krr/core/models/config.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 3673
+  },
+  {
+   "t": 22.517,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 22.888,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "settings-config-dict"
+  },
+  {
+   "t": 23.234,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 23.238,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-config-dict",
+   "failure": "base-settings@robusta_krr/core/models/config.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 4356
+  },
+  {
+   "t": 24.193,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#field-validator",
+   "commit": "e6f511e7",
+   "closed": [
+    "validator@robusta_krr/core/models/config.py"
+   ],
+   "revealed": [
+    "fields-attr@robusta_krr/main.py"
+   ],
+   "green": 35.0,
+   "red": 2.0
+  },
+  {
+   "t": 24.194,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 24.195,
+   "type": "superseded",
+   "agent": "A3",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-config-dict"
+  },
+  {
+   "t": 24.195,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "fields-attr@robusta_krr/main.py#model-fields",
+   "tau": 0.5
+  },
+  {
+   "t": 24.195,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 27.195,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "model-fields"
+  },
+  {
+   "t": 31.52,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "model-fields"
+  },
+  {
+   "t": 32.524,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 33.329,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "annotated-validator"
+  },
+  {
+   "t": 33.674,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 33.68,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#annotated-validator",
+   "failure": "validator@robusta_krr/core/models/config.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 5353
+  },
+  {
+   "t": 33.682,
+   "type": "superseded",
+   "agent": "A5",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#annotated-validator"
+  },
+  {
+   "t": 33.683,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 38.658,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 38.66,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "fields-attr@robusta_krr/main.py#model-fields",
+   "failure": "fields-attr@robusta_krr/main.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 2.0,
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 4776
+  },
+  {
+   "t": 42.53,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 52.535,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 55.65,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "fields-attr@robusta_krr/main.py#model-fields",
+   "commit": "fb480d5f",
+   "closed": [
+    "fields-attr@robusta_krr/main.py"
+   ],
+   "revealed": [
+    "dict-call@robusta_krr/core/runner.py",
+    "other:AssertionError@tests/test_krr.py"
+   ],
+   "green": 42.0,
+   "red": 13.0
+  },
+  {
+   "t": 55.651,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 55.653,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#model-dump",
+   "tau": 0.5
+  },
+  {
+   "t": 56.048,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#dict-builtin",
+   "tau": 0.5
+  },
+  {
+   "t": 56.515,
+   "type": "agent",
+   "agent": "A1",
+   "status": "proposing",
+   "doing": "other:AssertionError@tests/test_krr.py"
+  },
+  {
+   "t": 62.543,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 63.136,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "model-dump"
+  },
+  {
+   "t": 63.277,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 65.013,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "model-dump"
+  },
+  {
+   "t": 68.337,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 72.009,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 72.012,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#model-dump",
+   "failure": "dict-call@robusta_krr/core/runner.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 7.0,
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 6841
+  },
+  {
+   "t": 72.545,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 75.428,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 75.431,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#dict-builtin",
+   "failure": "dict-call@robusta_krr/core/runner.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 7.0,
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 7188
+  },
+  {
+   "t": 82.551,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 92.555,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 93.804,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#model-dump",
+   "commit": "ffae4ee1",
+   "closed": [
+    "dict-call@robusta_krr/core/runner.py"
+   ],
+   "revealed": [
+    "json-call@robusta_krr/core/runner.py"
+   ],
+   "green": 42.0,
+   "red": 13.0
+  },
+  {
+   "t": 93.805,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 93.806,
+   "type": "superseded",
+   "agent": "A2",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#dict-builtin"
+  },
+  {
+   "t": 93.807,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#model-dump-json",
+   "tau": 0.5
+  },
+  {
+   "t": 93.807,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 93.809,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#json-dumps",
+   "tau": 0.5
+  },
+  {
+   "t": 100.494,
+   "type": "proposed",
+   "agent": "A1",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "hypotheses": [
+    "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+    "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types"
+   ],
+   "tokens": 18404
+  },
+  {
+   "t": 100.496,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "tau": 0.5
+  },
+  {
+   "t": 100.938,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "tau": 0.5
+  },
+  {
+   "t": 101.417,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "json-dumps"
+  },
+  {
+   "t": 101.468,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 102.561,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 103.331,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 103.887,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "json-dumps"
+  },
+  {
+   "t": 108.132,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "llm-preserve-wildcard-values"
+  },
+  {
+   "t": 108.586,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "llm-resolve-optional-cli-types"
+  },
+  {
+   "t": 110.226,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 110.229,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#model-dump-json",
+   "failure": "json-call@robusta_krr/core/runner.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 7.0,
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 6834
+  },
+  {
+   "t": 110.711,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 110.714,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#json-dumps",
+   "failure": "json-call@robusta_krr/core/runner.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 7.0,
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 6850
+  },
+  {
+   "t": 111.62,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "llm-preserve-wildcard-values"
+  },
+  {
+   "t": 112.568,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 115.289,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "llm-resolve-optional-cli-types"
+  },
+  {
+   "t": 119.124,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "fail"
+  },
+  {
+   "t": 119.127,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "outcome": "fail",
+   "mult": 0.7,
+   "add": 0.0,
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 3275
+  },
+  {
+   "t": 119.128,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 119.13,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "tau": 0.315875
+  },
+  {
+   "t": 122.574,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 122.628,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "fail"
+  },
+  {
+   "t": 122.63,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "outcome": "fail",
+   "mult": 0.7,
+   "add": 0.0,
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 5419
+  },
+  {
+   "t": 122.631,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 122.633,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "tau": 0.30008125
+  },
+  {
+   "t": 126.54,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "llm-preserve-wildcard-values"
+  },
+  {
+   "t": 129.849,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "llm-resolve-optional-cli-types"
+  },
+  {
+   "t": 131.076,
+   "type": "merged",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#model-dump-json",
+   "commit": "2a5d10a2",
+   "closed": [
+    "json-call@robusta_krr/core/runner.py"
+   ],
+   "revealed": [
+    "dict-call@robusta_krr/formatters/pprint.py",
+    "json-call@robusta_krr/formatters/json.py",
+    "json-call@robusta_krr/formatters/yaml.py"
+   ],
+   "green": 49.0,
+   "red": 6.0
+  },
+  {
+   "t": 131.077,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 131.078,
+   "type": "superseded",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#json-dumps"
+  },
+  {
+   "t": 131.079,
+   "type": "claim",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#json-dumps",
+   "tau": 0.5
+  },
+  {
+   "t": 131.079,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 131.081,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/formatters/yaml.py#model-dump-json",
+   "tau": 0.5
+  },
+  {
+   "t": 131.155,
+   "type": "claim",
+   "agent": "A0",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#model-dump-json",
+   "tau": 0.5
+  },
+  {
+   "t": 131.726,
+   "type": "claim",
+   "agent": "A3",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#dict-builtin",
+   "tau": 0.5
+  },
+  {
+   "t": 132.579,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 133.465,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "llm-preserve-wildcard-values"
+  },
+  {
+   "t": 138.748,
+   "type": "agent",
+   "agent": "A0",
+   "status": "patching",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 138.753,
+   "type": "agent",
+   "agent": "A4",
+   "status": "patching",
+   "doing": "json-dumps"
+  },
+  {
+   "t": 138.755,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 139.085,
+   "type": "agent",
+   "agent": "A3",
+   "status": "patching",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 140.79,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 140.895,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "fail"
+  },
+  {
+   "t": 140.897,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "outcome": "fail",
+   "mult": 0.7,
+   "add": 0.0,
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 3809
+  },
+  {
+   "t": 140.898,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 140.901,
+   "type": "claim",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "tau": 0.19955403125
+  },
+  {
+   "t": 140.996,
+   "type": "agent",
+   "agent": "A0",
+   "status": "testing",
+   "doing": "model-dump-json"
+  },
+  {
+   "t": 142.442,
+   "type": "agent",
+   "agent": "A4",
+   "status": "testing",
+   "doing": "json-dumps"
+  },
+  {
+   "t": 142.584,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 145.275,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "llm-resolve-optional-cli-types"
+  },
+  {
+   "t": 148.01,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 148.013,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/formatters/yaml.py#model-dump-json",
+   "failure": "json-call@robusta_krr/formatters/yaml.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1369
+  },
+  {
+   "t": 148.157,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 148.162,
+   "type": "attempt",
+   "agent": "A0",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#model-dump-json",
+   "failure": "json-call@robusta_krr/formatters/json.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1315
+  },
+  {
+   "t": 148.268,
+   "type": "agent",
+   "agent": "A1",
+   "status": "patching",
+   "doing": "llm-preserve-wildcard-values"
+  },
+  {
+   "t": 149.333,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 149.337,
+   "type": "attempt",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#json-dumps",
+   "failure": "json-call@robusta_krr/formatters/json.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1504
+  },
+  {
+   "t": 149.42,
+   "type": "agent",
+   "agent": "A3",
+   "status": "testing",
+   "doing": "dict-builtin"
+  },
+  {
+   "t": 152.59,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 152.846,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "fail"
+  },
+  {
+   "t": 152.847,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "outcome": "fail",
+   "mult": 0.7,
+   "add": 0.0,
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 6595
+  },
+  {
+   "t": 152.849,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 152.853,
+   "type": "claim",
+   "agent": "A5",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#model-dump",
+   "tau": 0.4286875
+  },
+  {
+   "t": 156.152,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 156.157,
+   "type": "attempt",
+   "agent": "A3",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#dict-builtin",
+   "failure": "dict-call@robusta_krr/formatters/pprint.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 2195
+  },
+  {
+   "t": 159.807,
+   "type": "agent",
+   "agent": "A5",
+   "status": "patching",
+   "doing": "model-dump"
+  },
+  {
+   "t": 161.288,
+   "type": "agent",
+   "agent": "A5",
+   "status": "testing",
+   "doing": "model-dump"
+  },
+  {
+   "t": 162.596,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 163.954,
+   "type": "agent",
+   "agent": "A1",
+   "status": "testing",
+   "doing": "llm-preserve-wildcard-values"
+  },
+  {
+   "t": 168.136,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reporting",
+   "doing": "pass"
+  },
+  {
+   "t": 168.141,
+   "type": "attempt",
+   "agent": "A5",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#model-dump",
+   "failure": "dict-call@robusta_krr/formatters/pprint.py",
+   "outcome": "pass",
+   "mult": 1.0,
+   "add": 1.0,
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1320
+  },
+  {
+   "t": 168.199,
+   "type": "merged",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/formatters/yaml.py#model-dump-json",
+   "commit": "725544b7",
+   "closed": [
+    "json-call@robusta_krr/formatters/yaml.py"
+   ],
+   "revealed": [],
+   "green": 51.0,
+   "red": 4.0
+  },
+  {
+   "t": 168.2,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 168.207,
+   "type": "claim",
+   "agent": "A2",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "tau": 0.171092637542969
+  },
+  {
+   "t": 170.593,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reporting",
+   "doing": "fail"
+  },
+  {
+   "t": 170.598,
+   "type": "attempt",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "outcome": "fail",
+   "mult": 0.7,
+   "add": 0.0,
+   "resolved": 3,
+   "broken": 0,
+   "tokens": 4974
+  },
+  {
+   "t": 170.6,
+   "type": "agent",
+   "agent": "A1",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 172.602,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 174.817,
+   "type": "agent",
+   "agent": "A2",
+   "status": "patching",
+   "doing": "llm-resolve-optional-cli-types"
+  },
+  {
+   "t": 182.607,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 186.668,
+   "type": "merged",
+   "agent": "A0",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#model-dump-json",
+   "commit": "6504f10d",
+   "closed": [
+    "json-call@robusta_krr/formatters/json.py"
+   ],
+   "revealed": [],
+   "green": 53.0,
+   "red": 2.0
+  },
+  {
+   "t": 186.669,
+   "type": "agent",
+   "agent": "A0",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 186.67,
+   "type": "superseded",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#json-dumps"
+  },
+  {
+   "t": 186.671,
+   "type": "agent",
+   "agent": "A4",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 192.195,
+   "type": "agent",
+   "agent": "A2",
+   "status": "testing",
+   "doing": "llm-resolve-optional-cli-types"
+  },
+  {
+   "t": 192.611,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 198.591,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reporting",
+   "doing": "fail"
+  },
+  {
+   "t": 198.596,
+   "type": "attempt",
+   "agent": "A2",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "outcome": "fail",
+   "mult": 0.7,
+   "add": 0.0,
+   "resolved": 4,
+   "broken": 0,
+   "tokens": 7330
+  },
+  {
+   "t": 198.597,
+   "type": "agent",
+   "agent": "A2",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 198.601,
+   "type": "agent",
+   "agent": "A2",
+   "status": "proposing",
+   "doing": "other:AssertionError@tests/test_krr.py"
+  },
+  {
+   "t": 202.617,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 205.467,
+   "type": "merged",
+   "agent": "A3",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#dict-builtin",
+   "commit": "12c12dc7",
+   "closed": [
+    "other:AssertionError@tests/test_krr.py",
+    "dict-call@robusta_krr/formatters/pprint.py"
+   ],
+   "revealed": [],
+   "green": 55.0,
+   "red": 0.0
+  },
+  {
+   "t": 205.468,
+   "type": "agent",
+   "agent": "A3",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 205.469,
+   "type": "superseded",
+   "agent": "A5",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#model-dump"
+  },
+  {
+   "t": 205.469,
+   "type": "agent",
+   "agent": "A5",
+   "status": "reading frontier",
+   "doing": ""
+  },
+  {
+   "t": 205.471,
+   "type": "agent",
+   "agent": "A3",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 205.472,
+   "type": "agent",
+   "agent": "A5",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 205.994,
+   "type": "agent",
+   "agent": "A1",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 206.074,
+   "type": "agent",
+   "agent": "A0",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 206.856,
+   "type": "agent",
+   "agent": "A4",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 212.624,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 222.629,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 232.634,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 242.64,
+   "type": "evaporation",
+   "keep": 0.95
+  },
+  {
+   "t": 246.341,
+   "type": "proposed",
+   "agent": "A2",
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "hypotheses": [],
+   "tokens": 17774
+  },
+  {
+   "t": 246.345,
+   "type": "agent",
+   "agent": "A2",
+   "status": "done",
+   "doing": ""
+  },
+  {
+   "t": 246.476,
+   "type": "stopped",
+   "tokens": 128747,
+   "seconds": 244.0,
+   "merged": 9,
+   "branch": "run/krr-swarm-1016-155844",
+   "green": 55,
+   "red": 0
+  }
+ ],
+ "edges": [
+  {
+   "failure": "validator@robusta_krr/core/models/allocations.py",
+   "signature": "validator",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/models/allocations.py",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator",
+   "kind": "field-validator",
+   "text": "Replace @validator with @field_validator plus @classmethod; pre=True becomes mode='before', each_item=True becomes validating the list items in the function, always=True becomes validate_default=True on the Field.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/models/allocations.py",
+   "tau": 0.437983536508158
+  },
+  {
+   "failure": "validator@robusta_krr/core/models/allocations.py",
+   "signature": "validator",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/models/allocations.py",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#annotated-validator",
+   "kind": "annotated-validator",
+   "text": "Move the check into an Annotated type with AfterValidator / BeforeValidator.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/models/allocations.py",
+   "tau": 0.45335137989441
+  },
+  {
+   "failure": "base-settings@robusta_krr/core/models/config.py",
+   "signature": "base-settings",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/models/config.py",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-import",
+   "kind": "settings-import",
+   "text": "Import BaseSettings from pydantic_settings instead of pydantic and keep the class otherwise unchanged.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/models/config.py",
+   "tau": 0.437983536508158
+  },
+  {
+   "failure": "base-settings@robusta_krr/core/models/config.py",
+   "signature": "base-settings",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/models/config.py",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-config-dict",
+   "kind": "settings-config-dict",
+   "text": "Import BaseSettings from pydantic_settings and replace the inner class Config with model_config = SettingsConfigDict(...), keeping env_prefix and other settings.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/models/config.py",
+   "tau": 0.469528057143095
+  },
+  {
+   "failure": "validator@robusta_krr/core/models/config.py",
+   "signature": "validator",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/models/config.py",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#field-validator",
+   "kind": "field-validator",
+   "text": "Replace @validator with @field_validator plus @classmethod; pre=True becomes mode='before', each_item=True becomes validating the list items in the function, always=True becomes validate_default=True on the Field.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/models/config.py",
+   "tau": 0.461035301587535
+  },
+  {
+   "failure": "validator@robusta_krr/core/models/config.py",
+   "signature": "validator",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/models/config.py",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#annotated-validator",
+   "kind": "annotated-validator",
+   "text": "Move the check into an Annotated type with AfterValidator / BeforeValidator.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/models/config.py",
+   "tau": 0.494240060150626
+  },
+  {
+   "failure": "fields-attr@robusta_krr/main.py",
+   "signature": "fields-attr",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/main.py",
+   "hypothesis": "fields-attr@robusta_krr/main.py#model-fields",
+   "kind": "model-fields",
+   "text": "Replace Model.__fields__ with Model.model_fields; field.required becomes field.is_required(), outer_type_ becomes annotation.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/main.py",
+   "tau": 0.842890025063084
+  },
+  {
+   "failure": "dict-call@robusta_krr/core/runner.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/runner.py",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#model-dump",
+   "kind": "model-dump",
+   "text": "Replace .dict(...) with .model_dump(...), keeping the same keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/runner.py",
+   "tau": 2.96917703047518
+  },
+  {
+   "failure": "dict-call@robusta_krr/core/runner.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/runner.py",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#dict-builtin",
+   "kind": "dict-builtin",
+   "text": "Replace .dict() with dict(obj) and filter keys by hand.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/runner.py",
+   "tau": 3.11551914780189
+  },
+  {
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_krr.py",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "kind": "llm-preserve-wildcard-values",
+   "text": "In `validate_namespaces` and `validate_resources`, return `\"*\"` unchanged before iterating the value. The current validators can turn the namespace wildcard into `[\"*\"]` and try to match the resource wildcard as a kind, breaking scans when the literal wildcard reaches Config.",
+   "status": "dead",
+   "origin": "llm",
+   "file": "robusta_krr/core/models/config.py",
+   "tau": 0.0794544459723976
+  },
+  {
+   "failure": "other:AssertionError@tests/test_krr.py",
+   "signature": "other:AssertionError",
+   "failure_status": "fixed",
+   "failure_file": "tests/test_krr.py",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "kind": "llm-resolve-optional-cli-types",
+   "text": "Update `__process_type` to detect optional annotations with `typing.get_origin` and `typing.get_args` (including `typing.Union[T, None]` and `T | None`) and return `Optional[__process_type(T)]` for the non-None member. The current identity check `_T is Optional` misses actual Pydantic v2 field annotations and turns optional strategy CLI arguments into `str`.",
+   "status": "dead",
+   "origin": "llm",
+   "file": "robusta_krr/main.py",
+   "tau": 0.0794544459723976
+  },
+  {
+   "failure": "json-call@robusta_krr/core/runner.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/runner.py",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#model-dump-json",
+   "kind": "model-dump-json",
+   "text": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/runner.py",
+   "tau": 3.64537046888858
+  },
+  {
+   "failure": "json-call@robusta_krr/core/runner.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/core/runner.py",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#json-dumps",
+   "kind": "json-dumps",
+   "text": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/core/runner.py",
+   "tau": 3.64537046888858
+  },
+  {
+   "failure": "json-call@robusta_krr/formatters/json.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/formatters/json.py",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#model-dump-json",
+   "kind": "model-dump-json",
+   "text": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/formatters/json.py",
+   "tau": 0.868916983069697
+  },
+  {
+   "failure": "json-call@robusta_krr/formatters/json.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/formatters/json.py",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#json-dumps",
+   "kind": "json-dumps",
+   "text": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/formatters/json.py",
+   "tau": 0.868916983069697
+  },
+  {
+   "failure": "json-call@robusta_krr/formatters/yaml.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/formatters/yaml.py",
+   "hypothesis": "json-call@robusta_krr/formatters/yaml.py#model-dump-json",
+   "kind": "model-dump-json",
+   "text": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/formatters/yaml.py",
+   "tau": 0.868916983069697
+  },
+  {
+   "failure": "json-call@robusta_krr/formatters/yaml.py",
+   "signature": "json-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/formatters/yaml.py",
+   "hypothesis": "json-call@robusta_krr/formatters/yaml.py#json-dumps",
+   "kind": "json-dumps",
+   "text": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
+   "status": "open",
+   "origin": "template",
+   "file": "robusta_krr/formatters/yaml.py",
+   "tau": 0.270180043831318
+  },
+  {
+   "failure": "dict-call@robusta_krr/formatters/pprint.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/formatters/pprint.py",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#model-dump",
+   "kind": "model-dump",
+   "text": "Replace .dict(...) with .model_dump(...), keeping the same keyword arguments.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/formatters/pprint.py",
+   "tau": 0.933600475120381
+  },
+  {
+   "failure": "dict-call@robusta_krr/formatters/pprint.py",
+   "signature": "dict-call",
+   "failure_status": "fixed",
+   "failure_file": "robusta_krr/formatters/pprint.py",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#dict-builtin",
+   "kind": "dict-builtin",
+   "text": "Replace .dict() with dict(obj) and filter keys by hand.",
+   "status": "fixed",
+   "origin": "template",
+   "file": "robusta_krr/formatters/pprint.py",
+   "tau": 0.900429453555927
+  }
+ ],
+ "attempts": [
+  {
+   "id": "A4-9d094ad3",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#field-validator",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/core/models/allocations.py b/robusta_krr/core/models/allocations.py\nindex 0a8d0c5..cae4396 100644\n--- a/robusta_krr/core/models/allocations.py\n+++ b/robusta_krr/core/models/allocations.py\n@@ -67,7 +67,8 @@ class ResourceAllocations(pd.BaseModel):\n \n         return float(value)\n \n-    @pd.validator(\"requests\", \"limits\", pre=True)\n+    @pd.field_validator(\"requests\", \"limits\", mode=\"before\")\n+    @classmethod\n     def validate_requests(\n         cls, value: dict[ResourceType, RecommendationValueRaw]\n     ) -> dict[ResourceType, RecommendationValue]:\n",
+   "diff_hash": "13f4bc34820bde02",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1761,
+   "ms": 3088,
+   "at": 1792159131046,
+   "merged": true,
+   "commit": "ff6b3d0896fbf0b75c0d291c5e889c8a41e431ee"
+  },
+  {
+   "id": "A4-24cb83f6",
+   "agent": "A4",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-import",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/core/models/config.py b/robusta_krr/core/models/config.py\nindex 3e76259..b7eae0f 100644\n--- a/robusta_krr/core/models/config.py\n+++ b/robusta_krr/core/models/config.py\n@@ -5,6 +5,7 @@ import sys\n from typing import Any, Literal, Optional, Union\n \n import pydantic as pd\n+from pydantic_settings import BaseSettings\n from kubernetes import config\n from kubernetes.config.config_exception import ConfigException\n from rich.console import Console\n@@ -17,7 +18,7 @@ from robusta_krr.core.models.objects import KindLiteral\n logger = logging.getLogger(\"krr\")\n \n \n-class Config(pd.BaseSettings):\n+class Config(BaseSettings):\n     quiet: bool = pd.Field(False)\n     verbose: bool = pd.Field(False)\n \n",
+   "diff_hash": "a4311c25285f63b2",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 3023,
+   "ms": 2606,
+   "at": 1792159136084,
+   "merged": true,
+   "commit": "419bc9f2e4c42453e8b54582dd919b0f08c0a200"
+  },
+  {
+   "id": "A0-7a5cc2ec",
+   "agent": "A0",
+   "hypothesis": "validator@robusta_krr/core/models/allocations.py#annotated-validator",
+   "outcome": "superseded",
+   "diff": "diff --git a/robusta_krr/core/models/allocations.py b/robusta_krr/core/models/allocations.py\nindex 0a8d0c5..64506d3 100644\n--- a/robusta_krr/core/models/allocations.py\n+++ b/robusta_krr/core/models/allocations.py\n@@ -2,7 +2,7 @@ from __future__ import annotations\n \n import enum\n import math\n-from typing import Literal, Optional, TypeVar, Union\n+from typing import Annotated, Literal, Optional, TypeVar, Union\n \n import pydantic as pd\n from kubernetes.client.models import V1Container\n@@ -49,31 +49,32 @@ def format_diff(allocated, recommended, selector, multiplier=1, colored=False) -\n             diff_sign = \"+\" if diff_val >= 0 else \"-\"         \n         return f\"{diff_sign}{format_recommendation_value(abs(diff_val) * multiplier)}\"\n     \n-class ResourceAllocations(pd.BaseModel):\n-    requests: dict[ResourceType, RecommendationValue]\n-    limits: dict[ResourceType, RecommendationValue]\n-    info: dict[ResourceType, Optional[str]] = {}\n+def _parse_resource_value(value: RecommendationValueRaw) -> RecommendationValue:\n+    if value is None:\n+        return None\n+\n+    if isinstance(value, str):\n+        return float(resource_units.parse(value))\n+\n+    if math.isnan(value):\n+        return \"?\"\n \n-    @staticmethod\n-    def __parse_resource_value(value: RecommendationValueRaw) -> RecommendationValue:\n-        if value is None:\n-            return None\n+    return float(value)\n \n-        if isinstance(value, str):\n-            return float(resource_units.parse(value))\n \n-        if math.isnan(value):\n-            return \"?\"\n+def _parse_resource_values(\n+    value: dict[ResourceType, RecommendationValueRaw],\n+) -> dict[ResourceType, RecommendationValue]:\n+    return {resource_type: _parse_resource_value(resource_value) for resource_type, resource_value in value.items()}\n \n-        return float(value)\n \n-    @pd.validator(\"requests\", \"limits\", pre=True)\n-    def validate_requests(\n-        cls, value: dict[ResourceType, RecommendationValueRaw]\n-    ) -> dict[ResourceType, RecommendationValue]:\n-        return {\n-            resource_type: cls.__parse_resource_value(resource_value) for resource_type, resource_value in value.items()\n-        }\n+ResourceValues = Annotated[dict[ResourceType, RecommendationValue], pd.BeforeValidator(_parse_resource_values)]\n+\n+\n+class ResourceAllocations(pd.BaseModel):\n+    requests: ResourceValues\n+    limits: ResourceValues\n+    info: dict[ResourceType, Optional[str]] = {}\n \n     @classmethod\n     def from_container(cls: type[Self], container: V1Container) -> Self:\n",
+   "diff_hash": "f3a35d253ad47922",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 2809,
+   "ms": 12682,
+   "at": 1792159140607,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A4-1f6355de",
+   "agent": "A4",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#field-validator",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/core/models/config.py b/robusta_krr/core/models/config.py\nindex b7eae0f..fda71e6 100644\n--- a/robusta_krr/core/models/config.py\n+++ b/robusta_krr/core/models/config.py\n@@ -99,7 +99,8 @@ class Config(BaseSettings):\n     def Formatter(self) -> formatters.FormatterFunc:\n         return formatters.find(self.format)\n \n-    @pd.validator(\"prometheus_url\")\n+    @pd.field_validator(\"prometheus_url\")\n+    @classmethod\n     def validate_prometheus_url(cls, v: Optional[str]):\n         if v is None:\n             return None\n@@ -111,14 +112,16 @@ class Config(BaseSettings):\n \n         return v\n \n-    @pd.validator(\"prometheus_other_headers\", pre=True)\n+    @pd.field_validator(\"prometheus_other_headers\", mode=\"before\")\n+    @classmethod\n     def validate_prometheus_other_headers(cls, headers: Union[list[str], dict[str, str]]) -> dict[str, str]:\n         if isinstance(headers, dict):\n             return headers\n \n         return {k.strip().lower(): v.strip() for k, v in [header.split(\":\") for header in headers]}\n \n-    @pd.validator(\"namespaces\")\n+    @pd.field_validator(\"namespaces\")\n+    @classmethod\n     def validate_namespaces(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n         if v == []:\n             return \"*\"\n@@ -130,7 +133,8 @@ class Config(BaseSettings):\n \n         return [val.lower() for val in v]\n \n-    @pd.validator(\"resources\", pre=True)\n+    @pd.field_validator(\"resources\", mode=\"before\")\n+    @classmethod\n     def validate_resources(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n         if v == []:\n             return \"*\"\n@@ -139,7 +143,8 @@ class Config(BaseSettings):\n         # So this will preserve the big and small letters of the resource\n         return [next(r for r in KindLiteral.__args__ if r.lower() == val.lower()) for val in v]\n \n-    @pd.validator(\"job_grouping_labels\", pre=True)\n+    @pd.field_validator(\"job_grouping_labels\", mode=\"before\")\n+    @classmethod\n     def validate_job_grouping_labels(cls, v: Union[list[str], str, None]) -> Union[list[str], None]:\n         if v is None:\n             return None\n@@ -153,12 +158,14 @@ class Config(BaseSettings):\n         StrategySettingsType = StrategyType.get_settings_type()\n         return StrategyType(StrategySettingsType(**self.other_args))  # type: ignore\n \n-    @pd.validator(\"strategy\")\n+    @pd.field_validator(\"strategy\")\n+    @classmethod\n     def validate_strategy(cls, v: str) -> str:\n         BaseStrategy.find(v)  # NOTE: raises if strategy is not found\n         return v\n \n-    @pd.validator(\"format\")\n+    @pd.field_validator(\"format\")\n+    @classmethod\n     def validate_format(cls, v: str) -> str:\n         formatters.find(v)  # NOTE: raises if strategy is not found\n         return v\n",
+   "diff_hash": "5c2d4568a2eb8912",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 3673,
+   "ms": 6645,
+   "at": 1792159145213,
+   "merged": true,
+   "commit": "e6f511e7af14c34924148d02d98a90de8d43e4f9"
+  },
+  {
+   "id": "A3-18198bf5",
+   "agent": "A3",
+   "hypothesis": "base-settings@robusta_krr/core/models/config.py#settings-config-dict",
+   "outcome": "superseded",
+   "diff": "diff --git a/robusta_krr/core/models/config.py b/robusta_krr/core/models/config.py\nindex 3e76259..3f758eb 100644\n--- a/robusta_krr/core/models/config.py\n+++ b/robusta_krr/core/models/config.py\n@@ -5,6 +5,7 @@ import sys\n from typing import Any, Literal, Optional, Union\n \n import pydantic as pd\n+from pydantic_settings import BaseSettings, SettingsConfigDict\n from kubernetes import config\n from kubernetes.config.config_exception import ConfigException\n from rich.console import Console\n@@ -17,7 +18,9 @@ from robusta_krr.core.models.objects import KindLiteral\n logger = logging.getLogger(\"krr\")\n \n \n-class Config(pd.BaseSettings):\n+class Config(BaseSettings):\n+    model_config = SettingsConfigDict()\n+\n     quiet: bool = pd.Field(False)\n     verbose: bool = pd.Field(False)\n \n@@ -98,7 +101,8 @@ class Config(pd.BaseSettings):\n     def Formatter(self) -> formatters.FormatterFunc:\n         return formatters.find(self.format)\n \n-    @pd.validator(\"prometheus_url\")\n+    @pd.field_validator(\"prometheus_url\")\n+    @classmethod\n     def validate_prometheus_url(cls, v: Optional[str]):\n         if v is None:\n             return None\n@@ -110,14 +114,16 @@ class Config(pd.BaseSettings):\n \n         return v\n \n-    @pd.validator(\"prometheus_other_headers\", pre=True)\n+    @pd.field_validator(\"prometheus_other_headers\", mode=\"before\")\n+    @classmethod\n     def validate_prometheus_other_headers(cls, headers: Union[list[str], dict[str, str]]) -> dict[str, str]:\n         if isinstance(headers, dict):\n             return headers\n \n         return {k.strip().lower(): v.strip() for k, v in [header.split(\":\") for header in headers]}\n \n-    @pd.validator(\"namespaces\")\n+    @pd.field_validator(\"namespaces\")\n+    @classmethod\n     def validate_namespaces(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n         if v == []:\n             return \"*\"\n@@ -129,7 +135,8 @@ class Config(pd.BaseSettings):\n \n         return [val.lower() for val in v]\n \n-    @pd.validator(\"resources\", pre=True)\n+    @pd.field_validator(\"resources\", mode=\"before\")\n+    @classmethod\n     def validate_resources(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n         if v == []:\n             return \"*\"\n@@ -138,7 +145,8 @@ class Config(pd.BaseSettings):\n         # So this will preserve the big and small letters of the resource\n         return [next(r for r in KindLiteral.__args__ if r.lower() == val.lower()) for val in v]\n \n-    @pd.validator(\"job_grouping_labels\", pre=True)\n+    @pd.field_validator(\"job_grouping_labels\", mode=\"before\")\n+    @classmethod\n     def validate_job_grouping_labels(cls, v: Union[list[str], str, None]) -> Union[list[str], None]:\n         if v is None:\n             return None\n@@ -152,12 +160,14 @@ class Config(pd.BaseSettings):\n         StrategySettingsType = StrategyType.get_settings_type()\n         return StrategyType(StrategySettingsType(**self.other_args))  # type: ignore\n \n-    @pd.validator(\"strategy\")\n+    @pd.field_validator(\"strategy\")\n+    @classmethod\n     def validate_strategy(cls, v: str) -> str:\n         BaseStrategy.find(v)  # NOTE: raises if strategy is not found\n         return v\n \n-    @pd.validator(\"format\")\n+    @pd.field_validator(\"format\")\n+    @classmethod\n     def validate_format(cls, v: str) -> str:\n         formatters.find(v)  # NOTE: raises if strategy is not found\n         return v\n",
+   "diff_hash": "afbceb1813913f40",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 4356,
+   "ms": 13546,
+   "at": 1792159148188,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A5-2499e27e",
+   "agent": "A5",
+   "hypothesis": "validator@robusta_krr/core/models/config.py#annotated-validator",
+   "outcome": "superseded",
+   "diff": "diff --git a/robusta_krr/core/models/config.py b/robusta_krr/core/models/config.py\nindex b7eae0f..6837597 100644\n--- a/robusta_krr/core/models/config.py\n+++ b/robusta_krr/core/models/config.py\n@@ -2,7 +2,7 @@ from __future__ import annotations\n \n import logging\n import sys\n-from typing import Any, Literal, Optional, Union\n+from typing import Annotated, Any, Literal, Optional, Union\n \n import pydantic as pd\n from pydantic_settings import BaseSettings\n@@ -18,6 +18,72 @@ from robusta_krr.core.models.objects import KindLiteral\n logger = logging.getLogger(\"krr\")\n \n \n+def validate_prometheus_url(v: Optional[str]) -> Optional[str]:\n+    if v is None:\n+        return None\n+\n+    if not v.startswith(\"https://\") and not v.startswith(\"http://\"):\n+        raise Exception(\"--prometheus-url must start with https:// or http://\")\n+\n+    return v.removesuffix(\"/\")\n+\n+\n+def validate_prometheus_other_headers(headers: Union[list[str], dict[str, str]]) -> dict[str, str]:\n+    if isinstance(headers, dict):\n+        return headers\n+\n+    return {k.strip().lower(): v.strip() for k, v in [header.split(\":\") for header in headers]}\n+\n+\n+def validate_namespaces(v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+    if v == []:\n+        return \"*\"\n+\n+    if isinstance(v, list):\n+        for val in v:\n+            if val.startswith(\"*\"):\n+                raise ValueError(\"Namespace's values cannot start with an asterisk (*)\")\n+\n+    return [val.lower() for val in v]\n+\n+\n+def validate_resources(v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+    if v == []:\n+        return \"*\"\n+\n+    # NOTE: KindLiteral.__args__ is a tuple of all possible values of KindLiteral\n+    # So this will preserve the big and small letters of the resource\n+    return [next(r for r in KindLiteral.__args__ if r.lower() == val.lower()) for val in v]\n+\n+\n+def validate_job_grouping_labels(v: Union[list[str], str, None]) -> Union[list[str], None]:\n+    if v is None:\n+        return None\n+    if isinstance(v, str):\n+        # Split comma-separated string into list\n+        return [label.strip() for label in v.split(',')]\n+    return v\n+\n+\n+def validate_strategy(v: str) -> str:\n+    BaseStrategy.find(v)  # NOTE: raises if strategy is not found\n+    return v\n+\n+\n+def validate_format(v: str) -> str:\n+    formatters.find(v)  # NOTE: raises if strategy is not found\n+    return v\n+\n+\n+PrometheusURL = Annotated[Optional[str], pd.AfterValidator(validate_prometheus_url)]\n+PrometheusOtherHeaders = Annotated[dict[str, pd.SecretStr], pd.BeforeValidator(validate_prometheus_other_headers)]\n+Namespaces = Annotated[Union[list[str], Literal[\"*\"]], pd.AfterValidator(validate_namespaces)]\n+Resources = Annotated[Union[list[KindLiteral], Literal[\"*\"]], pd.BeforeValidator(validate_resources)]\n+JobGroupingLabels = Annotated[Union[list[str], str, None], pd.BeforeValidator(validate_job_grouping_labels)]\n+Strategy = Annotated[str, pd.AfterValidator(validate_strategy)]\n+Format = Annotated[str, pd.AfterValidator(validate_format)]\n+\n+\n class Config(BaseSettings):\n     quiet: bool = pd.Field(False)\n     verbose: bool = pd.Field(False)\n@@ -26,8 +92,8 @@ class Config(BaseSettings):\n     kubeconfig: Optional[str] = None\n     impersonate_user: Optional[str] = None\n     impersonate_group: Optional[str] = None\n-    namespaces: Union[list[str], Literal[\"*\"]] = pd.Field(\"*\")\n-    resources: Union[list[KindLiteral], Literal[\"*\"]] = pd.Field(\"*\")\n+    namespaces: Namespaces = pd.Field(\"*\")\n+    resources: Resources = pd.Field(\"*\")\n     selector: Optional[str] = None\n \n     # Value settings\n@@ -35,9 +101,9 @@ class Config(BaseSettings):\n     memory_min_value: int = pd.Field(100, ge=0)  # in megabytes\n \n     # Prometheus Settings\n-    prometheus_url: Optional[str] = pd.Field(None)\n+    prometheus_url: PrometheusURL = pd.Field(None)\n     prometheus_auth_header: Optional[pd.SecretStr] = pd.Field(None)\n-    prometheus_other_headers: dict[str, pd.SecretStr] = pd.Field(default_factory=dict)\n+    prometheus_other_headers: PrometheusOtherHeaders = pd.Field(default_factory=dict)\n     prometheus_ssl_enabled: bool = pd.Field(False)\n     prometheus_cluster_label: Optional[str] = pd.Field(None)\n     prometheus_label: Optional[str] = pd.Field(None)\n@@ -59,13 +125,13 @@ class Config(BaseSettings):\n     discovery_job_max_batches: int = pd.Field(100, ge=1, description=\"Maximum number of job batches to process to prevent infinite loops\")\n     \n     # Job grouping settings\n-    job_grouping_labels: Union[list[str], str, None] = pd.Field(None, description=\"Label name(s) to use for grouping jobs into GroupedJob workload type\")\n+    job_grouping_labels: JobGroupingLabels = pd.Field(None, description=\"Label name(s) to use for grouping jobs into GroupedJob workload type\")\n     job_grouping_limit: int = pd.Field(500, ge=1, description=\"Maximum number of jobs/pods to query per GroupedJob group\")\n \n     # Logging Settings\n-    format: str\n+    format: Format\n     show_cluster_name: bool\n-    strategy: str\n+    strategy: Strategy\n     log_to_stderr: bool\n     width: Optional[int] = pd.Field(None, ge=1)\n     show_severity: bool = True\n@@ -99,69 +165,12 @@ class Config(BaseSettings):\n     def Formatter(self) -> formatters.FormatterFunc:\n         return formatters.find(self.format)\n \n-    @pd.validator(\"prometheus_url\")\n-    def validate_prometheus_url(cls, v: Optional[str]):\n-        if v is None:\n-            return None\n-\n-        if not v.startswith(\"https://\") and not v.startswith(\"http://\"):\n-            raise Exception(\"--prometheus-url must start with https:// or http://\")\n-\n-        v = v.removesuffix(\"/\")\n-\n-        return v\n-\n-    @pd.validator(\"prometheus_other_headers\", pre=True)\n-    def validate_prometheus_other_headers(cls, headers: Union[list[str], dict[str, str]]) -> dict[str, str]:\n-        if isinstance(headers, dict):\n-            return headers\n-\n-        return {k.strip().lower(): v.strip() for k, v in [header.split(\":\") for header in headers]}\n-\n-    @pd.validator(\"namespaces\")\n-    def validate_namespaces(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n-        if v == []:\n-            return \"*\"\n-\n-        if isinstance(v, list):\n-            for val in v:\n-                if val.startswith(\"*\"):\n-                    raise ValueError(\"Namespace's values cannot start with an asterisk (*)\")\n-\n-        return [val.lower() for val in v]\n-\n-    @pd.validator(\"resources\", pre=True)\n-    def validate_resources(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n-        if v == []:\n-            return \"*\"\n-\n-        # NOTE: KindLiteral.__args__ is a tuple of all possible values of KindLiteral\n-        # So this will preserve the big and small letters of the resource\n-        return [next(r for r in KindLiteral.__args__ if r.lower() == val.lower()) for val in v]\n-\n-    @pd.validator(\"job_grouping_labels\", pre=True)\n-    def validate_job_grouping_labels(cls, v: Union[list[str], str, None]) -> Union[list[str], None]:\n-        if v is None:\n-            return None\n-        if isinstance(v, str):\n-            # Split comma-separated string into list\n-            return [label.strip() for label in v.split(',')]\n-        return v\n \n     def create_strategy(self) -> AnyStrategy:\n         StrategyType = AnyStrategy.find(self.strategy)\n         StrategySettingsType = StrategyType.get_settings_type()\n         return StrategyType(StrategySettingsType(**self.other_args))  # type: ignore\n \n-    @pd.validator(\"strategy\")\n-    def validate_strategy(cls, v: str) -> str:\n-        BaseStrategy.find(v)  # NOTE: raises if strategy is not found\n-        return v\n-\n-    @pd.validator(\"format\")\n-    def validate_format(cls, v: str) -> str:\n-        formatters.find(v)  # NOTE: raises if strategy is not found\n-        return v\n \n     @property\n     def context(self) -> Optional[str]:\n",
+   "diff_hash": "6842520b33a8156d",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 5353,
+   "ms": 19319,
+   "at": 1792159158629,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A4-42edabe7",
+   "agent": "A4",
+   "hypothesis": "fields-attr@robusta_krr/main.py#model-fields",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/main.py b/robusta_krr/main.py\nindex 6eda717..7b319c8 100644\n--- a/robusta_krr/main.py\n+++ b/robusta_krr/main.py\n@@ -429,12 +429,12 @@ def load_commands() -> None:\n                         default=OptionInfo(\n                             default=field_meta.default,\n                             param_decls=list(set([f\"--{field_name}\", f\"--{field_name.replace('_', '-')}\"])),\n-                            help=f\"{field_meta.field_info.description}\",\n+                            help=f\"{field_meta.description}\",\n                             rich_help_panel=\"Strategy Settings\",\n                         ),\n-                        annotation=__process_type(field_meta.type_),\n+                        annotation=__process_type(field_meta.annotation),\n                     )\n-                    for field_name, field_meta in strategy_type.get_settings_type().__fields__.items()\n+                    for field_name, field_meta in strategy_type.get_settings_type().model_fields.items()\n                 ]\n             )\n \n",
+   "diff_hash": "00b928801f77b13e",
+   "resolved": 2,
+   "broken": 0,
+   "tokens": 4776,
+   "ms": 11462,
+   "at": 1792159163612,
+   "merged": true,
+   "commit": "fb480d5f51b8c97e9d14436d1ad0b3b4ad1ea5f3"
+  },
+  {
+   "id": "A4-fe709d23",
+   "agent": "A4",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#model-dump",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/core/runner.py b/robusta_krr/core/runner.py\nindex 024ab70..370c827 100644\n--- a/robusta_krr/core/runner.py\n+++ b/robusta_krr/core/runner.py\n@@ -478,7 +478,7 @@ class Runner:\n             description=f\"[b]{self._strategy.display_name.title()} Strategy[/b]\\n\\n{self._strategy.description}\",\n             strategy=StrategyData(\n                 name=str(self._strategy).lower(),\n-                settings=self._strategy.settings.dict(),\n+                settings=self._strategy.settings.model_dump(),\n             ),\n             clusterSummary=cluster_summary\n         )\n",
+   "diff_hash": "767da89dbc6a5152",
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 6841,
+   "ms": 8873,
+   "at": 1792159196963,
+   "merged": true,
+   "commit": "ffae4ee10a69900b1d8dd8bf624092cbf7cac25e"
+  },
+  {
+   "id": "A2-68bee5ee",
+   "agent": "A2",
+   "hypothesis": "dict-call@robusta_krr/core/runner.py#dict-builtin",
+   "outcome": "superseded",
+   "diff": "diff --git a/robusta_krr/core/runner.py b/robusta_krr/core/runner.py\nindex 024ab70..b61bcad 100644\n--- a/robusta_krr/core/runner.py\n+++ b/robusta_krr/core/runner.py\n@@ -478,7 +478,7 @@ class Runner:\n             description=f\"[b]{self._strategy.display_name.title()} Strategy[/b]\\n\\n{self._strategy.description}\",\n             strategy=StrategyData(\n                 name=str(self._strategy).lower(),\n-                settings=self._strategy.settings.dict(),\n+                settings=dict(self._strategy.settings),\n             ),\n             clusterSummary=cluster_summary\n         )\n",
+   "diff_hash": "b6486c319a991f9c",
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 7188,
+   "ms": 12151,
+   "at": 1792159200382,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A4-20006bc9",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#model-dump-json",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/core/runner.py b/robusta_krr/core/runner.py\nindex 370c827..58ae941 100644\n--- a/robusta_krr/core/runner.py\n+++ b/robusta_krr/core/runner.py\n@@ -521,7 +521,7 @@ class Runner:\n             return 0  # Exit with success\n \n     def _send_result(self, url: str, start_time: datetime, scan_id: str,named_sinks: Optional[List[str]], result: Result):\n-        result_dict = json.loads(result.json(indent=2))\n+        result_dict = json.loads(result.model_dump_json(indent=2))\n         _send_scan_payload(url, scan_id, start_time, result_dict, named_sinks, is_error=False)\n \n def publish_input_error(url: str, scan_id: str, start_time: str, error: str, named_sinks: Optional[List[str]]):\n",
+   "diff_hash": "06d656e430ce307f",
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 6834,
+   "ms": 8758,
+   "at": 1792159235180,
+   "merged": true,
+   "commit": "2a5d10a24be99eaee8497e89e4dcc8f14e29ea1c"
+  },
+  {
+   "id": "A2-f4d58b32",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/core/runner.py#json-dumps",
+   "outcome": "superseded",
+   "diff": "diff --git a/robusta_krr/core/runner.py b/robusta_krr/core/runner.py\nindex 370c827..d13a33f 100644\n--- a/robusta_krr/core/runner.py\n+++ b/robusta_krr/core/runner.py\n@@ -521,7 +521,7 @@ class Runner:\n             return 0  # Exit with success\n \n     def _send_result(self, url: str, start_time: datetime, scan_id: str,named_sinks: Optional[List[str]], result: Result):\n-        result_dict = json.loads(result.json(indent=2))\n+        result_dict = json.loads(json.dumps(result.model_dump(mode=\"json\"), indent=2))\n         _send_scan_payload(url, scan_id, start_time, result_dict, named_sinks, is_error=False)\n \n def publish_input_error(url: str, scan_id: str, start_time: str, error: str, named_sinks: Optional[List[str]]):\n",
+   "diff_hash": "7b451454b8e21a1e",
+   "resolved": 7,
+   "broken": 0,
+   "tokens": 6850,
+   "ms": 9294,
+   "at": 1792159235665,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A1-eb9b2246",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "outcome": "fail",
+   "diff": "diff --git a/robusta_krr/core/models/config.py b/robusta_krr/core/models/config.py\nindex fda71e6..44fd627 100644\n--- a/robusta_krr/core/models/config.py\n+++ b/robusta_krr/core/models/config.py\n@@ -123,6 +123,9 @@ class Config(BaseSettings):\n     @pd.field_validator(\"namespaces\")\n     @classmethod\n     def validate_namespaces(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+        if v == \"*\":\n+            return v\n+\n         if v == []:\n             return \"*\"\n \n@@ -136,6 +139,9 @@ class Config(BaseSettings):\n     @pd.field_validator(\"resources\", mode=\"before\")\n     @classmethod\n     def validate_resources(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+        if v == \"*\":\n+            return v\n+\n         if v == []:\n             return \"*\"\n \n",
+   "diff_hash": "2ddf686d5810cd32",
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 3275,
+   "ms": 10992,
+   "at": 1792159244078,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A5-92c6d4ef",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "outcome": "fail",
+   "diff": "diff --git a/robusta_krr/main.py b/robusta_krr/main.py\nindex 7b319c8..d2f7517 100644\n--- a/robusta_krr/main.py\n+++ b/robusta_krr/main.py\n@@ -4,7 +4,8 @@ import asyncio\n import inspect\n import logging\n from datetime import datetime\n-from typing import List, Optional\n+from typing import List, Optional, Union, get_args, get_origin\n+from types import UnionType\n from uuid import UUID\n \n import click\n@@ -42,10 +43,12 @@ def __process_type(_T: type) -> type:\n     \"\"\"Process type to a python literal\"\"\"\n     if _T in (int, float, str, bool, datetime, UUID):\n         return _T\n-    elif _T is Optional:\n-        return Optional[{__process_type(_T.__args__[0])}]  # type: ignore\n-    else:\n-        return str  # If the type is unknown, just use str and let pydantic handle it\n+    origin = get_origin(_T)\n+    args = get_args(_T)\n+    if origin in (Union, UnionType) and type(None) in args:\n+        non_none_type = next(arg for arg in args if arg is not type(None))\n+        return Optional[__process_type(non_none_type)]  # type: ignore\n+    return str  # If the type is unknown, just use str and let pydantic handle it\n \n \n def load_commands() -> None:\n",
+   "diff_hash": "652f7d06e1b12640",
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 5419,
+   "ms": 14041,
+   "at": 1792159247582,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A1-ed4189aa",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "outcome": "fail",
+   "diff": "diff --git a/robusta_krr/core/models/config.py b/robusta_krr/core/models/config.py\nindex fda71e6..af3b225 100644\n--- a/robusta_krr/core/models/config.py\n+++ b/robusta_krr/core/models/config.py\n@@ -123,6 +123,9 @@ class Config(BaseSettings):\n     @pd.field_validator(\"namespaces\")\n     @classmethod\n     def validate_namespaces(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+        if v == \"*\" or v == [\"*\"]:\n+            return \"*\"\n+\n         if v == []:\n             return \"*\"\n \n@@ -136,6 +139,9 @@ class Config(BaseSettings):\n     @pd.field_validator(\"resources\", mode=\"before\")\n     @classmethod\n     def validate_resources(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+        if v == \"*\" or v == [\"*\"]:\n+            return \"*\"\n+\n         if v == []:\n             return \"*\"\n \n",
+   "diff_hash": "3e86a507bcb579a5",
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 3809,
+   "ms": 14355,
+   "at": 1792159265849,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A2-05ddf8d3",
+   "agent": "A2",
+   "hypothesis": "json-call@robusta_krr/formatters/yaml.py#model-dump-json",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/formatters/yaml.py b/robusta_krr/formatters/yaml.py\nindex 37a030c..350e2b1 100644\n--- a/robusta_krr/formatters/yaml.py\n+++ b/robusta_krr/formatters/yaml.py\n@@ -8,4 +8,4 @@ from robusta_krr.core.models.result import Result\n \n @formatters.register()\n def yaml(result: Result) -> str:\n-    return yaml_module.dump(json.loads(result.json()), sort_keys=False)\n+    return yaml_module.dump(json.loads(result.model_dump_json()), sort_keys=False)\n",
+   "diff_hash": "3c149996ed701f30",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1369,
+   "ms": 9255,
+   "at": 1792159272964,
+   "merged": true,
+   "commit": "725544b7931a9847ccae8e136a67036f2a62ea43"
+  },
+  {
+   "id": "A0-8edde24c",
+   "agent": "A0",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#model-dump-json",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/formatters/json.py b/robusta_krr/formatters/json.py\nindex c391da2..b396078 100644\n--- a/robusta_krr/formatters/json.py\n+++ b/robusta_krr/formatters/json.py\n@@ -4,4 +4,4 @@ from robusta_krr.core.models.result import Result\n \n @formatters.register()\n def json(result: Result) -> str:\n-    return result.json(indent=2)\n+    return result.model_dump_json(indent=2)\n",
+   "diff_hash": "2195592b55567c27",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1315,
+   "ms": 9409,
+   "at": 1792159273111,
+   "merged": true,
+   "commit": "6504f10d9cb24a27b346ee66f6c50c412dacae55"
+  },
+  {
+   "id": "A4-16249b27",
+   "agent": "A4",
+   "hypothesis": "json-call@robusta_krr/formatters/json.py#json-dumps",
+   "outcome": "superseded",
+   "diff": "diff --git a/robusta_krr/formatters/json.py b/robusta_krr/formatters/json.py\nindex c391da2..fe38bb0 100644\n--- a/robusta_krr/formatters/json.py\n+++ b/robusta_krr/formatters/json.py\n@@ -1,7 +1,9 @@\n+import json as json_module\n+\n from robusta_krr.core.abstract import formatters\n from robusta_krr.core.models.result import Result\n \n \n @formatters.register()\n def json(result: Result) -> str:\n-    return result.json(indent=2)\n+    return json_module.dumps(result.model_dump(mode=\"json\"), indent=2)\n",
+   "diff_hash": "cf911f6bfb99e0e5",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1504,
+   "ms": 10579,
+   "at": 1792159274287,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A5-fc1a49b1",
+   "agent": "A5",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "outcome": "fail",
+   "diff": "diff --git a/robusta_krr/main.py b/robusta_krr/main.py\nindex 7b319c8..86427be 100644\n--- a/robusta_krr/main.py\n+++ b/robusta_krr/main.py\n@@ -3,6 +3,8 @@ from __future__ import annotations\n import asyncio\n import inspect\n import logging\n+import types\n+import typing\n from datetime import datetime\n from typing import List, Optional\n from uuid import UUID\n@@ -42,10 +44,15 @@ def __process_type(_T: type) -> type:\n     \"\"\"Process type to a python literal\"\"\"\n     if _T in (int, float, str, bool, datetime, UUID):\n         return _T\n-    elif _T is Optional:\n-        return Optional[{__process_type(_T.__args__[0])}]  # type: ignore\n-    else:\n-        return str  # If the type is unknown, just use str and let pydantic handle it\n+\n+    origin = typing.get_origin(_T)\n+    args = typing.get_args(_T)\n+    union_type = getattr(types, \"UnionType\", None)\n+    if origin in (typing.Union, union_type) and type(None) in args:\n+        non_none_type = next(arg for arg in args if arg is not type(None))\n+        return Optional[__process_type(non_none_type)]  # type: ignore\n+\n+    return str  # If the type is unknown, just use str and let pydantic handle it\n \n \n def load_commands() -> None:\n",
+   "diff_hash": "ecf185ee0ef0114a",
+   "resolved": 0,
+   "broken": 0,
+   "tokens": 6595,
+   "ms": 22997,
+   "at": 1792159277800,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A3-116cbac7",
+   "agent": "A3",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#dict-builtin",
+   "outcome": "pass",
+   "diff": "diff --git a/robusta_krr/formatters/pprint.py b/robusta_krr/formatters/pprint.py\nindex 9be637c..403d501 100644\n--- a/robusta_krr/formatters/pprint.py\n+++ b/robusta_krr/formatters/pprint.py\n@@ -6,4 +6,4 @@ from robusta_krr.core.models.result import Result\n \n @formatters.register()\n def pprint(result: Result) -> str:\n-    return pformat(result.dict())\n+    return pformat(dict(result))\n",
+   "diff_hash": "7015c3dda18de412",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 2195,
+   "ms": 17068,
+   "at": 1792159281107,
+   "merged": true,
+   "commit": "12c12dc705fefbd845a3304746b56f84e57ae170"
+  },
+  {
+   "id": "A5-c7da7581",
+   "agent": "A5",
+   "hypothesis": "dict-call@robusta_krr/formatters/pprint.py#model-dump",
+   "outcome": "superseded",
+   "diff": "diff --git a/robusta_krr/formatters/pprint.py b/robusta_krr/formatters/pprint.py\nindex 9be637c..1da4a52 100644\n--- a/robusta_krr/formatters/pprint.py\n+++ b/robusta_krr/formatters/pprint.py\n@@ -6,4 +6,4 @@ from robusta_krr.core.models.result import Result\n \n @formatters.register()\n def pprint(result: Result) -> str:\n-    return pformat(result.dict())\n+    return pformat(result.model_dump())\n",
+   "diff_hash": "e5f93208bd9285c4",
+   "resolved": 1,
+   "broken": 0,
+   "tokens": 1320,
+   "ms": 8329,
+   "at": 1792159293090,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A1-8d51fde6",
+   "agent": "A1",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-preserve-wildcard-values",
+   "outcome": "fail",
+   "diff": "diff --git a/robusta_krr/core/models/config.py b/robusta_krr/core/models/config.py\nindex fda71e6..86d535b 100644\n--- a/robusta_krr/core/models/config.py\n+++ b/robusta_krr/core/models/config.py\n@@ -123,6 +123,9 @@ class Config(BaseSettings):\n     @pd.field_validator(\"namespaces\")\n     @classmethod\n     def validate_namespaces(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+        if not isinstance(v, list):\n+            return v\n+\n         if v == []:\n             return \"*\"\n \n@@ -136,6 +139,9 @@ class Config(BaseSettings):\n     @pd.field_validator(\"resources\", mode=\"before\")\n     @classmethod\n     def validate_resources(cls, v: Union[list[str], Literal[\"*\"]]) -> Union[list[str], Literal[\"*\"]]:\n+        if not isinstance(v, list):\n+            return v\n+\n         if v == []:\n             return \"*\"\n \n",
+   "diff_hash": "72404acff7fbada2",
+   "resolved": 3,
+   "broken": 0,
+   "tokens": 4974,
+   "ms": 22325,
+   "at": 1792159295548,
+   "merged": null,
+   "commit": null
+  },
+  {
+   "id": "A2-29e67584",
+   "agent": "A2",
+   "hypothesis": "other:AssertionError@tests/test_krr.py#llm-resolve-optional-cli-types",
+   "outcome": "fail",
+   "diff": "diff --git a/robusta_krr/main.py b/robusta_krr/main.py\nindex 7b319c8..0548574 100644\n--- a/robusta_krr/main.py\n+++ b/robusta_krr/main.py\n@@ -4,7 +4,7 @@ import asyncio\n import inspect\n import logging\n from datetime import datetime\n-from typing import List, Optional\n+from typing import List, Optional, get_args, get_origin\n from uuid import UUID\n \n import click\n@@ -42,10 +42,14 @@ def __process_type(_T: type) -> type:\n     \"\"\"Process type to a python literal\"\"\"\n     if _T in (int, float, str, bool, datetime, UUID):\n         return _T\n-    elif _T is Optional:\n-        return Optional[{__process_type(_T.__args__[0])}]  # type: ignore\n-    else:\n-        return str  # If the type is unknown, just use str and let pydantic handle it\n+\n+    origin = get_origin(_T)\n+    args = get_args(_T)\n+    if origin is not None and type(None) in args:\n+        non_none_type = next(arg for arg in args if arg is not type(None))\n+        return Optional[__process_type(non_none_type)]  # type: ignore\n+\n+    return str  # If the type is unknown, just use str and let pydantic handle it\n \n \n def load_commands() -> None:\n",
+   "diff_hash": "fef6f86984fd89a9",
+   "resolved": 4,
+   "broken": 0,
+   "tokens": 7330,
+   "ms": 23774,
+   "at": 1792159323545,
+   "merged": null,
+   "commit": null
+  }
+ ],
+ "tests": [
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory0-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_prometheus_query_construction",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory3-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_groupedjobs_respects_global_batch_limit_across_namespaces",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_job_in_multiple_groups",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory4-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_groupedjobs_calls_each_explicit_namespace",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_lightweight_job_info_structure",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces1-cluster_all_ns1-expected1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "fields-attr@robusta_krr/main.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-yaml]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/formatters/yaml.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory0-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_help",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory2-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config0-expected_first_row0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-json]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/formatters/json.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-pprint]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory5-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_run[-q]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory1-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_no_grouping_labels",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_with_different_namespaces",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[*-cluster_all_ns0-*]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_runner.py::test_exclude_severity_option[args1-2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_fallback_logic",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory3-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_multiple_groups_metrics_extraction",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_runner.py::test_exclude_severity_option[args2-2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config0-expected_headers0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces3-cluster_all_ns3-expected3]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_cluster_namespace_list[setting_namespaces2-cluster_all_ns2-expected2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config1-expected_first_row1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_cronjob_owner_reference",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-csv]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_multiple_labels",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-json]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory2-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config1-expected_headers1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_row_value[override_config2-expected_first_row2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "conftest.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "validator@robusta_krr/core/models/allocations.py",
+    "base-settings@robusta_krr/core/models/config.py",
+    "validator@robusta_krr/core/models/config.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-yaml]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/formatters/test_csv_formatter.py::test_csv_headers[override_config2-expected_headers2]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory5-cpu0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_runner.py::__collect__",
+   "status": "resolved",
+   "failures": [
+    "fields-attr@robusta_krr/main.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_app_imports.py::test_app_files_have_correct_initial_lines[enforcer/enforcer_main.py-enforcer_main.py-expected_lines1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_limit",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[-q-table]",
+   "status": "green",
+   "failures": [
+    "other:AssertionError@tests/test_krr.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory4-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-table]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py"
+   ]
+  },
+  {
+   "nodeid": "tests/models/test_resource_allocations.py::test_resource_allocation_supported_formats[memory1-cpu1]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_run[-v]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_runner.py::test_exclude_severity_option[args0-0]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_app_imports.py::test_app_files_have_correct_initial_lines[krr.py-krr.py-expected_lines0]",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_extracts_job_names",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-pprint]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py",
+    "dict-call@robusta_krr/formatters/pprint.py"
+   ]
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs_metrics_logic.py::test_grouped_job_batched_queries",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_grouped_jobs.py::test_list_all_groupedjobs_with_different_namespaces",
+   "status": "green",
+   "failures": []
+  },
+  {
+   "nodeid": "tests/test_krr.py::test_output_formats[--logtostderr-csv]",
+   "status": "green",
+   "failures": [
+    "dict-call@robusta_krr/core/runner.py",
+    "json-call@robusta_krr/core/runner.py"
+   ]
+  }
+ ]
+}
