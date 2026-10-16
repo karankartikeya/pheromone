@@ -1,0 +1,22 @@
+{
+ "agents": 30,
+ "seconds": 60.0,
+ "lease_ms": 800,
+ "claims_won": 274,
+ "claims_lost": 91,
+ "reports": 274,
+ "stale_rejected": 22,
+ "takeovers": 8,
+ "graph_writes": 759,
+ "writes_per_sec": 12.7,
+ "server_busy_rejections": 526,
+ "double_claims": 0,
+ "accepted_after_takeover": 0,
+ "pheromone_mismatches": 0,
+ "claim_ms_p50": 0.84,
+ "claim_ms_p95": 9.61,
+ "report_ms_p50": 1.14,
+ "report_ms_p95": 3.09,
+ "frontier_ms_p50": 4.82,
+ "frontier_ms_p95": 7.15
+}
