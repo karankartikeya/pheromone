@@ -56,14 +56,14 @@ async def export(run_id: str) -> dict:
             """,
             path=path,
         )
-        tests = await g.ro(
+        selected = await g.ro(
             """
             MATCH (f:File {path:$path})<-[:IMPORTS*0..3]-(dep:File)<-[:DEFINED_IN]-(t:Test)
             RETURN dep.path AS file, count(DISTINCT t) AS tests
             """,
             path=path,
         )
-        blast[path] = {"chains": [r["chain"] for r in chains], "tests": {r["file"]: r["tests"] for r in tests}}
+        blast[path] = {"chains": [r["chain"] for r in chains], "tests": {r["file"]: r["tests"] for r in selected}}
 
     data = {
         "run": run[0]["r"] if run else {"id": run_id},
