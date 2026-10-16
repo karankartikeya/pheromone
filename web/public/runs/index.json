@@ -1438,212 +1438,54 @@
    "signature": "config-key-removed",
    "kind": "config-dict",
    "transform": "Rename removed config keys to their v2 names in model_config = ConfigDict(...) (allow_mutation=False->frozen=True, orm_mode->from_attributes, fields={...alias}->Field(alias=...)).",
-   "support": 9,
+   "support": 3,
    "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "json-call",
-   "kind": "model-dump-json",
-   "transform": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
-   "support": 7,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "schema-call",
-   "kind": "model-json-schema",
-   "transform": "Replace Model.schema() with Model.model_json_schema().",
-   "support": 6,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "dict-call",
-   "kind": "dict-builtin",
-   "transform": "Replace .dict() with dict(obj) and filter keys by hand.",
-   "support": 5,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
+    "gym-swarm-1016-072628"
    ]
   },
   {
    "signature": "json-call",
    "kind": "json-dumps",
    "transform": "Replace .json() with json.dumps(obj.model_dump(mode='json')).",
-   "support": 5,
+   "support": 2,
    "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
+    "gym-swarm-1016-072628"
    ]
   },
   {
-   "signature": "validator-values",
-   "kind": "field-validator-info",
-   "transform": "Replace @validator with @field_validator plus @classmethod, take info: ValidationInfo and read earlier fields from info.data instead of values.",
-   "support": 5,
+   "signature": "json-call",
+   "kind": "model-dump-json",
+   "transform": "Replace .json(...) with .model_dump_json(...), keeping by_alias and other keyword arguments.",
+   "support": 2,
    "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "schema-call",
+   "kind": "model-json-schema",
+   "transform": "Replace Model.schema() with Model.model_json_schema().",
+   "support": 2,
+   "runs": [
+    "gym-swarm-1016-072628"
    ]
   },
   {
    "signature": "validator-values",
    "kind": "model-validator-after",
    "transform": "Replace the field validator with @model_validator(mode='after') that reads and sets fields on self.",
-   "support": 4,
+   "support": 2,
    "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
+    "gym-swarm-1016-072628"
    ]
   },
   {
    "signature": "construct-call",
    "kind": "model-construct",
    "transform": "Replace Model.construct(**data) with Model.model_construct(**data).",
-   "support": 3,
+   "support": 1,
    "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "fields-attr",
-   "kind": "model-fields",
-   "transform": "Replace Model.__fields__ with Model.model_fields; field.required becomes field.is_required(), outer_type_ becomes annotation.",
-   "support": 3,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "forward-refs",
-   "kind": "model-rebuild",
-   "transform": "Replace Model.update_forward_refs() with Model.model_rebuild().",
-   "support": 3,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "from-orm",
-   "kind": "from-attributes",
-   "transform": "Set model_config = ConfigDict(from_attributes=True) and replace Model.from_orm(obj) with Model.model_validate(obj).",
-   "support": 3,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "parse-obj",
-   "kind": "constructor",
-   "transform": "Replace Model.parse_obj(data) with Model(**data).",
-   "support": 3,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801"
-   ]
-  },
-  {
-   "signature": "parse-obj",
-   "kind": "model-validate",
-   "transform": "Replace Model.parse_obj(data) with Model.model_validate(data).",
-   "support": 3,
-   "runs": [
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "validate-arguments",
-   "kind": "validate-call",
-   "transform": "Replace @validate_arguments with @validate_call.",
-   "support": 3,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "copy-call",
-   "kind": "model-copy",
-   "transform": "Replace .copy(update=...) with .model_copy(update=...).",
-   "support": 2,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801"
-   ]
-  },
-  {
-   "signature": "custom-root",
-   "kind": "root-model",
-   "transform": "Turn the __root__ model into a pydantic.RootModel[...] subclass and use .root instead of .__root__; parse with model_validate.",
-   "support": 2,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "json-encoders",
-   "kind": "field-serializer",
-   "transform": "Remove Config.json_encoders; add @field_serializer for the affected fields (or a PlainSerializer in Annotated) that produces the same output, and move other Config keys to model_config = ConfigDict(...).",
-   "support": 2,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "parse-raw",
-   "kind": "model-validate-json",
-   "transform": "Replace Model.parse_raw(body) with Model.model_validate_json(body).",
-   "support": 2,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-184801"
-   ]
-  },
-  {
-   "signature": "root-validator",
-   "kind": "model-validator-before",
-   "transform": "Replace @root_validator with @model_validator(mode='before') on a classmethod that works on the input dict.",
-   "support": 2,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-185238"
-   ]
-  },
-  {
-   "signature": "validator",
-   "kind": "field-validator",
-   "transform": "Replace @validator with @field_validator plus @classmethod; pre=True becomes mode='before', each_item=True becomes validating the list items in the function, always=True becomes validate_default=True on the Field.",
-   "support": 2,
-   "runs": [
-    "gym-swarm-1015-184444",
-    "gym-swarm-1015-185238"
+    "gym-swarm-1016-072628"
    ]
   },
   {
@@ -1652,7 +1494,7 @@
    "transform": "Replace .copy(update=...) with Model(**{**obj.model_dump(), **update}).",
    "support": 1,
    "runs": [
-    "gym-swarm-1015-185238"
+    "gym-swarm-1016-072628"
    ]
   },
   {
@@ -1661,7 +1503,16 @@
    "transform": "Replace the __root__ model with a TypeAdapter over the inner type plus a plain helper class.",
    "support": 1,
    "runs": [
-    "gym-swarm-1015-184801"
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "dict-call",
+   "kind": "dict-builtin",
+   "transform": "Replace .dict() with dict(obj) and filter keys by hand.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
    ]
   },
   {
@@ -1670,7 +1521,34 @@
    "transform": "Replace .dict(...) with .model_dump(...), keeping the same keyword arguments.",
    "support": 1,
    "runs": [
-    "gym-swarm-1015-184801"
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "fields-attr",
+   "kind": "model-fields",
+   "transform": "Replace Model.__fields__ with Model.model_fields; field.required becomes field.is_required(), outer_type_ becomes annotation.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "forward-refs",
+   "kind": "model-rebuild",
+   "transform": "Replace Model.update_forward_refs() with Model.model_rebuild().",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "from-orm",
+   "kind": "from-attributes",
+   "transform": "Set model_config = ConfigDict(from_attributes=True) and replace Model.from_orm(obj) with Model.model_validate(obj).",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
    ]
   },
   {
@@ -1679,7 +1557,25 @@
    "transform": "Remove json_encoders and add a @model_serializer(mode='wrap') that formats datetimes the same way.",
    "support": 1,
    "runs": [
-    "gym-swarm-1015-184801"
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "parse-obj",
+   "kind": "constructor",
+   "transform": "Replace Model.parse_obj(data) with Model(**data).",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "parse-obj",
+   "kind": "model-validate",
+   "transform": "Replace Model.parse_obj(data) with Model.model_validate(data).",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
    ]
   },
   {
@@ -1688,27 +1584,45 @@
    "transform": "Replace Model.parse_raw(body) with Model.model_validate(json.loads(body)).",
    "support": 1,
    "runs": [
-    "gym-swarm-1015-185238"
+    "gym-swarm-1016-072628"
    ]
   },
   {
    "signature": "root-validator",
-   "kind": "model-validator",
-   "transform": "Replace @root_validator with @model_validator; pre=True becomes mode='before' on a classmethod taking the raw dict, otherwise mode='after' on an instance method returning self.",
+   "kind": "model-validator-before",
+   "transform": "Replace @root_validator with @model_validator(mode='before') on a classmethod that works on the input dict.",
    "support": 1,
    "runs": [
-    "gym-swarm-1015-184801"
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "validate-arguments",
+   "kind": "validate-call",
+   "transform": "Replace @validate_arguments with @validate_call.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
    ]
   },
   {
    "signature": "validator",
-   "kind": "annotated-validator",
-   "transform": "Move the check into an Annotated type with AfterValidator / BeforeValidator.",
+   "kind": "field-validator",
+   "transform": "Replace @validator with @field_validator plus @classmethod; pre=True becomes mode='before', each_item=True becomes validating the list items in the function, always=True becomes validate_default=True on the Field.",
    "support": 1,
    "runs": [
-    "gym-swarm-1015-184801"
+    "gym-swarm-1016-072628"
+   ]
+  },
+  {
+   "signature": "validator-values",
+   "kind": "field-validator-info",
+   "transform": "Replace @validator with @field_validator plus @classmethod, take info: ValidationInfo and read earlier fields from info.data instead of values.",
+   "support": 1,
+   "runs": [
+    "gym-swarm-1016-072628"
    ]
   }
  ],
- "generated_at": "2026-10-15T17:19:41+00:00"
+ "generated_at": "2026-10-16T05:38:24+00:00"
 }
