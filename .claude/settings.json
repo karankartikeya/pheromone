@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__pheromone-graph__list_graphs",
+      "mcp__pheromone-graph__query_graph_readonly",
+      "mcp__pheromone-graph__get_graph_schema",
+      "mcp__pheromone-graph__get_node_schema",
+      "mcp__pheromone-graph__get_relationship_schema"
+    ],
+    "deny": [
+      "mcp__pheromone-graph__delete_graph",
+      "mcp__pheromone-graph__query_graph"
+    ]
+  }
+}
