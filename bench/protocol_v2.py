@@ -49,7 +49,7 @@ def run(phase: str, target: str, mode: str, seed: int, learn: bool, writer) -> N
     row = [commit(), phase, target, mode, seed, start.isoformat(timespec="seconds"),
            end.isoformat(timespec="seconds"), run_id, res.returncode]
     writer.writerow(row)
-    print(f"{end:%H:%M} {phase} {target:4} {mode:14} seed={seed:<3} -> {run_id or 'FAILED'} (exit {res.returncode})", flush=True)
+    print(f"{end.astimezone():%H:%M} {phase} {target:4} {mode:14} seed={seed:<3} -> {run_id or 'FAILED'} (exit {res.returncode})", flush=True)
 
 
 def main() -> None:
