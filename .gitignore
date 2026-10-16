@@ -31,3 +31,4 @@ node_modules/
 # local run logs (published copies live in web/public/runs)
 /runs/*
 !/runs/protocol.txt
+!/runs/protocol_v2.csv
