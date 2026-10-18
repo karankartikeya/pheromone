@@ -8,6 +8,9 @@ Built for WeMakeDevs **Graph Hacks** (FalkorDB). Tracks: **Track 02, Agent Memor
 
 > **Live dashboard** (replay of the 50 recorded runs): https://pheromone-sigma.vercel.app · Demo video: _link_ · Blog post: _link_
 
+![Live swarm view: failures on the left, candidate fixes on the right, edge width is pheromone, agent chips sit on the fix each agent has claimed](docs/images/live-swarm.png)
+<sub>A recorded gym run in the dashboard: thick amber edges are fixes the tests confirmed; each chip is an agent holding a claim.</sub>
+
 ---
 
 ## Why a graph
@@ -35,6 +38,40 @@ Independent coding agents working on the same red test suite need *some* coordin
 
 Run graph `run:<id>` (one per run) and the shared `recipes` graph.
 
+```mermaid
+flowchart TB
+    T([Test]) -- FAILS_WITH --> F([Failure])
+    T -- DEFINED_IN --> FI([File])
+    F -- IN --> FI
+    FI -- IMPORTS --> FI
+    F -- "SUSPECTS {pheromone}" --> H([Hypothesis])
+    H -- TOUCHES --> FI
+    H -- SAME_SIGNATURE --- H
+    AG([Agent]) -- "CLAIMED {at}" --> H
+    AG -- MADE --> A([Attempt])
+    A -- TESTED --> H
+    A -- "FIXED / BROKE" --> T
+    A -- FOLLOWED --> A
+    subgraph RG["recipes graph (shared by all runs)"]
+        C([Contribution]) -- FOR --> R([Recipe])
+    end
+    H -. "recipe_id" .-> R
+```
+
+**Where the agents' decisions come from the graph.** No agent is told what to do; every choice is a query:
+
+| Decision | Graph query | What it reads or writes |
+| --- | --- | --- |
+| Which fix to try next | `FRONTIER` | pheromone on `SUSPECTS`, earlier `Attempt`s, other agents' claims on the same failure and signature, fixes waiting to merge |
+| Take the work without a collision | `CLAIM` | compare-and-set on `Hypothesis.status` with a lease; an expired lease is a handoff |
+| What earlier agents already tried | `ATTEMPTS_ON` | every `Attempt` on this hypothesis, with its diff, so a new owner builds on the history |
+| Is this diff a known dead end | `FAILED_DIFF` | `Attempt.diff_hash` across all agents |
+| Which tests must stay green | `BLAST_RADIUS` | `(File)<-[:IMPORTS*0..3]-(File)<-[:DEFINED_IN]-(Test)` |
+| What the swarm learns | `REPORT` | writes the `Attempt`, deposits pheromone, retires dead hypotheses (tests decide, never the LLM) |
+| What carries to the next repo | `CRYSTALLIZE_CANDIDATES`, `UPSERT_RECIPE` | winning (signature, fix kind) pairs become `Recipe`s in the shared graph |
+
+All of these are in [`docs/QUERIES.md`](docs/QUERIES.md). The Baseline mode removes every read above, which is how the [results](#results) measure what the graph contributes.
+
 | Edge | Meaning |
 | --- | --- |
 | `(Test)-[:FAILS_WITH]->(Failure)` | a red test and the failure behind it |
@@ -50,6 +87,9 @@ Run graph `run:<id>` (one per run) and the shared `recipes` graph.
 ## The Cypher that runs it
 
 All queries live in [`backend/src/pheromone/graph/queries.py`](backend/src/pheromone/graph/queries.py); [`docs/QUERIES.md`](docs/QUERIES.md) is generated from it. The core ones:
+
+![Trails: why is this test green? The path through the graph and the import chains the merge gate walked](docs/images/trail-blast-radius.png)
+<sub>Trails on a measured krr run: the test's path (Test → Failure → Hypothesis ← Attempt ← Agent), the merge gate's multi-hop blast radius, the merged diff and the Cypher behind it.</sub>
 
 **Claim (compare-and-set).** An empty result means another agent won. An expired lease counts as open: that is the handoff.
 
@@ -148,6 +188,9 @@ Medians, with min–max:
 | krr | **Swarm** | **119k** (117k–129k) | **205 s** (186–211) | **13** (11–13) | **8** (7–10) |
 | krr | Swarm + Recipes | 101k (63k–133k) | 253 s (187–450) | 5 (5–12) | 3 (3–10) |
 
+![Scoreboard, migration gym: Baseline vs Coordinated vs Swarm, medians of 10 recorded runs](docs/images/scoreboard-gym.png)
+![Scoreboard, robusta-dev/krr: all four modes, medians of 5 recorded runs](docs/images/scoreboard-krr.png)
+
 <details>
 <summary>All 50 runs</summary>
 
@@ -214,6 +257,8 @@ Medians, with min–max:
 - **Limits.** Two targets, one of them written for this project; the gym served as the development benchmark (`sibling_weight` was tuned while watching gym runs), krr as the check on a repo we did not tune on. Tests decide what is "fixed", so a migration is only as verified as the target's tests.
 
 **Concurrency.** [`bench/stress_claims.py`](bench/stress_claims.py) runs 30 agents for 60 s against the real claim and report queries, with 800 ms leases and agents that deliberately stall past them. Result ([`bench/results/stress_30x60.json`](bench/results/stress_30x60.json)): 274 claims won, 91 races lost, 8 forced takeovers, 22 stale reports rejected; **0 double claims, 0 reports accepted after a takeover, and 0 pheromone mismatches** against an exact replay of the accepted reports. Claim latency 0.8 ms median, 9.6 ms p95. At this load FalkorDB's default query queue (25) rejects the overflow ("Max pending queries exceeded", 526 times), which the agents absorb with jittered backoff; the 6-agent swarm never came close.
+
+![Concurrency stress test: 30 agents, 0 double claims, 0 reports accepted after a takeover, 0 pheromone mismatches](docs/images/stress-test.png)
 
 **First batch** (Thursday, 12 runs, [`bench/protocol.sh`](bench/protocol.sh)): Baseline vs Swarm only, 3 gym and 2 krr runs per mode, run on an earlier version of the code. It pointed the same way (gym tokens 176k → 50k, krr 231k → 94k) and is superseded by the batch above.
 
