@@ -6,7 +6,7 @@ Pheromone is a swarm of identical coding agents that migrates Python code from P
 
 Built for WeMakeDevs **Graph Hacks** (FalkorDB). Tracks: **Track 02, Agent Memory and Coordination** and **Track 01, Agents That Act on Connected Data**.
 
-> Live dashboard (replay of recorded runs): _link added at deploy time_ · Demo video: _link_ · Blog post: _link_
+> **Live dashboard** (replay of the 50 recorded runs): https://pheromone-sigma.vercel.app · Demo video: _link_ · Blog post: _link_
 
 ---
 
