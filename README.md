@@ -6,7 +6,7 @@ Pheromone is a swarm of identical coding agents that migrates Python code from P
 
 Built for WeMakeDevs **Graph Hacks** (FalkorDB). Tracks: **Track 02, Agent Memory and Coordination** and **Track 01, Agents That Act on Connected Data**.
 
-> **Live dashboard** (replay of the 50 recorded runs): https://pheromone-sigma.vercel.app · Demo video: _link_ · Blog post: _link_
+> **Live dashboard** (replay of the 50 recorded runs): https://pheromone-sigma.vercel.app · **Demo video:** https://youtu.be/I_9wR4w37sg · **Blog post:** https://dev.to/karankartikeya/pheromone-coding-agents-works-together-like-ants-using-falkor-db-2gd4
 
 ![Live swarm view: failures on the left, candidate fixes on the right, edge width is pheromone, agent chips sit on the fix each agent has claimed](docs/images/live-swarm.png)
 <sub>A recorded gym run in the dashboard: thick amber edges are fixes the tests confirmed; each chip is an agent holding a claim.</sub>
