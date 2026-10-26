@@ -285,7 +285,7 @@ All 50 measured run graphs and the shared `recipes` graph are on FalkorDB Cloud,
 > **New instance (Oct 26 2026).** The original free-tier instance (`instance-9l47qt9zq`) was stopped and then deleted by FalkorDB for inactivity after the submission deadline. The graphs were copied again from the local FalkorDB the runs were recorded on, using [`bench/copy_to_cloud.py`](bench/copy_to_cloud.py), and every graph's node and edge counts match the source. The data is unchanged; only the host and port below are new.
 
 ```bash
-redis-cli -h r-6jissuruar.instance-rsnswgf9i.hc-7up0crkyn.ap-south-1.aws.f2e0a955bb84.cloud -p 54608 --user demo_user --pass demo123 \
+redis-cli -h r-6jissuruar.instance-rsnswgf9i.hc-7up0crkyn.ap-south-1.aws.f2e0a955bb84.cloud -p 54608 --user demo_user --pass 'Demo123@' \
   GRAPH.RO_QUERY "run:krr-swarm-1016-160651" \
   "MATCH (ag:Agent)-[:MADE]->(a:Attempt {merged:true})-[:TESTED]->(h:Hypothesis)<-[:SUSPECTS]-(f:Failure) RETURN f.signature, h.kind, ag.id ORDER BY a.at"
 ```
